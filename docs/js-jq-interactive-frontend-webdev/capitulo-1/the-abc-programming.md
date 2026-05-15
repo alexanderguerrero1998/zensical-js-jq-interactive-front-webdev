@@ -8,7 +8,7 @@ Antes de aprender como leer y escribir el propio lenguaje JavaScript, es necesar
 
 Una vez que haya aprendido los conceptos básicos, los siguientes capítulos le mostrarán cómo se puede utilizar el lenguaje JavaScript para indicarle a los navegadores lo que desea que hagan.
 
-### ¿QUÉ ES UN SCRIPT Y CÓMO CREO UNO?
+## ¿QUÉ ES UN SCRIPT Y CÓMO CREO UNO?
 
 Un script es una serie de instrucciones que un la computadora puede seguir para lograr una meta. Puede comparar scripts con cualquiera de los siguientes:
 
@@ -301,8 +301,8 @@ El intérprete toma tus instrucciones (en JavaScript) y las traduce a instruccio
 - Los navegadores web usan marcado HTML para crear un modelo de la página web. Cada elemento crea su propio **nodo** (que es un tipo de objeto).
 - Para hacer páginas web interactivas, escribes código que utiliza el modelo del navegador de la página web.
 
-## CÓMO ENCAJAN HTML, CSS Y JAVASCRIPT
-
+## ¿CÓMO ESCRIBO UN GUIÓN PARA UNA PÁGINA WEB?
+### CÓMO ENCAJAN HTML, CSS Y JAVASCRIPT
 > Antes de sumergirte en el lenguaje JavaScript, necesitas saber cómo encajará con el HTML y CSS en tus páginas web.
 
 Los desarrolladores web generalmente hablan de tres lenguajes que se usan para crear páginas web: HTML, CSS y JavaScript.
@@ -367,13 +367,13 @@ if (hourNow > 18) {
 document.write('<h3>' + greeting + '</h3>');
 ```
 
-1. Crea una carpeta para poner el ejemplo llamada **c01**, luego abre tu editor de código favorito e ingresa el texto de la derecha. 
+- Crea una carpeta para poner el ejemplo llamada **c01**, luego abre tu editor de código favorito e ingresa el texto de la derecha. 
     
     Un archivo JavaScript es solo un archivo de texto (como lo son los archivos HTML y CSS) pero tiene una extensión **.js**, así que guarda este archivo con el nombre **add-content.js**.
 
     No te preocupes todavía por lo que significa el código, por ahora nos enfocaremos en cómo se crea el script y cómo encaja con una página HTML.
 
-2. Obtén el CSS y las imágenes de este ejemplo desde el sitio web que acompaña al libro: **www.javascriptbook.com**
+- Obtén el CSS y las imágenes de este ejemplo desde el sitio web que acompaña al libro: **www.javascriptbook.com**
   
     Para mantener los archivos organizados, de la misma manera que los archivos CSS suelen estar en una carpeta llamada **styles** o **css**, tus archivos JavaScript pueden estar en una carpeta llamada **scripts**, **javascript** o **js**. En este caso, guarda tu archivo en una carpeta llamada **js**.
 
@@ -383,7 +383,110 @@ document.write('<h3>' + greeting + '</h3>');
 
 Cuando quieras usar JavaScript con una página web, usas el elemento HTML `<script>` para indicarle al navegador que se encuentra con un script. Su atributo **src** le dice a las personas dónde está almacenado el archivo JavaScript.
 
-3. En tu editor de código, ingresa el HTML que se muestra a la izquierda. Guarda este archivo con el nombre **add-content.html**.
+```html linenums="1"
+<!DOCTYPE html>
+   <html>
+     <head>
+      <title>Constructive &amp; Co.</title>
+      <link rel="stylesheet" href="css/c01.css" />
+     </head>
+     <body>
+      <h1>Constructive &amp; Co.</h1>
+      <script src="js/add-content.js"></script>
+      <p>For all orders and inquiries please call
+      <em>555-3344</em></p>
+    </body>
+</html>
+```
+
+- En tu editor de código, ingresa el HTML que se muestra a la izquierda. Guarda este archivo con el nombre **add-content.html**.
 
     El elemento HTML `<script>` se usa para cargar el archivo JavaScript en la página. Tiene un atributo llamado **src**, cuyo valor es la ruta al script que creaste. Esto le dice al navegador que busque y cargue el archivo script (similar al atributo **src** en una etiqueta `<img>`).
 
+- Abre el archivo HTML en tu navegador. Deberías ver que el JavaScript ha agregado un saludo (en este caso, ¡Good Afternoon!) a la página. (Estos saludos provienen del archivo JavaScript; no están en el archivo HTML).
+
+    Ten en cuenta: Internet Explorer a veces impide que JavaScript se ejecute cuando abres una página almacenada en tu disco duro. Si esto te afecta, prueba con Chrome, Firefox, Opera o Safari.
+
+![](goodaf.png)
+
+### EL CÓDIGO FUENTE NO SE MODIFICA
+
+Si observas el código fuente del ejemplo que acabas de crear, verás que el HTML sigue siendo exactamente el mismo.
+
+- Una vez que hayas probado el ejemplo en tu navegador, ve el código fuente de la página. (Esta opción suele estar en el menú Ver, Herramientas o Desarrollo del navegador).
+  
+![](pagesource.png)
+
+- El código fuente de la página web en realidad no muestra el nuevo elemento que se ha agregado a la página; solo muestra el enlace al archivo JavaScript.
+
+![](sourceweb.png)
+
+A medida que avances en el libro, verás que la mayoría de los scripts se agregan justo antes de la etiqueta de cierre `</body>` (esto a menudo se considera un mejor lugar para colocar tus scripts).
+
+### COLOCANDO EL SCRIPT EN LA PÁGINA
+
+> Puedes ver JavaScript en el HTML entre las etiquetas de apertura `<script>` y cierre `</script>` (pero es mejor poner los scripts en sus propios archivos).
+
+- Finalmente, prueba abrir el archivo HTML, elimina el atributo **src** de la etiqueta `<script>` de apertura y agrega el nuevo código que se muestra a la izquierda entre la etiqueta `<script>` de apertura y la etiqueta `</script>` de cierre. El atributo **src** ya no es necesario porque el JavaScript está en la página HTML.
+
+Como se mencionó en la pág. 44, es mejor no mezclar JavaScript en tus páginas HTML de esta manera, pero se menciona aquí porque puedes encontrarte con esta técnica.
+
+Abre el archivo HTML en tu navegador web y el saludo de bienvenida se escribe en la página.
+
+Como habrás adivinado, `document.write()` escribe contenido en el documento (la página web). Es una forma sencilla de agregar contenido a una página, pero no siempre es la mejor. El Capítulo 5 discute varias formas de actualizar el contenido de una página.
+
+### CÓMO USAR OBJETOS Y MÉTODOS
+
+Esta única línea de JavaScript muestra cómo usar objetos y métodos. Los programadores se refieren a esto como **llamar a un método de un objeto**.
+
+El objeto **document** representa la página web completa. Todos los navegadores web implementan este objeto, y puedes usarlo simplemente dando su nombre.
+
+El método **write()** del objeto **document** permite escribir nuevo contenido en la página donde se encuentra el elemento `<script>`.
+
+
+![](howobjetsmethods.png)
+
+**MEMBER OPERATOR**
+
+El objeto **document** tiene varios métodos y propiedades. Se conocen como **miembros** de ese objeto. Puedes acceder a los miembros de un objeto usando un punto entre el nombre del objeto y el miembro al que deseas acceder. Se llama **operador de miembro**.
+
+**PARAMETERS**
+
+Cuando un método requiere información para funcionar, los datos se proporcionan dentro de los paréntesis. Cada pieza de información se llama **parámetro** del método. En este caso, el método **write()** necesita saber qué escribir en la página.
+
+Detrás de escena, el navegador usa mucho más código para hacer que las palabras aparezcan en la pantalla, pero no necesitas saber cómo lo hace el navegador. Solo necesitas saber cómo llamar al objeto y método, y cómo indicarle la información que necesita para hacer el trabajo que deseas. Él hará el resto.
+
+Hay muchos objetos como el objeto **document**, y muchos métodos como el método **write()** que te ayudarán a escribir tus propios scripts.
+
+### JAVASCRIPT SE EJECUTA DONDE SE ENCUENTRA EN EL HTML
+
+Cuando el navegador se encuentra con un elemento `<script>`, se detiene para cargar el script y luego verifica si necesita hacer algo.
+
+```html linenums="1"
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Constructive &amp; Co.</title>
+   <link rel="stylesheet" href="css/c01.css" />
+ </head>
+ <body>
+   <h1>Constructive &amp; Co.</h1>
+   <p>For all orders and inquiries please call <em>555-3344</em></p>
+   <script src="js/add-content.js"></script>
+  </body>
+</html
+```
+
+![](note.png)
+
+Observa cómo el elemento `<script>` se puede mover debajo del primer párrafo, y esto afecta dónde se escribe el nuevo saludo en la página.
+
+Esto tiene implicaciones sobre dónde deben colocarse los elementos `<script>` y puede afectar el tiempo de carga de las páginas (ver pág. 356).
+
+### RESUMEN
+
+**C: ¿Cómo escribo un script para una página web?**
+
+- Es mejor mantener el código JavaScript en su propio archivo JavaScript. Los archivos JavaScript son archivos de texto (como las páginas HTML y las hojas de estilo CSS), pero tienen la extensión **.js**.
+- El elemento HTML `<script>` se usa en las páginas HTML para indicarle al navegador que cargue el archivo JavaScript (similar a cómo el elemento `<link>` se usa para cargar un archivo CSS).
+- Si ves el código fuente de la página en el navegador, el JavaScript no habrá cambiado el HTML, porque el script trabaja con el modelo de la página web que el navegador ha creado.
