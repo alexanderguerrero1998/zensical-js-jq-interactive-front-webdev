@@ -1,0 +1,2113 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aprendizaje de Express.js">
+      
+      
+        <meta name="author" content="Alexander Guerrero">
+      
+      
+      
+        <link rel="prev" href="../../capitulo-0/introduccion/">
+      
+      
+        <link rel="next" href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>The ABC of Programming - JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-abc-of-programming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-header__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The ABC of Programming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-nav__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-0/introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INTRODUCCION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    THE ABC OF PROGRAMMING
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    THE ABC OF PROGRAMMING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-script-y-como-creo-uno" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UN SCRIPT Y CÓMO CREO UNO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escribir-un-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ESCRIBIR UN SCRIPT
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disenar-un-script-tareas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DISEÑAR UN SCRIPT: TAREAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-encajan-las-computadoras-con-el-mundo-que-las-rodea" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿CÓMO ENCAJAN LAS COMPUTADORAS CON EL MUNDO QUE LAS RODEA?
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿CÓMO ENCAJAN LAS COMPUTADORAS CON EL MUNDO QUE LAS RODEA?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetos-y-propiedades" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS y PROPIEDADES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OBJETOS y PROPIEDADES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetos-cosas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS (COSAS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propiedades-caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PROPIEDADES (CARACTERÍSTICAS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-carro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EVENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UN EVENTO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-un-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ HACE UN EVENTO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-carro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        METODOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="METODOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UN MÉTODO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ HACE UN MÉTODO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-carro_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poniendo-todo-junto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PONIENDO TODO JUNTO
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PONIENDO TODO JUNTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-carro_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-navegadores-web-son-programas-construidos-con-objetos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LOS NAVEGADORES WEB SON PROGRAMAS CONSTRUIDOS CON OBJETOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LOS NAVEGADORES WEB SON PROGRAMAS CONSTRUIDOS CON OBJETOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objeto-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO WINDOW
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO DOCUMENT
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-objeto-document-representa-una-pagina-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL OBJETO DOCUMENT REPRESENTA UNA PÁGINA HTML
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EL OBJETO DOCUMENT REPRESENTA UNA PÁGINA HTML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#propiedades" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PROPIEDADES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVENTOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-ve-un-navegador-una-pagina-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CÓMO VE UN NAVEGADOR UNA PÁGINA WEB
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CÓMO VE UN NAVEGADOR UNA PÁGINA WEB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-recibir-una-pagina-como-codigo-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1: RECIBIR UNA PÁGINA COMO CÓDIGO HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-un-modelo-de-la-pagina-y-almacenarlo-en-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2: CREAR UN MODELO DE LA PÁGINA Y ALMACENARLO EN MEMORIA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-usar-un-motor-de-renderizado-para-mostrar-la-pagina-en-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3: USAR UN MOTOR DE RENDERIZADO PARA MOSTRAR LA PÁGINA EN PANTALLA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-encajan-html-css-y-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CÓMO ENCAJAN HTML, CSS Y JAVASCRIPT
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CÓMO ENCAJAN HTML, CSS Y JAVASCRIPT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capa-de-contenido-archivos-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAPA DE CONTENIDO — Archivos .html
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capa-de-presentacion-archivos-css" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAPA DE PRESENTACIÓN — Archivos .css
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capa-de-comportamiento-archivos-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAPA DE COMPORTAMIENTO — Archivos .js
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mejora-progresiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MEJORA PROGRESIVA
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MEJORA PROGRESIVA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solo-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SOLO HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTML+CSS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcssjavascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTML+CSS+JAVASCRIPT
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creando-un-javascript-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CREANDO UN JAVASCRIPT BÁSICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vinculando-un-archivo-javascript-desde-una-pagina-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VINCULANDO UN ARCHIVO JAVASCRIPT DESDE UNA PÁGINA HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-script-y-como-creo-uno" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UN SCRIPT Y CÓMO CREO UNO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escribir-un-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ESCRIBIR UN SCRIPT
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disenar-un-script-tareas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DISEÑAR UN SCRIPT: TAREAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-encajan-las-computadoras-con-el-mundo-que-las-rodea" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿CÓMO ENCAJAN LAS COMPUTADORAS CON EL MUNDO QUE LAS RODEA?
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿CÓMO ENCAJAN LAS COMPUTADORAS CON EL MUNDO QUE LAS RODEA?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetos-y-propiedades" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS y PROPIEDADES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OBJETOS y PROPIEDADES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetos-cosas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS (COSAS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propiedades-caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PROPIEDADES (CARACTERÍSTICAS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-carro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EVENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UN EVENTO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-un-evento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ HACE UN EVENTO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-carro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        METODOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="METODOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UN MÉTODO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ HACE UN MÉTODO?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-carro_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poniendo-todo-junto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PONIENDO TODO JUNTO
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PONIENDO TODO JUNTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objeto-hotel_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO HOTEL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetos-carro_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETOS CARRO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-navegadores-web-son-programas-construidos-con-objetos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LOS NAVEGADORES WEB SON PROGRAMAS CONSTRUIDOS CON OBJETOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LOS NAVEGADORES WEB SON PROGRAMAS CONSTRUIDOS CON OBJETOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objeto-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO WINDOW
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objeto-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OBJETO DOCUMENT
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-objeto-document-representa-una-pagina-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL OBJETO DOCUMENT REPRESENTA UNA PÁGINA HTML
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EL OBJETO DOCUMENT REPRESENTA UNA PÁGINA HTML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#propiedades" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PROPIEDADES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVENTOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-ve-un-navegador-una-pagina-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CÓMO VE UN NAVEGADOR UNA PÁGINA WEB
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CÓMO VE UN NAVEGADOR UNA PÁGINA WEB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-recibir-una-pagina-como-codigo-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1: RECIBIR UNA PÁGINA COMO CÓDIGO HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-un-modelo-de-la-pagina-y-almacenarlo-en-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2: CREAR UN MODELO DE LA PÁGINA Y ALMACENARLO EN MEMORIA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-usar-un-motor-de-renderizado-para-mostrar-la-pagina-en-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3: USAR UN MOTOR DE RENDERIZADO PARA MOSTRAR LA PÁGINA EN PANTALLA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resumen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-encajan-html-css-y-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CÓMO ENCAJAN HTML, CSS Y JAVASCRIPT
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CÓMO ENCAJAN HTML, CSS Y JAVASCRIPT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capa-de-contenido-archivos-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAPA DE CONTENIDO — Archivos .html
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capa-de-presentacion-archivos-css" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAPA DE PRESENTACIÓN — Archivos .css
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capa-de-comportamiento-archivos-js" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAPA DE COMPORTAMIENTO — Archivos .js
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mejora-progresiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MEJORA PROGRESIVA
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MEJORA PROGRESIVA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solo-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SOLO HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTML+CSS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlcssjavascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTML+CSS+JAVASCRIPT
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creando-un-javascript-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CREANDO UN JAVASCRIPT BÁSICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vinculando-un-archivo-javascript-desde-una-pagina-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VINCULANDO UN ARCHIVO JAVASCRIPT DESDE UNA PÁGINA HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../capitulo-0/introduccion/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    JAVASCRIPT JS-JQ FRONTEND
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="the-abc-of-programming">The ABC of Programming<a class="headerlink" href="#the-abc-of-programming" title="Permanent link">&para;</a></h1>
+<p>Antes de aprender como leer y escribir el propio lenguaje JavaScript, es necesario familiarizarse con algunos conceptos clave de la programación informática. Estos estarán cubiertos de tres secciones:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> ¿Qué es un script y cómo crear uno?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> ¿Cómo encajan las computadoras con el mundo que las rodea?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> ¿Cómo escribir un script para un pagina web? </li>
+</ul>
+<p>Una vez que haya aprendido los conceptos básicos, los siguientes capítulos le mostrarán cómo se puede utilizar el lenguaje JavaScript para indicarle a los navegadores lo que desea que hagan.</p>
+<h3 id="que-es-un-script-y-como-creo-uno">¿QUÉ ES UN SCRIPT Y CÓMO CREO UNO?<a class="headerlink" href="#que-es-un-script-y-como-creo-uno" title="Permanent link">&para;</a></h3>
+<p>Un script es una serie de instrucciones que un la computadora puede seguir para lograr una meta. Puede comparar scripts con cualquiera de los siguientes:</p>
+<p><strong>RECETAS</strong></p>
+<p>Siguiendo las instrucciones de una receta, paso a paso y en el orden establecido, los cocineros pueden crear un plato que nunca antes habían preparado.</p>
+<p>Algunos scripts son simples y solo manejan un escenario específico, como una receta sencilla para un plato básico. Otros scripts pueden realizar muchas tareas, como una receta para una comida compleja de tres tiempos.</p>
+<p>Otra similitud es que, si eres nuevo en la cocina o en la programación, hay mucha terminología nueva que aprender.</p>
+<p><strong>HANDBOOKS</strong> - <em>Manuales guía o guías generales</em></p>
+<p>Las grandes empresas suelen proporcionar manuales a los nuevos empleados que contienen procedimientos a seguir en determinadas situaciones.</p>
+<p>Por ejemplo, los manuales de hoteles pueden contener pasos a seguir en diferentes escenarios, como cuando un huésped hace el check-in, cuando una habitación necesita ser arreglada, cuando suena una alarma de incendio, entre otros.</p>
+<p>En cualquiera de estos escenarios, los empleados necesitan seguir únicamente los pasos para ese tipo específico de evento. (No querrías que alguien revisara todos y cada uno de los pasos de todo el manual mientras esperas hacer el check-in).</p>
+<p>De manera similar, en un script complejo, el navegador podría usar solo una parte del código disponible en un momento determinado.</p>
+<p><strong>MANUALES</strong> - <em>Manuales técnicos o de operación</em></p>
+<p>Los mecánicos suelen consultar manuales de reparación de automóviles cuando trabajan en modelos con los que no están familiarizados. Estos manuales contienen una serie de pruebas para verificar las funciones principales del vehículo, junto con detalles sobre cómo repararlas.</p>
+<p>Por ejemplo, puede haber instrucciones sobre cómo probar los frenos. Si pasan esta prueba, el mecánico puede continuar con la siguiente sin necesidad de reparar los frenos. Pero, si fallan, el mecánico deberá seguir las instrucciones para arreglarlos.</p>
+<p>Luego, el mecánico puede volver y probar los frenos nuevamente para verificar si el problema fue solucionado. Si ahora los frenos pasan la prueba, el mecánico sabe que están arreglados y puede continuar con la siguiente revisión.</p>
+<p>De manera similar, los scripts pueden permitir que el navegador verifique la situación actual y solo ejecute un conjunto de pasos si esa acción es apropiada.</p>
+<p>Los scripts están formados por instrucciones que una computadora puede seguir paso a paso.Un navegador puede usar diferentes partes del script dependiendo de cómo el usuario interactúe con la página web. Los scripts pueden ejecutar distintas secciones del código en respuesta a la situación que ocurre a su alrededor.</p>
+<h3 id="escribir-un-script">ESCRIBIR UN SCRIPT<a class="headerlink" href="#escribir-un-script" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Para escribir un script, primero debe establecer su objetivo y luego enumerar las tareas que deben completarse para lograrlo.</p>
+</blockquote>
+<p>Los seres humanos pueden alcanzar objetivos complejos sin pensar demasiado en ellos; por ejemplo, podrías conducir un automóvil, preparar el desayuno o enviar un correo electrónico sin necesitar un conjunto detallado de instrucciones. Pero la primera vez que hacemos estas cosas pueden parecer intimidantes.</p>
+<p>Por eso, cuando aprendemos una nueva habilidad, a menudo la dividimos en tareas más pequeñas y aprendemos una a la vez. Con la experiencia, esas tareas individuales se vuelven familiares y parecen más simples.</p>
+<p>Algunos de los scripts que leerás o escribirás cuando termines este libro serán bastante complejos y podrían parecer intimidantes al principio. Sin embargo, un script es solo una serie de instrucciones cortas, cada una realizada en orden para resolver el problema en cuestión. Por eso crear un script es como escribir una receta o un manual que permite a una computadora resolver un problema paso a paso.</p>
+<p>Sin embargo, vale la pena señalar que una computadora no aprende a realizar tareas como lo haríamos tú o yo; necesita seguir instrucciones cada vez que realiza la tarea. Así que un programa debe darle a la computadora suficientes detalles para ejecutar la tarea como si cada vez fuera la primera vez.</p>
+<blockquote>
+<p>Comience con el panorama general de lo que desea lograr y divídalo en pasos más pequeños.</p>
+</blockquote>
+<ol>
+<li>
+<p>DEFINIR EL OBJETIVO</p>
+<p>Primero, necesitas definir la tarea que quieres lograr. Puedes pensar en esto como un problema que la computadora debe resolver.</p>
+</li>
+<li>
+<p>DISEÑAR EL SCRIPT</p>
+<p>Para diseñar un script, divides el objetivo en una serie de tareas que estarán involucradas en resolver ese problema. Esto puede representarse utilizando un diagrama de flujo.</p>
+<p>Luego puedes escribir los pasos individuales que la computadora necesita realizar para completar cada tarea (y cualquier información que necesite para realizarla), de forma similar a escribir una receta que pueda seguir.</p>
+</li>
+<li>
+<p>CODIFICAR CADA PASO</p>
+<p>Cada uno de los pasos debe escribirse en un lenguaje de programación que la computadora entienda. En nuestro caso, esto es JavaScript.</p>
+<p>Aunque puede ser tentador comenzar a programar de inmediato, vale la pena dedicar tiempo a diseñar el script antes de empezar a escribirlo.</p>
+</li>
+</ol>
+<h3 id="disenar-un-script-tareas">DISEÑAR UN SCRIPT: TAREAS<a class="headerlink" href="#disenar-un-script-tareas" title="Permanent link">&para;</a></h3>
+<p>Una vez que conozca el objetivo de su guión, podrá elaborar las tareas individuales necesarias para lograrlo. Esta vista de alto nivel de las tareas se puede representar mediante un diagrama de flujo.</p>
+<p><img alt="" src="../flowchart.png" /></p>
+<h3 id="resumen">RESUMEN<a class="headerlink" href="#resumen" title="Permanent link">&para;</a></h3>
+<p><strong>A: ¿Qué es un script y cómo creo uno?</strong></p>
+<ul>
+<li>Un script es una serie de instrucciones que la computadora puede seguir para lograr un objetivo.</li>
+<li>Cada vez que el script se ejecuta, es posible que solo utilice un subconjunto de todas las instrucciones.</li>
+<li>Las computadoras abordan las tareas de una manera diferente a los humanos, por lo que tus instrucciones deben permitir que la computadora resuelva la tarea programáticamente.</li>
+<li>Para abordar la escritura de un script, divide tu objetivo en una serie de tareas y luego determina cada paso necesario para completar esa tarea (un diagrama de flujo puede ayudar).</li>
+</ul>
+<h2 id="como-encajan-las-computadoras-con-el-mundo-que-las-rodea">¿CÓMO ENCAJAN LAS COMPUTADORAS CON EL MUNDO QUE LAS RODEA?<a class="headerlink" href="#como-encajan-las-computadoras-con-el-mundo-que-las-rodea" title="Permanent link">&para;</a></h2>
+<p>Aquí hay una maqueta de un hotel, junto con algunos árboles de juguete, personas de juguete y autos de juguete. Para un humano, está claro qué tipo de objeto del mundo real representa cada uno.</p>
+<p>Una computadora no tiene un concepto predefinido de lo que es un hotel o un auto. No sabe para qué se usan. Tu laptop o teléfono no tendrá una marca favorita de auto, ni sabrá qué calificación de estrellas tiene tu hotel.</p>
+<p>Entonces, ¿cómo usamos las computadoras para crear aplicaciones de reserva de hoteles o videojuegos donde los jugadores puedan correr carreras de autos? La respuesta es que los programadores crean un tipo de modelo muy diferente, especialmente para las computadoras.</p>
+<p>Los programadores crean estos modelos utilizando datos. Eso no es tan extraño ni tan aterrador como suena, porque los datos son todo lo que la computadora necesita para seguir las instrucciones que le das y llevar a cabo sus tareas.</p>
+<p><img alt="" src="../objectmodel.png" /></p>
+<h3 id="objetos-y-propiedades">OBJETOS y PROPIEDADES<a class="headerlink" href="#objetos-y-propiedades" title="Permanent link">&para;</a></h3>
+<p>Si no pudiera ver la imagen del hotel y los automóviles, los datos en los cuadros de información por sí solos le dirían mucho sobre esta escena.</p>
+<h4 id="objetos-cosas">OBJETOS (COSAS)<a class="headerlink" href="#objetos-cosas" title="Permanent link">&para;</a></h4>
+<p>En la programación informática, cada cosa física del mundo puede representarse como un objeto. Aquí hay dos tipos diferentes de objetos: un hotel y un auto. Los programadores podrían decir que hay una instancia del objeto hotel y dos instancias del objeto auto.</p>
+<p>Cada objeto puede tener lo suyo:
+- <strong>Propiedades</strong>
+- <strong>Eventos</strong>
+- <strong>Métodos</strong></p>
+<p>Juntos crean un modelo funcional de ese objeto.</p>
+<h4 id="propiedades-caracteristicas">PROPIEDADES (CARACTERÍSTICAS)<a class="headerlink" href="#propiedades-caracteristicas" title="Permanent link">&para;</a></h4>
+<p>Ambos autos comparten características comunes. De hecho, todos los autos tienen una marca, un color y un tamaño de motor. Incluso podrías determinar su velocidad actual. Los programadores llaman a estas características las propiedades de un objeto.</p>
+<p>Cada propiedad tiene un nombre y un valor, y cada uno de estos pares nombre/valor te dice algo sobre cada instancia individual del objeto.</p>
+<p>La propiedad más obvia de este hotel es su nombre. El valor de esa propiedad es Quay. Puedes saber la cantidad de habitaciones que tiene el hotel mirando el valor junto a la propiedad rooms.</p>
+<h4 id="objeto-hotel">OBJETO HOTEL<a class="headerlink" href="#objeto-hotel" title="Permanent link">&para;</a></h4>
+<p>El objeto hotel utiliza nombres y valores de propiedades para informarte sobre este hotel en particular, como el nombre del hotel, su calificación, la cantidad de habitaciones que tiene y cuántas de estas están reservadas. También puedes saber si este hotel cuenta o no con ciertas instalaciones.</p>
+<h4 id="objeto-carro">OBJETO CARRO<a class="headerlink" href="#objeto-carro" title="Permanent link">&para;</a></h4>
+<p>Ambos objetos carro comparten las mismas propiedades, pero cada uno tiene valores diferentes para esas propiedades. Te indican la marca del auto, a qué velocidad viaja actualmente cada uno, de qué color es y qué tipo de combustible requiere.</p>
+<p><img alt="" src="../objects.png" /></p>
+<h3 id="eventos">EVENTOS<a class="headerlink" href="#eventos" title="Permanent link">&para;</a></h3>
+<p>En el mundo real, las personas interactúan con los objetos. Estas interacciones pueden cambiar los valores de las propiedades de estos objetos.</p>
+<h4 id="que-es-un-evento">¿QUÉ ES UN EVENTO?<a class="headerlink" href="#que-es-un-evento" title="Permanent link">&para;</a></h4>
+<p>Hay formas comunes en las que las personas interactúan con cada tipo de objeto. Por ejemplo, en un auto, un conductor normalmente usa al menos dos pedales. El auto ha sido diseñado para responder de manera diferente cuando el conductor interactúa con cada uno de los diferentes pedales:</p>
+<ul>
+<li>El acelerador hace que el auto vaya más rápido</li>
+<li>El freno lo desacelera</li>
+</ul>
+<p>De manera similar, los programas están diseñados para hacer diferentes cosas cuando los usuarios interactúan con la computadora de diferentes formas. Por ejemplo, hacer clic en un enlace de contacto en una página web podría mostrar un formulario de contacto, y escribir texto en un cuadro de búsqueda puede activar automáticamente la función de búsqueda.</p>
+<p>Un evento es la forma que tiene la computadora de levantar la mano para decir: "¡Oye, esto acaba de suceder!"</p>
+<h4 id="que-hace-un-evento">¿QUÉ HACE UN EVENTO?<a class="headerlink" href="#que-hace-un-evento" title="Permanent link">&para;</a></h4>
+<p>Los programadores eligen a qué eventos responder. Cuando ocurre un evento específico, ese evento puede usarse para activar una sección específica del código.</p>
+<p>Los scripts a menudo usan diferentes eventos para activar diferentes tipos de funcionalidad.</p>
+<p>Por lo tanto, un script indicará a qué eventos el programador quiere responder y qué parte del script debe ejecutarse cuando ocurra cada uno de esos eventos.</p>
+<h4 id="objeto-hotel_1">OBJETO HOTEL<a class="headerlink" href="#objeto-hotel_1" title="Permanent link">&para;</a></h4>
+<p>Un hotel regularmente recibe reservas de habitaciones. Cada vez que se reserva una habitación, se puede usar un evento llamado <strong>book</strong> para activar código que aumentará el valor de la propiedad <strong>bookings</strong>. Del mismo modo, un evento <strong>cancel</strong> puede activar código que disminuya el valor de la propiedad <strong>bookings</strong>.</p>
+<h4 id="objetos-carro">OBJETOS CARRO<a class="headerlink" href="#objetos-carro" title="Permanent link">&para;</a></h4>
+<p>Un conductor acelerará y frenará durante cualquier viaje en auto. Un evento <strong>accelerate</strong> puede activar código para aumentar el valor de la propiedad <strong>currentSpeed</strong> y un evento <strong>brake</strong> puede activar código para disminuirlo. Aprenderás sobre el código que responde a los eventos y cambia estas propiedades en la siguiente página.</p>
+<p><img alt="" src="../eventsobjects.png" /></p>
+<h3 id="metodos">METODOS<a class="headerlink" href="#metodos" title="Permanent link">&para;</a></h3>
+<p>Los métodos representan cosas que las personas necesitan hacer con los objetos. Pueden recuperar o actualizar los valores de las propiedades de un objeto.</p>
+<h4 id="que-es-un-metodo">¿QUÉ ES UN MÉTODO?<a class="headerlink" href="#que-es-un-metodo" title="Permanent link">&para;</a></h4>
+<p>Los métodos típicamente representan cómo las personas (u otras cosas) interactúan con un objeto en el mundo real. Son como preguntas e instrucciones que:</p>
+<ul>
+<li>Te dicen algo sobre ese objeto (usando información almacenada en sus propiedades)</li>
+<li>Cambian el valor de una o más propiedades de ese objeto</li>
+</ul>
+<h4 id="que-hace-un-metodo">¿QUÉ HACE UN MÉTODO?<a class="headerlink" href="#que-hace-un-metodo" title="Permanent link">&para;</a></h4>
+<p>El código de un método puede contener muchas instrucciones que juntas representan una tarea. Cuando usas un método, no siempre necesitas saber cómo logra su tarea; solo necesitas saber cómo hacer la pregunta y cómo interpretar las respuestas que te dé.</p>
+<h4 id="objeto-hotel_2">OBJETO HOTEL<a class="headerlink" href="#objeto-hotel_2" title="Permanent link">&para;</a></h4>
+<p>A los hoteles comúnmente se les preguntará si hay habitaciones libres. Para responder esta pregunta, se puede escribir un método que reste el número de reservas del número total de habitaciones. Los métodos también se pueden usar para aumentar y disminuir el valor de la propiedad <strong>bookings</strong> cuando se reservan o cancelan habitaciones.</p>
+<h4 id="objetos-carro_1">OBJETOS CARRO<a class="headerlink" href="#objetos-carro_1" title="Permanent link">&para;</a></h4>
+<p>El valor de la propiedad <strong>currentSpeed</strong> necesita subir y bajar a medida que el conductor acelera y frena. El código para aumentar o disminuir el valor de la propiedad <strong>currentSpeed</strong> podría escribirse en un método, y ese método podría llamarse <strong>changeSpeed()</strong>.</p>
+<p><img alt="" src="../OBJECS.png" /></p>
+<h3 id="poniendo-todo-junto">PONIENDO TODO JUNTO<a class="headerlink" href="#poniendo-todo-junto" title="Permanent link">&para;</a></h3>
+<p>Las computadoras usan datos para crear modelos de cosas del mundo real. Los eventos, métodos y propiedades de un objeto se relacionan entre sí: los eventos pueden activar métodos, y los métodos pueden recuperar o actualizar las propiedades de un objeto.</p>
+<p><img alt="" src="../eventobject.png" /></p>
+<h4 id="objeto-hotel_3">OBJETO HOTEL<a class="headerlink" href="#objeto-hotel_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Cuando se hace una reserva, el evento <strong>book</strong> se dispara.</li>
+<li>El evento <strong>book</strong> activa el método <strong>makeBooking()</strong>, que aumenta el valor de la propiedad <strong>bookings</strong>.</li>
+<li>El valor de la propiedad <strong>bookings</strong> se actualiza para reflejar cuántas habitaciones tiene disponibles el hotel.</li>
+</ol>
+<h4 id="objetos-carro_2">OBJETOS CARRO<a class="headerlink" href="#objetos-carro_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>A medida que el conductor acelera, el evento <strong>accelerate</strong> se dispara.</li>
+<li>El evento <strong>accelerate</strong> llama al método <strong>changeSpeed()</strong>, que a su vez aumenta el valor de la propiedad <strong>currentSpeed</strong>.</li>
+<li>El valor de la propiedad <strong>currentSpeed</strong> refleja qué tan rápido viaja el auto.</li>
+</ol>
+<p><img alt="" src="../objet_car.png" /></p>
+<h3 id="los-navegadores-web-son-programas-construidos-con-objetos">LOS NAVEGADORES WEB SON PROGRAMAS CONSTRUIDOS CON OBJETOS<a class="headerlink" href="#los-navegadores-web-son-programas-construidos-con-objetos" title="Permanent link">&para;</a></h3>
+<p>Has visto cómo los datos pueden usarse para crear un modelo de un hotel o un auto. Los navegadores web crean modelos similares de la página web que están mostrando y de la ventana del navegador en la que se muestra la página.</p>
+<h4 id="objeto-window">OBJETO WINDOW<a class="headerlink" href="#objeto-window" title="Permanent link">&para;</a></h4>
+<p>En la página de la derecha puedes ver un modelo de una computadora con un navegador abierto en la pantalla. El navegador representa cada ventana o pestaña usando un objeto <strong>window</strong>. La propiedad <strong>location</strong> del objeto <strong>window</strong> te indicará la URL de la página actual.</p>
+<h4 id="objeto-document">OBJETO DOCUMENT<a class="headerlink" href="#objeto-document" title="Permanent link">&para;</a></h4>
+<p>La página web actual cargada en cada ventana se modela usando un objeto <strong>document</strong>. La propiedad <strong>title</strong> del objeto <strong>document</strong> te dice lo que está entre la etiqueta de apertura <code>&lt;title&gt;</code> y la etiqueta de cierre <code>&lt;/title&gt;</code> de esa página web, y la propiedad <strong>lastModified</strong> del objeto <strong>document</strong> te indica la fecha en que esta página se actualizó por última vez.</p>
+<p><img alt="" src="../objwindows.png" /></p>
+<h3 id="el-objeto-document-representa-una-pagina-html">EL OBJETO DOCUMENT REPRESENTA UNA PÁGINA HTML<a class="headerlink" href="#el-objeto-document-representa-una-pagina-html" title="Permanent link">&para;</a></h3>
+<p>Usando el objeto <strong>document</strong>, puedes acceder y cambiar el contenido que los usuarios ven en la página y responder a cómo interactúan con ella.</p>
+<p>Al igual que otros objetos que representan cosas del mundo real, el objeto <strong>document</strong> tiene:</p>
+<h4 id="propiedades">PROPIEDADES<a class="headerlink" href="#propiedades" title="Permanent link">&para;</a></h4>
+<p>Las propiedades describen características de la página web actual (como el título de la página).</p>
+<h4 id="metodos_1">MÉTODOS<a class="headerlink" href="#metodos_1" title="Permanent link">&para;</a></h4>
+<p>Los métodos realizan tareas asociadas con el documento actualmente cargado en el navegador (como obtener información de un elemento específico o agregar nuevo contenido).</p>
+<h4 id="eventos_1">EVENTOS<a class="headerlink" href="#eventos_1" title="Permanent link">&para;</a></h4>
+<p>Puedes responder a eventos, como un usuario haciendo clic o tocando un elemento.</p>
+<p>Debido a que todos los principales navegadores web implementan el objeto <strong>document</strong> de la misma manera, las personas que crean los navegadores ya han:</p>
+<ul>
+<li>Implementado propiedades a las que puedes acceder para conocer la página actual en el navegador</li>
+<li>Escrito métodos que logran algunas tareas comunes que probablemente querrás hacer con una página HTML</li>
+</ul>
+<p>Por lo tanto, aprenderás cómo trabajar con este objeto. De hecho, el objeto <strong>document</strong> es solo uno de un conjunto de objetos que todos los principales navegadores soportan. Cuando el navegador crea un modelo de una página web, no solo crea un objeto <strong>document</strong>, sino que también crea un nuevo objeto para cada elemento en la página. Juntos, estos objetos se describen en el Modelo de Objetos del Documento (DOM), que conocerás en el Capítulo 5.</p>
+<p><img alt="" src="../documentowindow.png" /></p>
+<h3 id="como-ve-un-navegador-una-pagina-web">CÓMO VE UN NAVEGADOR UNA PÁGINA WEB<a class="headerlink" href="#como-ve-un-navegador-una-pagina-web" title="Permanent link">&para;</a></h3>
+<p>Para entender cómo puedes cambiar el contenido de una página HTML usando JavaScript, necesitas saber cómo un navegador interpreta el código HTML y le aplica estilos.</p>
+<h4 id="1-recibir-una-pagina-como-codigo-html">1: RECIBIR UNA PÁGINA COMO CÓDIGO HTML<a class="headerlink" href="#1-recibir-una-pagina-como-codigo-html" title="Permanent link">&para;</a></h4>
+<p>Cada página en un sitio web puede verse como un documento separado. Por lo tanto, la web consta de muchos sitios, cada uno compuesto por uno o más documentos.</p>
+<h4 id="2-crear-un-modelo-de-la-pagina-y-almacenarlo-en-memoria">2: CREAR UN MODELO DE LA PÁGINA Y ALMACENARLO EN MEMORIA<a class="headerlink" href="#2-crear-un-modelo-de-la-pagina-y-almacenarlo-en-memoria" title="Permanent link">&para;</a></h4>
+<p>El modelo que se muestra en la página de la derecha es una representación de una página muy básica. Su estructura recuerda a un árbol genealógico. En la parte superior del modelo hay un objeto <strong>document</strong>, que representa el documento completo.</p>
+<p>Debajo del objeto <strong>document</strong>, cada recuadro se llama <strong>nodo</strong>. Cada uno de estos nodos es otro objeto. Este ejemplo presenta tres tipos de nodos que representan elementos, texto dentro de los elementos y atributos.</p>
+<h4 id="3-usar-un-motor-de-renderizado-para-mostrar-la-pagina-en-pantalla">3: USAR UN MOTOR DE RENDERIZADO PARA MOSTRAR LA PÁGINA EN PANTALLA<a class="headerlink" href="#3-usar-un-motor-de-renderizado-para-mostrar-la-pagina-en-pantalla" title="Permanent link">&para;</a></h4>
+<p>Si no hay CSS, el motor de renderizado aplicará estilos predeterminados a los elementos HTML. Sin embargo, el código HTML de este ejemplo enlaza a una hoja de estilo CSS, por lo que el navegador solicita ese archivo y muestra la página en consecuencia.</p>
+<p>Cuando el navegador recibe las reglas CSS, el motor de renderizado las procesa y aplica cada regla a sus elementos correspondientes. Así es como el navegador posiciona los elementos en el lugar correcto, con los colores, fuentes, etc. adecuados.</p>
+<p>Todos los navegadores principales utilizan un intérprete de JavaScript para traducir tus instrucciones (en JavaScript) a instrucciones que la computadora pueda seguir.</p>
+<p>Cuando usas JavaScript en el navegador, hay una parte del navegador que se llama intérprete (o motor de scripting).</p>
+<p>El intérprete toma tus instrucciones (en JavaScript) y las traduce a instrucciones que el navegador puede usar para lograr las tareas que deseas que realice.</p>
+<ol>
+<li>El navegador recibe una página HTML.
+    <div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Constructive <span class="ni">&amp;amp;</span> Co.<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/c01.css&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Constructive <span class="ni">&amp;amp;</span> Co.<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>For all orders and inquiries please call
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>555-3344<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div></li>
+<li>
+<p>Crea un modelo de la página y lo almacena en la memoria.</p>
+<p><img alt="" src="../dom.png" /></p>
+</li>
+<li>
+<p>Muestra la página en pantalla mediante un motor de renderizado.</p>
+<p><img alt="" src="../render.png" /></p>
+</li>
+</ol>
+<h3 id="resumen_1">RESUMEN<a class="headerlink" href="#resumen_1" title="Permanent link">&para;</a></h3>
+<p><strong>B: ¿Cómo encajan las computadoras con el mundo que las rodea?</strong></p>
+<ul>
+<li>Las computadoras crean modelos del mundo utilizando datos.</li>
+<li>Los modelos usan objetos para representar cosas físicas. Los objetos pueden tener: <strong>propiedades</strong> que nos informan sobre el objeto; <strong>métodos</strong> que realizan tareas usando las propiedades de ese objeto; <strong>eventos</strong> que se activan cuando un usuario interactúa con la computadora.</li>
+<li>Los programadores pueden escribir código para decir "Cuando ocurra este evento, ejecuta ese código".</li>
+<li>Los navegadores web usan marcado HTML para crear un modelo de la página web. Cada elemento crea su propio <strong>nodo</strong> (que es un tipo de objeto).</li>
+<li>Para hacer páginas web interactivas, escribes código que utiliza el modelo del navegador de la página web.</li>
+</ul>
+<h2 id="como-encajan-html-css-y-javascript">CÓMO ENCAJAN HTML, CSS Y JAVASCRIPT<a class="headerlink" href="#como-encajan-html-css-y-javascript" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Antes de sumergirte en el lenguaje JavaScript, necesitas saber cómo encajará con el HTML y CSS en tus páginas web.</p>
+</blockquote>
+<p>Los desarrolladores web generalmente hablan de tres lenguajes que se usan para crear páginas web: HTML, CSS y JavaScript.</p>
+<p>Cuando sea posible, procura mantener los tres lenguajes en archivos separados, con la página HTML enlazando a los archivos CSS y JavaScript.</p>
+<p>Cada lenguaje forma una capa separada con un propósito diferente. Cada capa, de izquierda a derecha, se construye sobre la anterior.</p>
+<p><img alt="" src="../filescontet.png" /></p>
+<h4 id="capa-de-contenido-archivos-html">CAPA DE CONTENIDO — Archivos .html<a class="headerlink" href="#capa-de-contenido-archivos-html" title="Permanent link">&para;</a></h4>
+<p>Aquí es donde vive el contenido de la página. El HTML le da estructura a la página y añade semántica.</p>
+<h4 id="capa-de-presentacion-archivos-css">CAPA DE PRESENTACIÓN — Archivos .css<a class="headerlink" href="#capa-de-presentacion-archivos-css" title="Permanent link">&para;</a></h4>
+<p>El CSS mejora la página HTML con reglas que indican cómo se presenta el contenido HTML (fondos, bordes, dimensiones de cajas, colores, fuentes, etc.).</p>
+<h4 id="capa-de-comportamiento-archivos-js">CAPA DE COMPORTAMIENTO — Archivos .js<a class="headerlink" href="#capa-de-comportamiento-archivos-js" title="Permanent link">&para;</a></h4>
+<p>Aquí es donde podemos cambiar cómo se comporta la página, añadiendo interactividad. Procuraremos mantener la mayor cantidad posible de nuestro JavaScript en archivos separados.</p>
+<h3 id="mejora-progresiva">MEJORA PROGRESIVA<a class="headerlink" href="#mejora-progresiva" title="Permanent link">&para;</a></h3>
+<p>Estas tres capas forman la base de un enfoque popular para construir páginas web llamado <strong>mejora progresiva</strong>.</p>
+<p>A medida que más y más dispositivos habilitados para web llegan al mercado, este concepto se está adoptando cada vez más. No solo los tamaños de pantalla son variados, sino que las velocidades de conexión y las capacidades de cada dispositivo también pueden diferir.</p>
+<p>Además, algunas personas navegan con JavaScript desactivado, por lo que debes asegurarte de que la página siga funcionando para ellas.</p>
+<p><img alt="" src="../progresive.png" /></p>
+<h4 id="solo-html">SOLO HTML<a class="headerlink" href="#solo-html" title="Permanent link">&para;</a></h4>
+<p>Comenzar con la capa HTML te permite enfocarte en lo más importante de tu sitio: su contenido. Al ser HTML plano, esta capa debería funcionar en todo tipo de dispositivos, ser accesible para todos los usuarios y cargar bastante rápido en conexiones lentas.</p>
+<h4 id="htmlcss">HTML+CSS<a class="headerlink" href="#htmlcss" title="Permanent link">&para;</a></h4>
+<p>Agregar las reglas CSS en un archivo separado mantiene las reglas sobre cómo se ve la página alejadas del contenido en sí. Puedes usar la misma hoja de estilo en todo tu sitio, haciendo que tus sitios se carguen más rápido y sean más fáciles de mantener. O puedes usar diferentes hojas de estilo con el mismo contenido para crear diferentes vistas de los mismos datos.</p>
+<h4 id="htmlcssjavascript">HTML+CSS+JAVASCRIPT<a class="headerlink" href="#htmlcssjavascript" title="Permanent link">&para;</a></h4>
+<p>El JavaScript se agrega al final y mejora la usabilidad de la página o la experiencia de interactuar con el sitio. Mantenerlo separado significa que la página sigue funcionando si el usuario no puede cargar o ejecutar el JavaScript. También puedes reutilizar el código en varias páginas (haciendo que el sitio se cargue más rápido y sea más fácil de mantener).</p>
+<h3 id="creando-un-javascript-basico">CREANDO UN JAVASCRIPT BÁSICO<a class="headerlink" href="#creando-un-javascript-basico" title="Permanent link">&para;</a></h3>
+<p>JavaScript se escribe en texto plano, al igual que HTML y CSS, por lo que no necesitas ninguna herramienta nueva para escribir un script. Este ejemplo agrega un saludo en una página HTML. El saludo cambia según la hora del día.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">hourNow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">today</span><span class="p">.</span><span class="nx">getHours</span><span class="p">();</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">greeting</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hourNow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good evening!&#39;</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hourNow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">12</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good afternoon!&#39;</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hourNow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good morning!&#39;</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Welcome!&#39;</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="p">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;&lt;h3&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">greeting</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/h3&gt;&#39;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>
+<p>Crea una carpeta para poner el ejemplo llamada <strong>c01</strong>, luego abre tu editor de código favorito e ingresa el texto de la derecha. </p>
+<p>Un archivo JavaScript es solo un archivo de texto (como lo son los archivos HTML y CSS) pero tiene una extensión <strong>.js</strong>, así que guarda este archivo con el nombre <strong>add-content.js</strong>.</p>
+<p>No te preocupes todavía por lo que significa el código, por ahora nos enfocaremos en cómo se crea el script y cómo encaja con una página HTML.</p>
+</li>
+<li>
+<p>Obtén el CSS y las imágenes de este ejemplo desde el sitio web que acompaña al libro: <strong><a href="http://www.javascriptbook.com">www.javascriptbook.com</a></strong></p>
+<p>Para mantener los archivos organizados, de la misma manera que los archivos CSS suelen estar en una carpeta llamada <strong>styles</strong> o <strong>css</strong>, tus archivos JavaScript pueden estar en una carpeta llamada <strong>scripts</strong>, <strong>javascript</strong> o <strong>js</strong>. En este caso, guarda tu archivo en una carpeta llamada <strong>js</strong>.</p>
+</li>
+</ol>
+<p><img alt="" src="../struture.png" title="Aquí puedes ver la estructura de archivos que obtendrás al finalizar el ejemplo. Recuerda siempre que los nombres de archivo distinguen entre mayúsculas y minúsculas." /></p>
+<h3 id="vinculando-un-archivo-javascript-desde-una-pagina-html">VINCULANDO UN ARCHIVO JAVASCRIPT DESDE UNA PÁGINA HTML<a class="headerlink" href="#vinculando-un-archivo-javascript-desde-una-pagina-html" title="Permanent link">&para;</a></h3>
+<p>Cuando quieras usar JavaScript con una página web, usas el elemento HTML <code>&lt;script&gt;</code> para indicarle al navegador que se encuentra con un script. Su atributo <strong>src</strong> le dice a las personas dónde está almacenado el archivo JavaScript.</p>
+<ol>
+<li>
+<p>En tu editor de código, ingresa el HTML que se muestra a la izquierda. Guarda este archivo con el nombre <strong>add-content.html</strong>.</p>
+<p>El elemento HTML <code>&lt;script&gt;</code> se usa para cargar el archivo JavaScript en la página. Tiene un atributo llamado <strong>src</strong>, cuyo valor es la ruta al script que creaste. Esto le dice al navegador que busque y cargue el archivo script (similar al atributo <strong>src</strong> en una etiqueta <code>&lt;img&gt;</code>).</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../capitulo-0/introduccion/" class="md-footer__link md-footer__link--prev" aria-label="Previous: INTRODUCCION">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                INTRODUCCION
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-footer__link md-footer__link--next" aria-label="Next: NODE FUNDAMENTALS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                NODE FUNDAMENTALS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

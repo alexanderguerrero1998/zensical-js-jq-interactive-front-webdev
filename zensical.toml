@@ -7,17 +7,18 @@
 # ============================================================================
 
 [project]
-site_name = "LEARNING VUE JS"
+site_name = "JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT"
 site_description = "Notas de aprendizaje de Express.js"
 site_author = "Alexander Guerrero"
-repo_url = "https://github.com/alexanderguerrero1998/zensical-vue"
-repo_name = "zensical-vue"
+repo_url = "https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev"
+repo_name = "zensical-js-jq-interactive-front-webdev"
 docs_dir = "docs"
 edit_uri = "edit/main/docs/"
 nav = [
         {
-          "LEARNING VUE JS" = [ 
-            { "WELCOME VUE" = "learning-vue/cap1/welcome-vue.md" },
+          "JAVASCRIPT JS-JQ FRONTEND" = [ 
+            { "INTRODUCCION" = "js-jq-interactive-frontend-webdev/capitulo-0/introduccion.md" },
+            { "THE ABC OF PROGRAMMING" = "js-jq-interactive-frontend-webdev/capitulo-1/the-abc-programming.md" },
           
             
           

@@ -1,0 +1,1023 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aprendizaje de Express.js">
+      
+      
+        <meta name="author" content="Alexander Guerrero">
+      
+      
+      
+      
+        <link rel="next" href="../../capitulo-1/the-abc-programming/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>INTRODUCCION - JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-header__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              INTRODUCCION
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-nav__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INTRODUCCION
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INTRODUCCION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-javascript-hace-las-paginas-web-mas-interactivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CÓMO JAVASCRIPT HACE LAS PÁGINAS WEB MÁS INTERACTIVAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplos-de-javascript-en-el-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EJEMPLOS DE JAVASCRIPT EN EL NAVEGADOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-estructura-de-este-libro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LA ESTRUCTURA DE ESTE LIBRO
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LA ESTRUCTURA DE ESTE LIBRO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONCEPTOS CLAVE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicaciones-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        APLICACIONES PRÁCTICAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#html-y-css-una-referencia-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTML y CSS: UNA REFERENCIA RÁPIDA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soporte-del-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SOPORTE DEL NAVEGADOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-1/the-abc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    THE ABC OF PROGRAMMING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-javascript-hace-las-paginas-web-mas-interactivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CÓMO JAVASCRIPT HACE LAS PÁGINAS WEB MÁS INTERACTIVAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplos-de-javascript-en-el-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EJEMPLOS DE JAVASCRIPT EN EL NAVEGADOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-estructura-de-este-libro" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LA ESTRUCTURA DE ESTE LIBRO
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LA ESTRUCTURA DE ESTE LIBRO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONCEPTOS CLAVE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicaciones-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        APLICACIONES PRÁCTICAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#html-y-css-una-referencia-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTML y CSS: UNA REFERENCIA RÁPIDA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soporte-del-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SOPORTE DEL NAVEGADOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    JAVASCRIPT JS-JQ FRONTEND
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="introduccion">INTRODUCCION<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h1>
+<p>Este libro explica cómo se puede usar JavaScript en los navegadores para hacer que las páginas web sean más interactivas, interesantes y fáciles de usar. También aprenderás sobre jQuery, porque hace que escribir JavaScript sea mucho más sencillo. </p>
+<p>Para aprovechar al máximo este libro, necesitarás saber cómo crear páginas web usando HTML y CSS. Más allá de eso, no se requiere ninguna experiencia previa en programación. Aprender a programar con JavaScript implica:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Comprender algunos conceptos básicos de programación y los términos que los programadores de JavaScript utilizan para describirlos.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Aprender el propio lenguaje y, como todos los idiomas, conocer su vocabulario y cómo estructurar tus “oraciones” (es decir, tus instrucciones y expresiones en JavaScript).  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Familiarizarte con su uso observando ejemplos de cómo JavaScript se emplea comúnmente en los sitios web actuales.</li>
+</ul>
+<p>El único equipo que necesita para utilizar este libro es una computadora con un navegador web moderno instalado y su editor de código favorito (por ejemplo, Notepad, TextEdit, Sublime Text o Coda).</p>
+<h2 id="como-javascript-hace-las-paginas-web-mas-interactivas">CÓMO JAVASCRIPT HACE LAS PÁGINAS WEB MÁS INTERACTIVAS<a class="headerlink" href="#como-javascript-hace-las-paginas-web-mas-interactivas" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>ACCEDER A CONTENIDO</strong> </p>
+<p>Puedes usar JavaScript para seleccionar cualquier elemento, atributo o texto de una página HTML. Por ejemplo:  </p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Seleccionar el texto dentro de todos los elementos <code>&lt;p&gt;</code> de una página.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Seleccionar todos los elementos que tengan un atributo <code>class</code> con el valor <code>note</code>.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Descubrir qué se escribió en un campo de texto cuyo atributo <code>id</code> tiene el valor <code>email</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>MODIFICAR CONTENIDO</strong></p>
+<p>Puedes usar JavaScript para agregar elementos, atributos y texto a la página, o para eliminarlos. Por ejemplo:  </p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Añadir un párrafo de texto después del primer elemento <code>&lt;p&gt;</code>.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Cambiar el valor de los atributos <code>class</code> para activar nuevas reglas de CSS en esos elementos.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Modificar el tamaño o la posición de un elemento.</li>
+</ul>
+</li>
+<li>
+<p><strong>PROGRAMAR REGLAS</strong> </p>
+<p>Puedes especificar un conjunto de pasos que el navegador debe seguir (como una receta), lo que le permite acceder o cambiar el contenido de una página. Por ejemplo:  </p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Un script de galería podría comprobar qué imagen ha hecho clic el usuario y mostrar una versión más grande de esa imagen.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Una calculadora de hipotecas podría recoger valores de un formulario, realizar un cálculo y mostrar las cuotas de pago.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Una animación podría comprobar las dimensiones de la ventana del navegador y mover una imagen hasta la parte inferior del área visible (también conocida como <em>viewport</em>).  </li>
+</ul>
+</li>
+<li>
+<p><strong>REACCIONAR A EVENTOS</strong> </p>
+<p>Puedes indicar que un script se ejecute cuando se produzca un evento específico. Por ejemplo, podría ejecutarse cuando:  </p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Se pulsa un botón.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Se hace clic (o se toca) un enlace.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> El cursor se coloca encima de un elemento.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Se introduce información en un formulario.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Ha pasado un intervalo de tiempo.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> La página web ha terminado de cargarse.</li>
+</ul>
+</li>
+</ol>
+<h2 id="ejemplos-de-javascript-en-el-navegador">EJEMPLOS DE JAVASCRIPT EN EL NAVEGADOR<a class="headerlink" href="#ejemplos-de-javascript-en-el-navegador" title="Permanent link">&para;</a></h2>
+<p>Ser capaz de cambiar el contenido de una página HTML mientras se encuentra cargada en el navegador es algo muy potente. Los ejemplos siguientes dependen de la capacidad para:  </p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Acceder</strong> al contenido de la página.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Modificar</strong> el contenido de la página.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Programar</strong> reglas o instrucciones que el navegador pueda seguir.  </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Reaccionar</strong> a eventos desencadenados por el usuario o por el navegador.</li>
+</ul>
+<p><img alt="" src="../slides.png" /></p>
+<p>Las presentaciones (slideshows) pueden mostrar varias imágenes diferentes (u otro contenido HTML) dentro del mismo espacio en una página determinada. Pueden reproducirse de forma automática como una secuencia, o los usuarios pueden pasar manualmente de una diapositiva a otra. Esto permite mostrar más contenido dentro de un espacio limitado.  </p>
+<p><strong>React:</strong> Script que se dispara cuando la página se carga.<br />
+<strong>Access:</strong> Obtener cada diapositiva del slideshow.<br />
+<strong>Modify:</strong> Mostrar solo la primera diapositiva (ocultar las demás).<br />
+<strong>Program:</strong> Configurar un temporizador: cuándo mostrar la siguiente diapositiva.<br />
+<strong>Modify:</strong> Cambiar cuál diapositiva se muestra.<br />
+<strong>React:</strong>  Cuando el usuario hace clic en el botón para cambiar la diapositiva.<br />
+<strong>Program:</strong> Determinar cuál diapositiva mostrar.<br />
+<strong>Modify:</strong> Mostrar la diapositiva solicitada.</p>
+<p><img alt="" src="../forms.png" /></p>
+<p>Validar formularios (comprobar si se han rellenado correctamente) es importante cuando la información la proporciona el usuario. JavaScript permite avisar al usuario si se han cometido errores. También puede realizar cálculos más avanzados basados en los datos introducidos y mostrar los resultados al usuario.  </p>
+<p><strong>React:</strong>  El usuario pulsa el botón de enviar cuando ha introducido su nombre.<br />
+<strong>Access:</strong> Obtener el valor del campo del formulario.<br />
+<strong>Program:</strong>  Comprobar si el nombre es lo suficientemente largo.<br />
+<strong>Modify:</strong> Mostrar un mensaje de advertencia si el nombre no es lo suficientemente largo.</p>
+<p><img alt="" src="../partofpage.png" /></p>
+<p>Puede que no desees obligar a los visitantes a recargar todo el contenido de una página web, sobre todo si solo necesitas actualizar una pequeña parte de ella. Recargar solamente una sección de la página puede hacer que el sitio parezca más rápido y se comporte más como una aplicación.  </p>
+<p><strong>React:</strong>  Script que se dispara cuando el usuario hace clic en un enlace.<br />
+<strong>Access:</strong> El enlace que han clickeado.<br />
+<strong>Program:</strong> Cargar el nuevo contenido solicitado a partir de ese enlace.<br />
+<strong>Access:</strong>  Encontrar el elemento de la página que se debe reemplazar.<br />
+<strong>Modify:</strong>  Reemplazar ese contenido con el nuevo contenido.</p>
+<p><img alt="" src="../filterdata.png" /></p>
+<p>Si tienes mucha información que mostrar en una página, puedes ayudar a los usuarios a encontrar lo que necesitan proporcionando filtros. En este caso, se generan botones usando los datos almacenados en los atributos de los elementos HTML. Cuando el usuario hace clic en uno de los botones, solo se muestran las imágenes que tienen esa palabra clave.  </p>
+<p><strong>React:</strong>  Script que se dispara cuando la página se carga.<br />
+<strong>Program:</strong> Recopilar las palabras clave de las imágenes.<br />
+<strong>Program:</strong> Convertir esas palabras clave en botones sobre los que el usuario puede hacer clic.<br />
+<strong>React:</strong>  El usuario hace clic en uno de los botones.<br />
+<strong>Program:</strong> Buscar el subconjunto de imágenes relevantes que deben mostrarse.<br />
+<strong>Modify:</strong>  Mostrar el subconjunto de imágenes que usan esa etiqueta.</p>
+<h2 id="la-estructura-de-este-libro">LA ESTRUCTURA DE ESTE LIBRO<a class="headerlink" href="#la-estructura-de-este-libro" title="Permanent link">&para;</a></h2>
+<p>Para enseñarle JavaScript, este libro se divide en dos secciones:</p>
+<h3 id="conceptos-clave">CONCEPTOS CLAVE<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h3>
+<p>Los primeros nueve capítulos te introducen a los conceptos básicos de la programación y al lenguaje JavaScript. En el camino aprenderás cómo se usa para crear sitios web más entretenidos, interactivos y fáciles de usar.  </p>
+<p>El c<strong>apítulo 1</strong> revisa algunos conceptos clave de la programación, mostrándote cómo los ordenadores crean modelos del mundo usando datos y cómo se usa JavaScript para cambiar el contenido de una página HTML.  </p>
+<p>Los c<strong>apítulos 2‑4</strong> tratan los fundamentos del lenguaje JavaScript.  </p>
+<p>El <strong>capítulo 5</strong> explica cómo el Modelo de Objetos del Documento (DOM) permite acceder y modificar el contenido de un documento mientras está cargado en el navegador. </p>
+<p>El <strong>capítulo 6</strong> analiza cómo los eventos pueden utilizarse para ejecutar código.  </p>
+<p>El <strong>capítulo 7</strong> te muestra cómo jQuery puede hacer que escribir scripts sea más rápido y sencillo.  </p>
+<p>El <strong>capítulo 8</strong> te presenta a Ajax, un conjunto de técnicas que permiten cambiar solo una parte de una página web sin recargarla por completo.  </p>
+<p>El <strong>capítulo 9</strong> aborda las Interfaces de Programación de Aplicaciones (API), incluyendo las nuevas API que forman parte de HTML5 y las de sitios como Google Maps.</p>
+<h3 id="aplicaciones-practicas">APLICACIONES PRÁCTICAS<a class="headerlink" href="#aplicaciones-practicas" title="Permanent link">&para;</a></h3>
+<p>Para este punto ya habrás visto muchos ejemplos de cómo se usa JavaScript en sitios web populares. Esta sección reúne todas las técnicas que has aprendido hasta ahora, para darte demostraciones prácticas de cómo los desarrolladores profesionales usan JavaScript. No solo verás una selección de ejemplos detallados, sino que también aprenderás más sobre el proceso de diseñar y escribir scripts desde cero. </p>
+<p>El <strong>Capítulo 10</strong> trata el manejo de errores y la depuración, y explica más sobre cómo se procesa JavaScript. </p>
+<p>El <strong>Capítulo 11</strong> muestra técnicas para crear paneles de contenido como sliders, ventanas modales, paneles con pestañas y acordeones. </p>
+<p>El <strong>Capítulo 12</strong> demuestra varias técnicas para filtrar y ordenar datos. Esto incluye filtrar una galería de imágenes y reordenar las filas de una tabla haciendo clic en los encabezados de columna. </p>
+<p>El <strong>Capítulo 13</strong> trata las mejoras en formularios y cómo validar sus campos. A menos que ya seas un programador seguro de sí mismo, probablemente te resultará útil leer el libro de principio a fin la primera vez. Sin embargo, una vez que hayas comprendido los conceptos básicos, esperamos que siga siendo una referencia útil mientras creas tus propios scripts.</p>
+<h2 id="html-y-css-una-referencia-rapida">HTML y CSS: UNA REFERENCIA RÁPIDA<a class="headerlink" href="#html-y-css-una-referencia-rapida" title="Permanent link">&para;</a></h2>
+<p>Antes de mirar JavaScript, aclaremos algunos términos HTML y CSS.
+Observe cómo los atributos HTML y las propiedades CSS utilizan pares de <code>nombre/valor</code>.</p>
+<p><strong>ELEMENTOS HTML</strong></p>
+<p>Los elementos HTML se agregan al contenido de una página para describir su estructura. Un elemento consta de las etiquetas de apertura y cierre, además de su contenido.</p>
+<p>Las etiquetas suelen venir en pares con una <strong>etiqueta de apertura y una etiqueta de cierre</strong>. Hay algunos elementos vacíos sin contenido (por ejemplo, <img>).
+Tienen una etiqueta de cierre automático.</p>
+<p>Las etiquetas de apertura pueden contener atributos que nos dicen más sobre ese elemento. Los atributos tienen un nombre y un valor. El valor normalmente se da entre comillas.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fruit&quot;</span><span class="p">&gt;</span>peach<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span> <span class="cm">&lt;!--#(1)!--&gt;</span>
+</span></code></pre></div>
+<ol>
+<li>
+<ul>
+<li><code>fruit</code> = selector· </li>
+<li><code>{color:pink}</code> = bloque de declaracion· </li>
+<li><code>color</code> = nombre de la propiedad· </li>
+<li><code>pink</code> = valor de la propiedad.</li>
+</ul>
+<p><img alt="" src="../anatomy.svg" /></p>
+</li>
+</ol>
+<p><strong>REGLAS CSS</strong></p>
+<p>CSS utiliza reglas para indicar cómo se deben mostrar los contenidos de uno o más 
+elementos en el navegador. Cada regla tiene un selector y un bloque de declaración.</p>
+<p>El <strong>selector</strong> CSS indica a qué elemento(s) se aplica la regla. El bloque de declaración contiene reglas que indican cómo deben aparecer esos elementos.</p>
+<p>Cada declaración en el <strong>bloque de declaración</strong> tiene una propiedad (el aspecto que desea controlar) y un valor, que es la configuración.
+para esa propiedad.
+<div class="language-css highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">.</span><span class="nc">fruit</span><span class="w"> </span><span class="p">{</span><span class="k">color</span><span class="p">:</span><span class="kc">pink</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c">/* #(1)!*/</span>
+</span></code></pre></div></p>
+<ol>
+<li>
+<ul>
+<li><code>&lt;p&gt;</code> = etiqueta de apertura · </li>
+<li><code>class="fruit"</code> = atributo · </li>
+<li><code>peach</code> = contenido · </li>
+<li><code>&lt;/p&gt;</code> = etiqueta de cierre
+<img alt="" src="../css_rule_anatomy_diagram.svg" /></li>
+</ul>
+</li>
+</ol>
+<h2 id="soporte-del-navegador">SOPORTE DEL NAVEGADOR<a class="headerlink" href="#soporte-del-navegador" title="Permanent link">&para;</a></h2>
+<p>Algunos ejemplos iniciales de este libro no funcionan con Internet Explorer 8 y versiones anteriores (pero hay ejemplos de código alternativos que sí funcionan en IE8 y que se pueden descargar desde <a href="http://javascriptbook.com">http://javascriptbook.com</a>). Explicamos técnicas para trabajar con navegadores antiguos en capítulos posteriores.</p>
+<p>Cada versión de un navegador web agrega nuevas características.A menudo, estas nuevas características hacen que ciertas tareas sean más fáciles o se consideran mejores que el uso de técnicas antiguas.</p>
+<p>Pero los visitantes de un sitio web no siempre se mantienen al día con las últimas versiones de los navegadores, por lo que los desarrolladores web no siempre pueden depender de las tecnologías más recientes.</p>
+<p>Como verás, existen muchas inconsistencias entre navegadores que afectan a los desarrolladores de JavaScript.</p>
+<p>jQuery te ayudará a lidiar con las inconsistencias entre navegadores (esta es una de las principales razones por las que jQuery ganó popularidad rápidamente entre los desarrolladores web). Pero antes de aprender jQuery, es útil saber qué es lo que te ayuda a lograr.</p>
+<p>Para hacer que JavaScript sea más fácil de aprender, los primeros capítulos utilizan algunas características de JavaScript que no son compatibles con IE8. Pero:</p>
+<ul>
+<li>
+<p>Aprenderás cómo lidiar con IE8 y navegadores más antiguos en capítulos posteriores (porque sabemos que muchos clientes esperan que los sitios funcionen en IE8). Solo requiere conocer algo de código adicional o ser consciente de ciertos problemas adicionales.</p>
+</li>
+<li>
+<p>En línea encontrarás alternativas disponibles para cada ejemplo que no funcione en IE8. Pero revisa los comentarios en esos ejemplos de código para asegurarte de conocer los problemas relacionados con su uso.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="../../capitulo-1/the-abc-programming/" class="md-footer__link md-footer__link--next" aria-label="Next: THE ABC OF PROGRAMMING">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                THE ABC OF PROGRAMMING
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>
