@@ -1,0 +1,2195 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aprendizaje de Express.js">
+      
+      
+        <meta name="author" content="Alexander Guerrero">
+      
+      
+      
+        <link rel="prev" href="../../capitulo-1/the-abc-programming/">
+      
+      
+        <link rel="next" href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>BASIC JAVASCRIPT INSTRUCCIONS - JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-javascript-instruccions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-header__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              BASIC JAVASCRIPT INSTRUCCIONS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-nav__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-0/introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INTRODUCCION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-1/the-abc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    THE ABC OF PROGRAMMING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BASIC JS INSTRUCCIONS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BASIC JS INSTRUCCIONS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-lenguaje-sintaxis-y-gramatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL LENGUAJE: SINTAXIS Y GRAMÁTICA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dando-instrucciones-para-que-un-navegador-las-siga" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DANDO INSTRUCCIONES PARA QUE UN NAVEGADOR LAS SIGA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS (STATEMENTS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-distingue-entre-mayusculas-y-minusculas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        JAVASCRIPT DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JAVASCRIPT DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-de-multiples-lineas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COMENTARIOS DE MÚLTIPLES LÍNEAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-de-una-sola-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COMENTARIOS DE UNA SOLA LÍNEA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-una-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UNA VARIABLE?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-como-declararlas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VARIABLES: CÓMO DECLARARLAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-como-asignarles-un-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VARIABLES: CÓMO ASIGNARLES UN VALOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPOS DE DATOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TIPOS DE DATOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipo-de-dato-numerico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPO DE DATO NUMÉRICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-de-dato-cadena-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPO DE DATO CADENA (STRING)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-de-dato-booleano" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPO DE DATO BOOLEANO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-una-variable-para-almacenar-un-numero" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO UNA VARIABLE PARA ALMACENAR UN NÚMERO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-una-variable-para-almacenar-una-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO UNA VARIABLE PARA ALMACENAR UNA CADENA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-comillas-dentro-de-una-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO COMILLAS DENTRO DE UNA CADENA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-una-variable-para-almacenar-un-booleano" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO UNA VARIABLE PARA ALMACENAR UN BOOLEANO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abreviatura-para-crear-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ABREVIATURA PARA CREAR VARIABLES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cambiando-el-valor-de-una-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAMBIANDO EL VALOR DE UNA VARIABLE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reglas-para-nombrar-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        REGLAS PARA NOMBRAR VARIABLES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arreglos-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ARREGLOS (ARRAYS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CREANDO UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valores-en-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES EN ARRAYS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VALORES EN ARRAYS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numerando-elementos-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NUMERANDO ELEMENTOS EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accediendo-a-elementos-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDIENDO A ELEMENTOS EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numero-de-elementos-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NÚMERO DE ELEMENTOS EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accediendo-y-cambiando-valores-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDIENDO Y CAMBIANDO VALORES EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expresiones-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EXPRESIONES (EXPRESSIONS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES (OPERATORS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-aritmeticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES ARITMÉTICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-operadores-aritmeticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OPERADORES ARITMÉTICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operador-de-cadena-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADOR DE CADENA (STRING)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-operadores-de-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OPERADORES DE CADENA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EJEMPLO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-basicas-de-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        INSTRUCCIONES BÁSICAS DE JAVASCRIPT
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-lenguaje-sintaxis-y-gramatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL LENGUAJE: SINTAXIS Y GRAMÁTICA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dando-instrucciones-para-que-un-navegador-las-siga" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DANDO INSTRUCCIONES PARA QUE UN NAVEGADOR LAS SIGA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS (STATEMENTS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-distingue-entre-mayusculas-y-minusculas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        JAVASCRIPT DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JAVASCRIPT DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-de-multiples-lineas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COMENTARIOS DE MÚLTIPLES LÍNEAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-de-una-sola-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COMENTARIOS DE UNA SOLA LÍNEA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-una-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ¿QUÉ ES UNA VARIABLE?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-como-declararlas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VARIABLES: CÓMO DECLARARLAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-como-asignarles-un-valor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VARIABLES: CÓMO ASIGNARLES UN VALOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPOS DE DATOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TIPOS DE DATOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipo-de-dato-numerico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPO DE DATO NUMÉRICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-de-dato-cadena-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPO DE DATO CADENA (STRING)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipo-de-dato-booleano" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TIPO DE DATO BOOLEANO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-una-variable-para-almacenar-un-numero" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO UNA VARIABLE PARA ALMACENAR UN NÚMERO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-una-variable-para-almacenar-una-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO UNA VARIABLE PARA ALMACENAR UNA CADENA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-comillas-dentro-de-una-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO COMILLAS DENTRO DE UNA CADENA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-una-variable-para-almacenar-un-booleano" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO UNA VARIABLE PARA ALMACENAR UN BOOLEANO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abreviatura-para-crear-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ABREVIATURA PARA CREAR VARIABLES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cambiando-el-valor-de-una-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CAMBIANDO EL VALOR DE UNA VARIABLE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reglas-para-nombrar-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        REGLAS PARA NOMBRAR VARIABLES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arreglos-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ARREGLOS (ARRAYS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CREANDO UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valores-en-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES EN ARRAYS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VALORES EN ARRAYS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numerando-elementos-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NUMERANDO ELEMENTOS EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accediendo-a-elementos-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDIENDO A ELEMENTOS EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numero-de-elementos-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NÚMERO DE ELEMENTOS EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accediendo-y-cambiando-valores-en-un-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDIENDO Y CAMBIANDO VALORES EN UN ARRAY
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expresiones-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EXPRESIONES (EXPRESSIONS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES (OPERATORS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-aritmeticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES ARITMÉTICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-operadores-aritmeticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OPERADORES ARITMÉTICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operador-de-cadena-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADOR DE CADENA (STRING)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-operadores-de-cadena" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OPERADORES DE CADENA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EJEMPLO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-basicas-de-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        INSTRUCCIONES BÁSICAS DE JAVASCRIPT
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../capitulo-0/introduccion/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    JAVASCRIPT JS-JQ FRONTEND
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="basic-javascript-instruccions">BASIC JAVASCRIPT INSTRUCCIONS<a class="headerlink" href="#basic-javascript-instruccions" title="Permanent link">&para;</a></h1>
+<p>En este capítulo, comenzarás a aprender a leer y escribir JavaScript. También aprenderás cómo darle instrucciones a un navegador web para que siga lo que deseas.</p>
+<h3 id="el-lenguaje-sintaxis-y-gramatica">EL LENGUAJE: SINTAXIS Y GRAMÁTICA<a class="headerlink" href="#el-lenguaje-sintaxis-y-gramatica" title="Permanent link">&para;</a></h3>
+<p>Como cualquier nuevo idioma, hay nuevas palabras que aprender (el vocabulario) y reglas sobre cómo se pueden combinar (la gramática y sintaxis del lenguaje).</p>
+<h3 id="dando-instrucciones-para-que-un-navegador-las-siga">DANDO INSTRUCCIONES PARA QUE UN NAVEGADOR LAS SIGA<a class="headerlink" href="#dando-instrucciones-para-que-un-navegador-las-siga" title="Permanent link">&para;</a></h3>
+<p>Los navegadores web (y las computadoras en general) abordan las tareas de una manera muy diferente a como lo haría un humano. Tus instrucciones deben reflejar cómo las computadoras hacen las cosas.</p>
+<p>Comenzaremos con algunos de los bloques de construcción clave del lenguaje y veremos cómo se pueden usar para escribir scripts muy básicos (que consisten en unos pocos pasos simples) antes de pasar a ver conceptos más complejos en capítulos posteriores.</p>
+<h3 id="sentencias-statements">SENTENCIAS (STATEMENTS)<a class="headerlink" href="#sentencias-statements" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Un script es una serie de instrucciones que una computadora puede seguir una por una. Cada instrucción o paso individual se conoce como <strong>sentencia</strong> (statement). Las sentencias deben terminar con un punto y coma.</p>
+</div>
+<p>Veremos lo que hace el código de la derecha en breve, pero por el momento observa que:</p>
+<ul>
+<li>Cada una de las líneas de código en verde es una sentencia.</li>
+<li>Las llaves rosadas indican el inicio y el final de un bloque de código. (Cada bloque de código podría contener muchas más sentencias).</li>
+<li>El código en púrpura determina qué código debería ejecutarse (como verás en la pág. 149).</li>
+</ul>
+<h3 id="javascript-distingue-entre-mayusculas-y-minusculas">JAVASCRIPT DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS<a class="headerlink" href="#javascript-distingue-entre-mayusculas-y-minusculas" title="Permanent link">&para;</a></h3>
+<p>JavaScript distingue entre mayúsculas y minúsculas, por lo que <strong>hourNow</strong> significa algo diferente que <strong>HourNow</strong> o <strong>HOURNOW</strong>.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">hourNow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">today</span><span class="p">.</span><span class="nx">getHours</span><span class="p">();</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">greeting</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hourNow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good evening&#39;</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hourNow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">12</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good afternoon&#39;</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hourNow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good morning&#39;</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Welcome&#39;</span><span class="p">;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="p">}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="comentarios-de-multiples-lineas">COMENTARIOS DE MÚLTIPLES LÍNEAS<a class="headerlink" href="#comentarios-de-multiples-lineas" title="Permanent link">&para;</a></h4>
+<p>Para escribir un comentario que abarque más de una línea, se usa un comentario de múltiples líneas, comenzando con los caracteres <code>/*</code> y terminando con los caracteres <code>*/</code>. Cualquier cosa entre estos caracteres no es procesada por el intérprete de JavaScript.</p>
+<p>Los comentarios de múltiples líneas se usan a menudo para descripciones de cómo funciona el script, o para evitar que una sección del script se ejecute al probarlo.</p>
+<h4 id="comentarios-de-una-sola-linea">COMENTARIOS DE UNA SOLA LÍNEA<a class="headerlink" href="#comentarios-de-una-sola-linea" title="Permanent link">&para;</a></h4>
+<p>En un comentario de una sola línea, cualquier cosa que siga a los dos caracteres de barra diagonal <code>//</code> en esa línea no será procesada por el intérprete de JavaScript. Los comentarios de una sola línea se usan a menudo para descripciones breves de lo que hace el código.</p>
+<p>El buen uso de los comentarios te ayudará si vuelves a tu código después de varios días o meses. También ayudan a aquellos que son nuevos en tu código.</p>
+<h3 id="que-es-una-variable">¿QUÉ ES UNA VARIABLE?<a class="headerlink" href="#que-es-una-variable" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Un script necesita almacenar temporalmente los bits de información que requiere para hacer su trabajo. Puede almacenar estos datos en <strong>variables</strong>.</p>
+</div>
+<p>Cuando escribes JavaScript, tienes que decirle al intérprete cada paso individual que deseas que realice. Esto a veces implica más detalle del que podrías esperar.</p>
+<p>Piensa en calcular el área de una pared; en matemáticas, el área de un rectángulo se obtiene multiplicando dos números:</p>
+<p>ancho × alto = área</p>
+<p>Puede que puedas hacer cálculos como este mentalmente, pero al escribir un script para hacer este cálculo, necesitas darle a la computadora instrucciones muy detalladas. Podrías decirle que realice los siguientes cuatro pasos en orden:</p>
+<ol>
+<li>Recordar el valor del ancho</li>
+<li>Recordar el valor del alto</li>
+<li>Multiplicar ancho por alto para obtener el área</li>
+<li>Devolver el resultado al usuario</li>
+</ol>
+<p>En este caso, usarías variables para "recordar" los valores del ancho y del alto. (Esto también ilustra cómo un script contiene instrucciones muy explícitas sobre exactamente lo que quieres que haga la computadora).</p>
+<p>Puedes comparar las variables con la memoria a corto plazo, porque una vez que abandonas la página, el navegador olvidará cualquier información que contenga.</p>
+<p>Una variable es un buen nombre para este concepto porque los datos almacenados en una variable pueden cambiar (o variar) cada vez que se ejecuta un script.</p>
+<p>No importa cuáles sean las dimensiones de una pared individual, sabes que puedes encontrar su área multiplicando el ancho de esa pared por su altura. De manera similar, los scripts a menudo necesitan lograr el mismo objetivo incluso cuando se ejecutan con diferentes datos, por lo que las variables se pueden usar para representar valores en tus scripts que probablemente cambien. Se dice que el resultado se calcula o computa usando los datos almacenados en las variables.</p>
+<p>El uso de variables para representar números u otros tipos de datos es muy similar al concepto de álgebra (donde se usan letras para representar números). Sin embargo, hay una diferencia clave. El signo igual hace algo muy diferente en programación (como verás en las siguientes dos páginas).</p>
+<h3 id="variables-como-declararlas">VARIABLES: CÓMO DECLARARLAS<a class="headerlink" href="#variables-como-declararlas" title="Permanent link">&para;</a></h3>
+<p>Antes de poder usar una variable, necesitas anunciar que quieres usarla. Esto implica crear la variable y darle un nombre. Los programadores dicen que <strong>declaras</strong> la variable.</p>
+<p><img alt="" src="../varquatity.png" /></p>
+<p><code>var</code> es un ejemplo de lo que los programadores llaman una <strong>palabra clave</strong> (keyword). El intérprete de JavaScript sabe que esta palabra clave se usa para crear una variable.</p>
+<p>Para usar la variable, debes darle un nombre. (Esto a veces se llama <strong>identificador</strong>). En este caso, la variable se llama <strong>quantity</strong>.</p>
+<p>Si el nombre de una variable tiene más de una palabra, generalmente se escribe en <strong>camelCase</strong>. Esto significa que la primera palabra está toda en minúsculas y las palabras siguientes tienen su primera letra en mayúscula.</p>
+<h3 id="variables-como-asignarles-un-valor">VARIABLES: CÓMO ASIGNARLES UN VALOR<a class="headerlink" href="#variables-como-asignarles-un-valor" title="Permanent link">&para;</a></h3>
+<p>Una vez que has creado una variable, puedes indicarle qué información te gustaría que almacene para ti. Los programadores dicen que <strong>asignas un valor</strong> a la variable.</p>
+<p><img alt="" src="../quatity.png" /></p>
+<p>Ahora puedes usar la variable por su nombre. Aquí establecemos un valor para la variable llamada <strong>quantity</strong>. Cuando sea posible, el nombre de una variable debe describir el tipo de datos que contiene la variable.</p>
+<p>El signo igual (<code>=</code>) es un <strong>operador de asignación</strong>. Indica que vas a asignar un valor a la variable. También se usa para actualizar el valor dado a una variable (ver pág. 68).</p>
+<p>Hasta que hayas asignado un valor a una variable, los programadores dicen que el valor es <strong>undefined</strong> (indefinido).</p>
+<p>El lugar donde se declara una variable puede afectar si el resto del script puede usarla. Los programadores llaman a esto el <strong>ámbito</strong> (scope) de una variable y se cubre en la pág. 98.</p>
+<h3 id="tipos-de-datos">TIPOS DE DATOS<a class="headerlink" href="#tipos-de-datos" title="Permanent link">&para;</a></h3>
+<p>JavaScript distingue entre números, cadenas de texto (strings) y valores verdaderos o falsos conocidos como <strong>Booleanos</strong>.</p>
+<h4 id="tipo-de-dato-numerico">TIPO DE DATO NUMÉRICO<a class="headerlink" href="#tipo-de-dato-numerico" title="Permanent link">&para;</a></h4>
+<p>El tipo de dato numérico maneja números. </p>
+<p>Para tareas que implican contar o calcular sumas, usarás números del 0 al 9. Por ejemplo, cinco mil doscientos setenta y dos se escribiría <strong>5272</strong> (nota que no hay coma entre los miles y las centenas). También puedes tener números negativos (como <strong>-23678</strong>) y decimales (tres cuartos se escribe como <strong>0.75</strong>).</p>
+<p>Los números no solo se usan para cosas como calculadoras; también se usan para tareas como determinar el tamaño de la pantalla, mover la posición de un elemento en una página o establecer la cantidad de tiempo que un elemento debe tomar para aparecer gradualmente.</p>
+<h4 id="tipo-de-dato-cadena-string">TIPO DE DATO CADENA (STRING)<a class="headerlink" href="#tipo-de-dato-cadena-string" title="Permanent link">&para;</a></h4>
+<p>El tipo de dato cadena consiste en letras y otros caracteres. Observa cómo el tipo de dato cadena está encerrado entre un par de comillas. Pueden ser comillas simples o dobles, pero la comilla de apertura debe coincidir con la de cierre.</p>
+<p>Las cadenas se pueden usar al trabajar con cualquier tipo de texto. Se usan frecuentemente para agregar nuevo contenido a una página y pueden contener marcado HTML.</p>
+<h4 id="tipo-de-dato-booleano">TIPO DE DATO BOOLEANO<a class="headerlink" href="#tipo-de-dato-booleano" title="Permanent link">&para;</a></h4>
+<p>El tipo de dato booleano puede tener uno de dos valores: <strong>true</strong> (verdadero) o <strong>false</strong> (falso).</p>
+<p>Puede parecer un poco abstracto al principio, pero el tipo de dato booleano es realmente muy útil. Puedes pensarlo como un interruptor de luz: está encendido o apagado.</p>
+<p>Como verás en el Capítulo 4, los booleanos son útiles para determinar qué parte de un script debe ejecutarse.</p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Además de estos tres tipos de datos, JavaScript también tiene otros (arrays, objetos, undefined y null) que conocerás en capítulos posteriores.</p>
+<p>A diferencia de algunos otros lenguajes de programación, al declarar una variable en JavaScript, no necesitas especificar qué tipo de datos contendrá.</p>
+</div>
+<h3 id="usando-una-variable-para-almacenar-un-numero">USANDO UNA VARIABLE PARA ALMACENAR UN NÚMERO<a class="headerlink" href="#usando-una-variable-para-almacenar-un-numero" title="Permanent link">&para;</a></h3>
+<p><img alt="Image title" src="../storedstring.png" /> </p>
+<p>Aquí se crean tres variables y se les asignan valores:</p>
+<ul>
+<li><strong>price</strong> contiene el precio de un azulejo individual</li>
+<li><strong>quantity</strong> contiene la cantidad de azulejos que un cliente quiere</li>
+<li><strong>total</strong> contiene el costo total de los azulejos</li>
+</ul>
+<p>Observa que los números no están escritos entre comillas.</p>
+<p>Una vez que se ha asignado un valor a una variable, puedes usar el nombre de la variable para representar ese valor (similar a lo que habrás hecho en álgebra). Aquí, el costo total se calcula multiplicando el precio de un solo azulejo por la cantidad de azulejos que el cliente quiere.</p>
+<p>El resultado se escribe luego en la página en las dos últimas líneas. Verás esta técnica en más detalle en las págs. 194 y 216.</p>
+<p>La primera de estas dos líneas encuentra el elemento cuyo atributo <strong>id</strong> tiene un valor de <strong>cost</strong>, y la última línea reemplaza el contenido de ese elemento con nuevo contenido.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hay muchas formas de escribir contenido en una página, y varios lugares donde puedes colocar tu script. Las ventajas y desventajas de cada técnica se discuten en la pág. 226. Esta técnica no funcionará en IE8.</p>
+</div>
+<h3 id="usando-una-variable-para-almacenar-una-cadena">USANDO UNA VARIABLE PARA ALMACENAR UNA CADENA<a class="headerlink" href="#usando-una-variable-para-almacenar-una-cadena" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../storestring.png" /></p>
+<p>Por ahora, concéntrate en las primeras cuatro líneas de JavaScript. Se declaran dos variables (<strong>username</strong> y <strong>message</strong>), y se usan para almacenar cadenas (el nombre del usuario y un mensaje para ese usuario).</p>
+<p>El código para actualizar la página (mostrado en las últimas cuatro líneas) se discute completamente en el Capítulo 5. Este código selecciona dos elementos usando los valores de sus atributos <strong>id</strong>. El texto en esos elementos se actualiza usando los valores almacenados en estas variables.</p>
+<p>Observa cómo la cadena está colocada entre comillas. Las comillas pueden ser simples o dobles, pero deben coincidir. Si empiezas con una comilla simple, debes terminar con una comilla simple, y si empiezas con una comilla doble, debes terminar con una comilla doble.</p>
+<p><div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>✓<span class="o">]</span><span class="w"> </span><span class="s2">&quot;hellow&quot;</span><span class="w">  </span><span class="o">[</span>X<span class="o">]</span><span class="w"> </span><span class="s2">&quot;hellow&#39;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="s2">[✓] &#39;hellow&#39;  [X] &#39;hellow&quot;</span>
+</span></code></pre></div>
+Las comillas deben ser rectas (no curvas). </p>
+<p><div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">[</span>✓<span class="o">]</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w">  </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="o">[</span>✓<span class="o">]</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w">  </span>
+</span></code></pre></div>
+Las cadenas siempre deben escribirse en una sola línea.
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>✓<span class="o">]</span><span class="w"> </span><span class="s2">&quot;See our upcoming range &quot;</span><span class="w">  </span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>X<span class="o">]</span><span class="w"> </span><span class="s1">&#39;See our </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s1">       upcoming range &#39;</span><span class="w">  </span>
+</span></code></pre></div></p>
+<h3 id="usando-comillas-dentro-de-una-cadena">USANDO COMILLAS DENTRO DE UNA CADENA<a class="headerlink" href="#usando-comillas-dentro-de-una-cadena" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../qutostring.png" /></p>
+<p>A veces querrás usar una comilla doble o simple dentro de una cadena.</p>
+<p>Debido a que las cadenas pueden vivir entre comillas simples o dobles, si solo quieres usar comillas dobles en la cadena, podrías rodea toda la cadena con comillas simples. Si solo quieres usar comillas simples en la cadena, podrías rodear la cadena con comillas dobles.</p>
+<p>También puedes usar una técnica llamada <strong>escapar</strong> los caracteres de comilla. Esto se hace usando una barra invertida (backslash) antes de cualquier tipo de comilla que aparezca dentro de una cadena.</p>
+<p>La barra invertida le indica al intérprete que el siguiente carácter es parte de la cadena, y no el final de la misma.</p>
+<blockquote>
+<p>Las técnicas para agregar contenido a una página se cubren en el Capítulo 5. Este ejemplo usa una propiedad llamada <strong>innerHTML</strong> para agregar HTML a la página. En ciertos casos, esta propiedad puede presentar un riesgo de seguridad (discutido en las págs. 228–231).</p>
+</blockquote>
+<h3 id="usando-una-variable-para-almacenar-un-booleano">USANDO UNA VARIABLE PARA ALMACENAR UN BOOLEANO<a class="headerlink" href="#usando-una-variable-para-almacenar-un-booleano" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../varboolean.png" /></p>
+<p>Una variable booleana solo puede tener un valor de <strong>true</strong> o <strong>false</strong>, pero este tipo de dato es muy útil.</p>
+<p>En el ejemplo de la derecha, los valores <strong>true</strong> o <strong>false</strong> se usan en los atributos <strong>class</strong> de elementos HTML. Estos valores activan diferentes reglas CSS: <strong>true</strong> muestra una marca, <strong>false</strong> muestra una cruz. (Aprenderás cómo se establece el atributo <strong>class</strong> en el Capítulo 5).</p>
+<p>Es raro que quieras escribir las palabras <strong>true</strong> o <strong>false</strong> en la página para que el usuario las lea, pero este tipo de dato tiene dos usos muy populares:</p>
+<ol>
+<li>
+<p>Los booleanos se usan cuando el valor solo puede ser verdadero/falso. También puedes pensar en estos valores como encendido/apagado o 0/1: <strong>true</strong> equivale a encendido o 1, <strong>false</strong> equivale a apagado o 0.</p>
+</li>
+<li>
+<p>Los booleanos se usan cuando tu código puede tomar más de un camino. Recuerda, diferentes códigos pueden ejecutarse en diferentes circunstancias (como se muestra en los diagramas de flujo a lo largo del libro).</p>
+</li>
+</ol>
+<h3 id="abreviatura-para-crear-variables">ABREVIATURA PARA CREAR VARIABLES<a class="headerlink" href="#abreviatura-para-crear-variables" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../SHORTHAND.png" /></p>
+<p>Los programadores a veces usan abreviaturas para crear variables. Aquí hay tres variaciones de cómo declarar variables y asignarles valores:</p>
+<ol>
+<li>Las variables se declaran y se les asignan valores en la misma sentencia.</li>
+<li>Tres variables se declaran en la misma línea, luego se asignan valores a cada una.</li>
+<li>Dos variables se declaran y se les asignan valores en la misma línea. Luego se declara una y se le asigna un valor en la línea siguiente. (El tercer ejemplo muestra dos números, pero puedes declarar variables que contengan diferentes tipos de datos en la misma línea, por ejemplo, una cadena y un número).</li>
+<li>Aquí, se usa una variable para contener una referencia a un elemento en la página HTML. Esto te permite trabajar directamente con el elemento almacenado en esa variable. (Ver más sobre esto en la pág. 190).</li>
+</ol>
+<p>Aunque la abreviatura puede ahorrarte un poco de escritura, puede hacer que tu código sea un poco más difícil de seguir. Por lo tanto, cuando estés comenzando, te resultará más fácil distribuir tu código en algunas líneas más para que sea más fácil de leer y entender.</p>
+<h3 id="cambiando-el-valor-de-una-variable">CAMBIANDO EL VALOR DE UNA VARIABLE<a class="headerlink" href="#cambiando-el-valor-de-una-variable" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../changingvalue.png" /></p>
+<p>Una vez que has asignado un valor a una variable, puedes cambiar lo que está almacenado en la variable más adelante en el mismo script.</p>
+<p>Una vez que la variable ha sido creada, no necesitas usar la palabra clave <strong>var</strong> para asignarle un nuevo valor. Solo usas el nombre de la variable, el signo igual (también conocido como operador de asignación) y el nuevo valor para ese atributo.</p>
+<p>Por ejemplo, el valor de una variable <strong>shipping</strong> podría comenzar siendo <strong>false</strong>. Luego, algo en el código podría cambiar la capacidad de enviar el artículo y, por lo tanto, podrías cambiar el valor a <strong>true</strong>.</p>
+<p>En este ejemplo de código, los valores de las dos variables se intercambian: una pasa de <strong>true</strong> a <strong>false</strong> y viceversa.</p>
+<h3 id="reglas-para-nombrar-variables">REGLAS PARA NOMBRAR VARIABLES<a class="headerlink" href="#reglas-para-nombrar-variables" title="Permanent link">&para;</a></h3>
+<p>Aquí hay seis reglas que siempre debes seguir al darle un nombre a una variable:</p>
+<ol>
+<li>
+<p>El nombre debe comenzar con una letra, un signo de dólar (<code>$</code>) o un guión bajo (<code>_</code>). No debe comenzar con un número.</p>
+</li>
+<li>
+<p>El nombre puede contener letras, números, signo de dólar (<code>$</code>) o guión bajo (<code>_</code>). Ten en cuenta que no debes usar un guión (<code>-</code>) ni un punto (<code>.</code>) en un nombre de variable.</p>
+</li>
+<li>
+<p>No puedes usar <strong>palabras clave</strong> (keywords) ni <strong>palabras reservadas</strong> (reserved words). Las palabras clave son palabras especiales que le indican al intérprete que haga algo. Por ejemplo, <code>var</code> es una palabra clave usada para declarar una variable. Las palabras reservadas son aquellas que podrían usarse en una versión futura de JavaScript.</p>
+</li>
+<li>
+<p>Todas las variables distinguen entre mayúsculas y minúsculas, por lo que <strong>score</strong> y <strong>Score</strong> serían nombres de variable diferentes, pero es una mala práctica crear dos variables que tengan el mismo nombre usando diferentes mayúsculas.</p>
+</li>
+<li>
+<p>Usa un nombre que describa el tipo de información que almacena la variable. Por ejemplo, <strong>firstName</strong> podría usarse para almacenar el nombre de pila de una persona, <strong>lastName</strong> para su apellido y <strong>age</strong> para su edad.</p>
+</li>
+<li>
+<p>Si el nombre de tu variable se compone de más de una palabra, usa una letra mayúscula para la primera letra de cada palabra después de la primera palabra. Por ejemplo, <strong>firstName</strong> en lugar de <strong>firstname</strong> (esto se llama <strong>camelCase</strong>). También puedes usar un guión bajo entre cada palabra (no puedes usar un guión).</p>
+</li>
+</ol>
+<h3 id="arreglos-arrays">ARREGLOS (ARRAYS)<a class="headerlink" href="#arreglos-arrays" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Un array es un tipo especial de variable. No solo almacena un valor; almacena una lista de valores.</p>
+</div>
+<p>Deberías considerar usar un array cada vez que trabajes con una lista o un conjunto de valores que estén relacionados entre sí.</p>
+<p>Los arrays son especialmente útiles cuando no sabes cuántos elementos contendrá una lista, porque al crear el array no necesitas especificar cuántos valores va a contener.</p>
+<p>Si no sabes cuántos elementos tendrá una lista, en lugar de crear suficientes variables para una lista larga (cuando podrías usar solo un pequeño porcentaje de ellas), usar un array se considera una mejor solución.</p>
+<p>Por ejemplo, un array puede ser adecuado para almacenar los artículos individuales de una lista de compras porque es una lista de elementos relacionados. Además, cada vez que escribes una nueva lista de compras, la cantidad de artículos puede ser diferente.</p>
+<blockquote>
+<p>Como verás en la página siguiente, los valores en un array se separan por comas. En el Capítulo 12, verás que los arrays pueden ser muy útiles al representar datos complejos.</p>
+</blockquote>
+<h3 id="creando-un-array">CREANDO UN ARRAY<a class="headerlink" href="#creando-un-array" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../creatingarray.png" /></p>
+<p>Crear un array y darle un nombre es igual que cualquier otra variable (usando la palabra clave <strong>var</strong> seguida del nombre del array).</p>
+<p>Los valores se asignan al array dentro de un par de corchetes, y cada valor se separa por una coma. Los valores en el array no necesitan ser del mismo tipo de dato, por lo que puedes almacenar una cadena, un número y un booleano en el mismo array.</p>
+<p>Esta técnica para crear un array se conoce como <strong>array literal</strong>. Generalmente es el método preferido para crear un array.</p>
+<p>También puedes escribir cada valor en una línea separada:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;custom&#39;</span><span class="p">];</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Arriba, puedes ver un array creado usando una técnica diferente llamada <strong>array constructor</strong>. Esta usa la palabra clave <strong>new</strong> seguida de <code>Array()</code>. Los valores se especifican entre paréntesis (no corchetes), y cada valor se separa por una coma.</p>
+<h3 id="valores-en-arrays">VALORES EN ARRAYS<a class="headerlink" href="#valores-en-arrays" title="Permanent link">&para;</a></h3>
+<p>Los valores en un array se acceden como si estuvieran en una lista numerada. Es importante saber que la numeración de esta lista comienza en cero (no en uno).</p>
+<h4 id="numerando-elementos-en-un-array">NUMERANDO ELEMENTOS EN UN ARRAY<a class="headerlink" href="#numerando-elementos-en-un-array" title="Permanent link">&para;</a></h4>
+<p>Cada elemento en un array recibe automáticamente un número llamado <strong>índice</strong> (index). Este se puede usar para acceder a elementos específicos en el array. Considera el siguiente array que contiene tres colores:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">colors</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;custom&#39;</span><span class="p">];</span>
+</span></code></pre></div></td></tr></table></div>
+<p>De manera confusa, los valores del índice comienzan en 0 (no en 1), por lo que la siguiente tabla muestra los elementos del array y sus valores de índice correspondientes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">INDEX</th>
+<th>VALUE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td>'white'</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td>'black'</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>'custom'</td>
+</tr>
+</tbody>
+</table>
+<h4 id="accediendo-a-elementos-en-un-array">ACCEDIENDO A ELEMENTOS EN UN ARRAY<a class="headerlink" href="#accediendo-a-elementos-en-un-array" title="Permanent link">&para;</a></h4>
+<p>Para recuperar el tercer elemento de la lista, se especifica el nombre del array junto con el número de índice entre corchetes.</p>
+<p>Aquí puedes ver una variable llamada <strong>itemThree</strong> que se declara. Su valor se establece como el tercer color del array <strong>colors</strong>.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">itemThree</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nx">itemThree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colors</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="numero-de-elementos-en-un-array">NÚMERO DE ELEMENTOS EN UN ARRAY<a class="headerlink" href="#numero-de-elementos-en-un-array" title="Permanent link">&para;</a></h4>
+<p>Cada array tiene una propiedad llamada <strong>length</strong>, que contiene la cantidad de elementos en el array.</p>
+<p>Abajo puedes ver que se declara una variable llamada <strong>numColors</strong>. Su valor se establece como el número de elementos en el array. El nombre del array va seguido de un punto y luego la palabra clave <strong>length</strong>.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">numColors</span><span class="p">;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nx">numColors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colors</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>A lo largo del libro (especialmente en el Capítulo 12), conocerás más características de los arrays, que son una característica muy flexible y poderosa de JavaScript.</p>
+</blockquote>
+<h3 id="accediendo-y-cambiando-valores-en-un-array">ACCEDIENDO Y CAMBIANDO VALORES EN UN ARRAY<a class="headerlink" href="#accediendo-y-cambiando-valores-en-un-array" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../valuesarray.png" /></p>
+<p>Las primeras líneas de código a la izquierda crean un array que contiene una lista de tres colores. (Los valores se pueden agregar en la misma línea o en líneas separadas como se muestra aquí).</p>
+<p>Habiendo creado el array, el tercer elemento de la lista se cambia de <strong>'custom'</strong> a <strong>'beige'</strong>.</p>
+<p>Para acceder a un valor de un array, después del nombre del array especificas el número de índice para ese valor entre corchetes.</p>
+<p>Puedes cambiar el valor de un elemento en un array seleccionándolo y asignándole un nuevo valor como lo harías con cualquier otra variable (usando el signo igual y el nuevo valor para ese elemento).</p>
+<p>En las dos últimas sentencias, el tercer elemento recién actualizado del array se agrega a la página.</p>
+<p>Si quisieras escribir todos los elementos de un array, usarías un bucle (loop), que conocerás en la pág. 170.</p>
+<h3 id="expresiones-expressions">EXPRESIONES (EXPRESSIONS)<a class="headerlink" href="#expresiones-expressions" title="Permanent link">&para;</a></h3>
+<p>Una expresión evalúa (resulta en) un solo valor. En términos generales, hay dos tipos de expresiones.</p>
+<ol>
+<li><strong>EXPRESIONES QUE ASIGNAN UN VALOR A UNA VARIABLE</strong></li>
+</ol>
+<p>Para que una variable sea útil, necesita tener un valor. Como has visto, esto se hace usando el operador de asignación (el signo igual).</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;beige&#39;</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>El valor de <strong>color</strong> ahora es <strong>beige</strong>. Cuando declaras una variable por primera vez usando la palabra clave <strong>var</strong>, se le da un valor especial de <strong>undefined</strong>. Esto cambiará cuando le asignes un valor.</p>
+<p>Técnicamente, <strong>undefined</strong> es un tipo de dato como un número, una cadena o un booleano.</p>
+<ol>
+<li><strong>EXPRESIONES QUE USAN DOS O MÁS VALORES PARA DEVOLVER UN SOLO VALOR</strong></li>
+</ol>
+<p>Puedes realizar operaciones sobre cualquier cantidad de valores individuales para determinar un solo valor. Por ejemplo:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>El valor de <strong>area</strong> ahora es <strong>6</strong>. Aquí la expresión <code>3 * 2</code> evalúa a 6. Este ejemplo también usa el operador de asignación, por lo que el resultado de la expresión <code>3 * 2</code> se almacena en la variable llamada <strong>area</strong>.</p>
+<p>Otro ejemplo donde una expresión usa dos valores para producir un solo valor sería cuando dos cadenas se unen para crear una sola cadena.</p>
+<h3 id="operadores-operators">OPERADORES (OPERATORS)<a class="headerlink" href="#operadores-operators" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Las expresiones dependen de cosas llamadas <strong>operadores</strong>; permiten a los programadores crear un solo valor a partir de uno o más valores.</p>
+</div>
+<hr />
+<p>Cubiertos en este capítulo:</p>
+<p><strong>OPERADORES DE ASIGNACIÓN</strong></p>
+<p>Asignan un valor a una variable
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;beige&#39;</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+El valor de <strong>color</strong> ahora es <strong>beige</strong>. (Ver pág. 61)</p>
+<p><strong>OPERADORES ARITMÉTICOS</strong></p>
+<p>Realizan matemáticas básicas
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nx">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+El valor de <strong>area</strong> ahora es <strong>6</strong>. (Ver pág. 76)</p>
+<p><strong>OPERADORES DE CADENA (STRING)</strong></p>
+<p>Combinan dos cadenas
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hi &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;Molly&#39;</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+El valor de <strong>greeting</strong> ahora es <strong>Hi Molly</strong>. (Ver pág. 78)</p>
+<hr />
+<p>Cubiertos en el Capítulo 4:</p>
+<p><strong>OPERADORES DE COMPARACIÓN</strong></p>
+<p>Comparan dos valores y devuelven <strong>true</strong> o <strong>false</strong>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nx">buy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+El valor de <strong>buy</strong> es <strong>false</strong>. (Ver pág. 150)</p>
+<p><strong>OPERADORES LÓGICOS</strong></p>
+<p>Combinan expresiones y devuelven <strong>true</strong> o <strong>false</strong>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nx">buy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">5</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="mf">2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+El valor de <strong>buy</strong> ahora es <strong>true</strong>. (Ver pág. 156)</p>
+<hr />
+<h3 id="operadores-aritmeticos">OPERADORES ARITMÉTICOS<a class="headerlink" href="#operadores-aritmeticos" title="Permanent link">&para;</a></h3>
+<p>JavaScript contiene los siguientes operadores matemáticos, que puedes usar con números. Puede que recuerdes algunos de la clase de matemáticas.</p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>OPERATOR</th>
+<th>PURPOSE &amp; NOTES</th>
+<th>EXAMPLE</th>
+<th>RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADDITION</td>
+<td>+</td>
+<td>Adds one value to another</td>
+<td>10 + 5</td>
+<td>15</td>
+</tr>
+<tr>
+<td>SUBTRACTION</td>
+<td>-</td>
+<td>Subtracts one value from another</td>
+<td>10 - 5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>DIVISION</td>
+<td>/</td>
+<td>Divides two values</td>
+<td>10 / 5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>MULTIPLICATION</td>
+<td>*</td>
+<td>Multiplies two values using an asterisk</td>
+<td>10 * 5</td>
+<td>50</td>
+</tr>
+<tr>
+<td>INCREMENT</td>
+<td>++</td>
+<td>Adds one to the current number</td>
+<td>i = 10; i++;</td>
+<td>11</td>
+</tr>
+<tr>
+<td>DECREMENT</td>
+<td>--</td>
+<td>Subtracts one from the current number</td>
+<td>i = 10; i--;</td>
+<td>9</td>
+</tr>
+<tr>
+<td>MODULUS</td>
+<td>%</td>
+<td>Divides two values and returns the remainder</td>
+<td>10 % 3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ORDEN DE EJECUCIÓN</strong></p>
+<p>Se pueden realizar varias operaciones aritméticas en una sola expresión, pero es importante entender cómo se calculará el resultado. La multiplicación y la división se realizan antes que la suma o la resta. Esto puede afectar el número que esperas ver.</p>
+<p>Aquí los números se calculan de izquierda a derecha, por lo que el total es <strong>16</strong>:
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>Pero en el siguiente ejemplo el total es <strong>42</strong> (no 60):
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+Esto se debe a que la multiplicación y la división ocurren antes que la suma y la resta.</p>
+<p>Para cambiar el orden en que se realizan las operaciones, coloca el cálculo que quieras hacer primero entre paréntesis. Así, en el siguiente ejemplo, el total es <strong>60</strong>:
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">4</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+Los paréntesis indican que el 2 se suma al 4, y luego la cifra resultante se multiplica por 10.</p>
+<h3 id="usando-operadores-aritmeticos">USANDO OPERADORES ARITMÉTICOS<a class="headerlink" href="#usando-operadores-aritmeticos" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../arithmetichsope.png" /></p>
+<p>Este ejemplo demuestra cómo se usan los operadores matemáticos con números para calcular los valores combinados de dos costos.</p>
+<p>Las primeras dos líneas crean dos variables: una para almacenar el subtotal del pedido y la otra para contener el costo de envío del pedido; por lo tanto, las variables se nombran en consecuencia: <strong>subtotal</strong> y <strong>shipping</strong>.</p>
+<p>En la tercera línea, el total se calcula sumando estos dos valores.</p>
+<p>Esto demuestra cómo los operadores matemáticos pueden usar variables que representan números. (Es decir, los números no necesitan estar escritos explícitamente en el código).</p>
+<p>Las seis líneas restantes de código escriben los resultados en la pantalla.</p>
+<h3 id="operador-de-cadena-string">OPERADOR DE CADENA (STRING)<a class="headerlink" href="#operador-de-cadena-string" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Solo hay un operador de cadena: el símbolo <code>+</code>. Se usa para unir las cadenas a cada lado de él.</p>
+</blockquote>
+<p>Hay muchas ocasiones en las que puedes necesitar unir dos o más cadenas para crear un solo valor. Los programadores llaman al proceso de unir dos o más cadenas para crear una nueva cadena <strong>concatenación</strong>.</p>
+<p>Por ejemplo, podrías tener un nombre y un apellido en dos variables separadas y querer unirlos para mostrar el nombre completo. En este ejemplo, la variable llamada <strong>fullName</strong> contendría la cadena <strong>'Ivy Stone'</strong>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Ivy &#39;</span><span class="p">;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">lastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Stone&#39;</span><span class="p">;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">fullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">firstName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">lastName</span><span class="p">;</span>
+</span></code></pre></div>
+<p><strong>MEZCLANDO NÚMEROS Y CADENAS</strong></p>
+<p>Cuando colocas comillas alrededor de un número, es una cadena (no un tipo de dato numérico) y no puedes realizar operaciones de suma en cadenas.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">cost1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;7&#39;</span><span class="p">;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">cost2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;9&#39;</span><span class="p">;</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cost2</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Terminarías con una cadena que dice <strong>'79'</strong>.</p>
+<p>Si intentas agregar un tipo de dato numérico a una cadena, entonces el número se convierte en parte de la cadena, por ejemplo, agregando un número de casa a un nombre de calle:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="p">;</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">street</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Ivy Road&#39;</span><span class="p">;</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">street</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Terminarías con una cadena que dice <strong>'12Ivy Road'</strong>.</p>
+<p>Si intentas usar cualquiera de los otros operadores aritméticos en una cadena, el valor resultante suele ser un valor llamado <strong>NaN</strong>. Esto significa <strong>"Not a Number"</strong> (no es un número).</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;seven&#39;</span><span class="p">;</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">score2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;nine&#39;</span><span class="p">;</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">score2</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Terminarías con el valor <strong>NaN</strong>.</p>
+<h3 id="usando-operadores-de-cadena">USANDO OPERADORES DE CADENA<a class="headerlink" href="#usando-operadores-de-cadena" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../usingstring.png" /></p>
+<p>Este ejemplo mostrará un mensaje de bienvenida personalizado en la página.</p>
+<p>La primera línea crea una variable llamada <strong>greeting</strong>, que almacena el mensaje para el usuario. Aquí el saludo es la palabra <strong>Howdy</strong>.</p>
+<p>La segunda línea crea una variable que almacena el nombre del usuario. La variable se llama <strong>name</strong>, y el usuario en este caso es <strong>Molly</strong>.</p>
+<p>El mensaje de bienvenida personalizado se crea concatenando (uniendo) estas dos variables, agregando un signo de exclamación, y almacenándolos en una nueva variable llamada <strong>welcomeMessage</strong>.</p>
+<p>Observa la variable <strong>greeting</strong> en la primera línea y nota cómo hay un espacio después de la palabra <strong>Howdy</strong>. Si se omitiera el espacio, el valor de <strong>welcomeMessage</strong> sería <strong>"HowdyMolly!"</strong>.</p>
+<h3 id="ejemplo">EJEMPLO<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h3>
+<p>Este ejemplo combina varias técnicas que has visto a lo largo de este capítulo.</p>
+<p>Puedes ver el código de este ejemplo en las siguientes dos páginas. Se utilizan comentarios de una sola línea para describir lo que hace cada sección del código.</p>
+<p>Para empezar, se crean tres variables que almacenan información utilizada en el mensaje de bienvenida. Estas variables luego se concatenan (unen) para crear el mensaje completo que el usuario ve.</p>
+<p>La siguiente parte del ejemplo demuestra cómo se realizan operaciones matemáticas básicas con números para calcular el costo de un letrero.</p>
+<ul>
+<li>Una variable llamada <strong>sign</strong> contiene el texto que mostrará el letrero.</li>
+<li>Una propiedad llamada <strong>length</strong> se usa para determinar cuántos caracteres hay en la cadena (conocerás esta propiedad en la pág. 128).</li>
+<li>El costo del letrero (el subtotal) se calcula multiplicando el número de caracteres por el costo de cada uno.</li>
+<li>El gran total se crea agregando $7 por el envío.</li>
+</ul>
+<p>Finalmente, la información se escribe en la página seleccionando elementos y luego reemplazando el contenido de ese elemento (usando una técnica que conocerás completamente en el Capítulo 5). Selecciona elementos de la página HTML usando el valor de sus atributos <strong>id</strong> y luego actualiza el texto dentro de esos elementos.</p>
+<p>Una vez que hayas trabajado con este ejemplo, deberías tener una buena comprensión básica de cómo se almacenan los datos en variables y cómo realizar operaciones básicas con los datos en esas variables.</p>
+<h3 id="instrucciones-basicas-de-javascript">INSTRUCCIONES BÁSICAS DE JAVASCRIPT<a class="headerlink" href="#instrucciones-basicas-de-javascript" title="Permanent link">&para;</a></h3>
+<div class="language-html highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">HTML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-22-10">10</a></span>
+<span class="normal"><a href="#__codelineno-22-11">11</a></span>
+<span class="normal"><a href="#__codelineno-22-12">12</a></span>
+<span class="normal"><a href="#__codelineno-22-13">13</a></span>
+<span class="normal"><a href="#__codelineno-22-14">14</a></span>
+<span class="normal"><a href="#__codelineno-22-15">15</a></span>
+<span class="normal"><a href="#__codelineno-22-16">16</a></span>
+<span class="normal"><a href="#__codelineno-22-17">17</a></span>
+<span class="normal"><a href="#__codelineno-22-18">18</a></span>
+<span class="normal"><a href="#__codelineno-22-19">19</a></span>
+<span class="normal"><a href="#__codelineno-22-20">20</a></span>
+<span class="normal"><a href="#__codelineno-22-21">21</a></span>
+<span class="normal"><a href="#__codelineno-22-22">22</a></span>
+<span class="normal"><a href="#__codelineno-22-23">23</a></span>
+<span class="normal"><a href="#__codelineno-22-24">24</a></span>
+<span class="normal"><a href="#__codelineno-22-25">25</a></span>
+<span class="normal"><a href="#__codelineno-22-26">26</a></span>
+<span class="normal"><a href="#__codelineno-22-27">27</a></span>
+<span class="normal"><a href="#__codelineno-22-28">28</a></span>
+<span class="normal"><a href="#__codelineno-22-29">29</a></span>
+<span class="normal"><a href="#__codelineno-22-30">30</a></span>
+<span class="normal"><a href="#__codelineno-22-31">31</a></span>
+<span class="normal"><a href="#__codelineno-22-32">32</a></span>
+<span class="normal"><a href="#__codelineno-22-33">33</a></span>
+<span class="normal"><a href="#__codelineno-22-34">34</a></span>
+<span class="normal"><a href="#__codelineno-22-35">35</a></span>
+<span class="normal"><a href="#__codelineno-22-36">36</a></span>
+<span class="normal"><a href="#__codelineno-22-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a> <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>JavaScript <span class="ni">&amp;amp;</span> jQuery - Chapter 2: Basic JavaScript Instructions - Example<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/c02.css&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a> <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a> <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Elderflower<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;greeting&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;message&quot;</span><span class="p">&gt;</span>Hello!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11"></a>    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12"></a>        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13"></a>            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Custom sign: <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14"></a>            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;userSign&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15"></a>        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16"></a>        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17"></a>            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Total tiles: <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18"></a>            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;tiles&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19"></a>        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20"></a>        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-21"><a id="__codelineno-22-21" name="__codelineno-22-21"></a>            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Subtotal: <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-22"><a id="__codelineno-22-22" name="__codelineno-22-22"></a>            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;subTotal&quot;</span><span class="p">&gt;</span>$<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-23"><a id="__codelineno-22-23" name="__codelineno-22-23"></a>        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-24"><a id="__codelineno-22-24" name="__codelineno-22-24"></a>        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-25"><a id="__codelineno-22-25" name="__codelineno-22-25"></a>            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Shipping: <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-26"><a id="__codelineno-22-26" name="__codelineno-22-26"></a>            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;shipping&quot;</span><span class="p">&gt;</span>$<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-27"><a id="__codelineno-22-27" name="__codelineno-22-27"></a>        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-28"><a id="__codelineno-22-28" name="__codelineno-22-28"></a>        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-29"><a id="__codelineno-22-29" name="__codelineno-22-29"></a>            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Grand total: <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-30"><a id="__codelineno-22-30" name="__codelineno-22-30"></a>            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;grandTotal&quot;</span><span class="p">&gt;</span>$<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</span><span id="__span-22-31"><a id="__codelineno-22-31" name="__codelineno-22-31"></a>        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</span><span id="__span-22-32"><a id="__codelineno-22-32" name="__codelineno-22-32"></a>    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</span><span id="__span-22-33"><a id="__codelineno-22-33" name="__codelineno-22-33"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;action&quot;</span><span class="p">&gt;</span>Pay Now<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span><span id="__span-22-34"><a id="__codelineno-22-34" name="__codelineno-22-34"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-22-35"><a id="__codelineno-22-35" name="__codelineno-22-35"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/example.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-22-36"><a id="__codelineno-22-36" name="__codelineno-22-36"></a> <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-22-37"><a id="__codelineno-22-37" name="__codelineno-22-37"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-js highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JAVASCRIPT</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span>
+<span class="normal"><a href="#__codelineno-23-11">11</a></span>
+<span class="normal"><a href="#__codelineno-23-12">12</a></span>
+<span class="normal"><a href="#__codelineno-23-13">13</a></span>
+<span class="normal"><a href="#__codelineno-23-14">14</a></span>
+<span class="normal"><a href="#__codelineno-23-15">15</a></span>
+<span class="normal"><a href="#__codelineno-23-16">16</a></span>
+<span class="normal"><a href="#__codelineno-23-17">17</a></span>
+<span class="normal"><a href="#__codelineno-23-18">18</a></span>
+<span class="normal"><a href="#__codelineno-23-19">19</a></span>
+<span class="normal"><a href="#__codelineno-23-20">20</a></span>
+<span class="normal"><a href="#__codelineno-23-21">21</a></span>
+<span class="normal"><a href="#__codelineno-23-22">22</a></span>
+<span class="normal"><a href="#__codelineno-23-23">23</a></span>
+<span class="normal"><a href="#__codelineno-23-24">24</a></span>
+<span class="normal"><a href="#__codelineno-23-25">25</a></span>
+<span class="normal"><a href="#__codelineno-23-26">26</a></span>
+<span class="normal"><a href="#__codelineno-23-27">27</a></span>
+<span class="normal"><a href="#__codelineno-23-28">28</a></span>
+<span class="normal"><a href="#__codelineno-23-29">29</a></span>
+<span class="normal"><a href="#__codelineno-23-30">30</a></span>
+<span class="normal"><a href="#__codelineno-23-31">31</a></span>
+<span class="normal"><a href="#__codelineno-23-32">32</a></span>
+<span class="normal"><a href="#__codelineno-23-33">33</a></span>
+<span class="normal"><a href="#__codelineno-23-34">34</a></span>
+<span class="normal"><a href="#__codelineno-23-35">35</a></span>
+<span class="normal"><a href="#__codelineno-23-36">36</a></span>
+<span class="normal"><a href="#__codelineno-23-37">37</a></span>
+<span class="normal"><a href="#__codelineno-23-38">38</a></span>
+<span class="normal"><a href="#__codelineno-23-39">39</a></span>
+<span class="normal"><a href="#__codelineno-23-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="c1">// Create variables for the welcome message</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Howdy &#39;</span><span class="p">;</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Molly&#39;</span><span class="p">;</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;, please check your order:&#39;</span><span class="p">;</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="c1">// Concatenate the three variables above to create the welcome message</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="kd">var</span><span class="w"> </span><span class="nx">welcome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">greeting</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">message</span><span class="p">;</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="c1">// Create variables to hold details about the sign</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="kd">var</span><span class="w"> </span><span class="nx">sign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Montague House&#39;</span><span class="p">;</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="kd">var</span><span class="w"> </span><span class="nx">tiles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sign</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12"></a><span class="kd">var</span><span class="w"> </span><span class="nx">subTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tiles</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13"></a><span class="kd">var</span><span class="w"> </span><span class="nx">shipping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">7</span><span class="p">;</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14"></a><span class="kd">var</span><span class="w"> </span><span class="nx">grandTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">subTotal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">shipping</span><span class="p">;</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15"></a>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16"></a><span class="c1">// Get the element that has an id of greeting</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;greeting&#39;</span><span class="p">);</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18"></a>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19"></a><span class="c1">// Replace the content of that element with the personalized welcome message</span>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20"></a><span class="nx">el</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">welcome</span><span class="p">;</span>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21"></a>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22"></a><span class="c1">// Get the element that has an id of userSign then update its contents</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elSign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;userSign&#39;</span><span class="p">);</span>
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24"></a><span class="nx">elSign</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sign</span><span class="p">;</span>
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25"></a>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26"></a><span class="c1">// Get the element that has an id of tiles then update its contents</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elTiles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;tiles&#39;</span><span class="p">);</span>
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28"></a><span class="nx">elTiles</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tiles</span><span class="p">;</span>
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29"></a>
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30"></a><span class="c1">// Get the element that has an id of subTotal then update its contents</span>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elSubTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;subTotal&#39;</span><span class="p">);</span>
+</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32"></a><span class="nx">elSubTotal</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;$&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">subTotal</span><span class="p">;</span>
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33"></a>
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34"></a><span class="c1">// Get the element that has an id of shipping then update its contents</span>
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elShipping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;shipping&#39;</span><span class="p">);</span>
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36"></a><span class="nx">elShipping</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;$&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">shipping</span><span class="p">;</span>
+</span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37"></a>
+</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38"></a><span class="c1">// Get the element that has an id of grandTotal then update its contents</span>
+</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elGrandTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;grandTotal&#39;</span><span class="p">);</span>
+</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40"></a><span class="nx">elGrandTotal</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;$&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">grandTotal</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="resumen">RESUMEN<a class="headerlink" href="#resumen" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Un script se compone de una serie de sentencias. Cada sentencia es como un paso en una receta.</li>
+<li>Los scripts contienen instrucciones muy precisas. Por ejemplo, podrías especificar que un valor debe ser recordado antes de crear un cálculo usando ese valor.</li>
+<li>Las variables se usan para almacenar temporalmente piezas de información utilizadas en el script.</li>
+<li>Los arrays son tipos especiales de variables que almacenan más de una pieza de información relacionada.</li>
+<li>JavaScript distingue entre números (0-9), cadenas (texto) y valores booleanos (true o false).</li>
+<li>Las expresiones evalúan a un solo valor.</li>
+<li>Las expresiones dependen de operadores para calcular un valor.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../capitulo-1/the-abc-programming/" class="md-footer__link md-footer__link--prev" aria-label="Previous: THE ABC OF PROGRAMMING">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                THE ABC OF PROGRAMMING
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-footer__link md-footer__link--next" aria-label="Next: NODE FUNDAMENTALS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                NODE FUNDAMENTALS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>
