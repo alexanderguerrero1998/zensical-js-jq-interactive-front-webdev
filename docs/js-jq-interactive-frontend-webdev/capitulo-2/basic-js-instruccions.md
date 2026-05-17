@@ -18,11 +18,15 @@ Comenzaremos con algunos de los bloques de construcción clave del lenguaje y ve
 
     Un script es una serie de instrucciones que una computadora puede seguir una por una. Cada instrucción o paso individual se conoce como **sentencia** (statement). Las sentencias deben terminar con un punto y coma.
 
-Veremos lo que hace el código de la derecha en breve, pero por el momento observa que:
+![](code.png)
+
+Veremos lo que hace el código de la arriba en breve, pero por el momento observa que:
 
 - Cada una de las líneas de código en verde es una sentencia.
 - Las llaves rosadas indican el inicio y el final de un bloque de código. (Cada bloque de código podría contener muchas más sentencias).
 - El código en púrpura determina qué código debería ejecutarse (como verás en la pág. 149).
+  
+
 
 ### JAVASCRIPT DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS
 

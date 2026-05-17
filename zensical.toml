@@ -19,8 +19,8 @@ nav = [
           "JAVASCRIPT JS-JQ FRONTEND" = [ 
             { "INTRODUCCION" = "js-jq-interactive-frontend-webdev/capitulo-0/introduccion.md" },
             { "THE ABC OF PROGRAMMING" = "js-jq-interactive-frontend-webdev/capitulo-1/the-abc-programming.md" },
-             { "BASIC JS INSTRUCCIONS" = "js-jq-interactive-frontend-webdev/capitulo-2/basic-js-instruccions.md" },
-          
+            { "BASIC JS INSTRUCCIONS" = "js-jq-interactive-frontend-webdev/capitulo-2/basic-js-instruccions.md" },
+            { "FUNCTIONS METHODS & OBJECTS" = "js-jq-interactive-frontend-webdev/capitulo-3/func-meth-obj.md"}
             
           
           ]
