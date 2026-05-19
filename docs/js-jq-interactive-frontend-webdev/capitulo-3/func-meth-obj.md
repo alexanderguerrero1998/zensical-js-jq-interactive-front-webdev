@@ -1439,13 +1439,13 @@ Esta es una buena demostración de varios conceptos relacionados con la fecha, p
 
 ### RESUMEN
 
-- Las funciones te permiten agrupar un conjunto de sentencias relacionadas que representan una sola tarea.
-- Las funciones pueden tomar parámetros (información requerida para hacer su trabajo) y pueden devolver un valor.
-- Un objeto es una serie de variables y funciones que representan algo del mundo que te rodea.
-- En un objeto, las variables se conocen como propiedades del objeto; las funciones se conocen como métodos del objeto.
-- Los navegadores web implementan objetos que representan tanto la ventana del navegador como el documento cargado en la ventana del navegador.
-- JavaScript también tiene varios objetos incorporados como **String**, **Number**, **Math** y **Date**. Sus propiedades y métodos ofrecen funcionalidad que te ayuda a escribir scripts.
-- Los arreglos y objetos se pueden usar para crear conjuntos de datos complejos (y ambos pueden contener al otro).
+- [x] Las funciones te permiten agrupar un conjunto de sentencias relacionadas que representan una sola tarea.
+- [x] Las funciones pueden tomar parámetros (información requerida para hacer su trabajo) y pueden devolver un valor.
+- [x] Un objeto es una serie de variables y funciones que representan algo del mundo que te rodea.
+- [x] En un objeto, las variables se conocen como propiedades del objeto; las funciones se conocen como métodos del objeto.
+- [x] Los navegadores web implementan objetos que representan tanto la ventana del navegador como el documento cargado en la ventana del navegador.
+- [x] JavaScript también tiene varios objetos incorporados como **String**, **Number**, **Math** y **Date**. Sus propiedades y métodos ofrecen funcionalidad que te ayuda a escribir scripts.
+- [x] Los arreglos y objetos se pueden usar para crear conjuntos de datos complejos (y ambos pueden contener al otro).
 
 
 

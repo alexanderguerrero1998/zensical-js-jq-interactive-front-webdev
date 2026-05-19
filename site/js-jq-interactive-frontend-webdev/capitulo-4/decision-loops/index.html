@@ -1,0 +1,2786 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aprendizaje de Express.js">
+      
+      
+        <meta name="author" content="Alexander Guerrero">
+      
+      
+      
+        <link rel="prev" href="../../capitulo-3/func-meth-obj/">
+      
+      
+        <link rel="next" href="../../capitulo-5/document-object-model/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>DECISIONES Y BUCLES - JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#decisiones-y-bucles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-header__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DECISIONES Y BUCLES
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-nav__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-0/introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INTRODUCCION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-1/the-abc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    THE ABC OF PROGRAMMING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-2/basic-js-instruccions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BASIC JS INSTRUCCIONS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-3/func-meth-obj/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FUNCTIONS METHODS & OBJECTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DECISIONS & LOOPS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DECISIONS & LOOPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toma-de-decisiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TOMA DE DECISIONES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluacion-de-condiciones-y-sentencias-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVALUACIÓN DE CONDICIONES Y SENTENCIAS CONDICIONALES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EVALUACIÓN DE CONDICIONES Y SENTENCIAS CONDICIONALES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluacion-de-una-condicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVALUACIÓN DE UNA CONDICIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentencias-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS CONDICIONALES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lo-que-esto-dice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LO QUE ESTO DICE:
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-de-comparacion-evaluando-condiciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES DE COMPARACIÓN: EVALUANDO CONDICIONES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructurando-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ESTRUCTURANDO OPERADORES DE COMPARACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OPERADORES DE COMPARACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-expresiones-con-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO EXPRESIONES CON OPERADORES DE COMPARACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparando-dos-expresiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COMPARANDO DOS EXPRESIONES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-logicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES LÓGICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluacion-de-corto-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVALUACIÓN DE CORTO CIRCUITO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-and-logico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO AND LÓGICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-or-logico-y-not-logico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OR LÓGICO Y NOT LÓGICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS IF
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-ifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS IF...ELSE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-sentencias-ifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO SENTENCIAS IF...ELSE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS SWITCH
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-sentencias-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO SENTENCIAS SWITCH
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coercion-de-tipos-y-tipado-debil" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COERCIÓN DE TIPOS Y TIPADO DÉBIL
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valores-truthy-y-falsy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES TRUTHY Y FALSY
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VALORES TRUTHY Y FALSY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valores-falsy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES FALSY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valores-truthy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES TRUTHY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificando-igualdad-y-existencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VERIFICANDO IGUALDAD Y EXISTENCIA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valores-de-corto-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES DE CORTO CIRCUITO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        BUCLES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BUCLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        WHILE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dowhile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DO...WHILE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contadores-de-bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONTADORES DE BUCLES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CONTADORES DE BUCLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        INICIALIZACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONDICIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actualizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACTUALIZACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ITERACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-clave-de-bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONCEPTOS CLAVE DE BUCLES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CONCEPTOS CLAVE DE BUCLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#palabras-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PALABRAS CLAVE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucles-y-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        BUCLES Y ARRAYS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problemas-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PROBLEMAS DE RENDIMIENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-bucles-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO BUCLES FOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-bucles-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO BUCLES WHILE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-decisiones-y-bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EJEMPLO: DECISIONES Y BUCLES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-5/document-object-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DOCUMENT OBJECT MODEL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#toma-de-decisiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TOMA DE DECISIONES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluacion-de-condiciones-y-sentencias-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVALUACIÓN DE CONDICIONES Y SENTENCIAS CONDICIONALES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EVALUACIÓN DE CONDICIONES Y SENTENCIAS CONDICIONALES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluacion-de-una-condicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVALUACIÓN DE UNA CONDICIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentencias-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS CONDICIONALES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lo-que-esto-dice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LO QUE ESTO DICE:
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-de-comparacion-evaluando-condiciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES DE COMPARACIÓN: EVALUANDO CONDICIONES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructurando-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ESTRUCTURANDO OPERADORES DE COMPARACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OPERADORES DE COMPARACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-expresiones-con-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO EXPRESIONES CON OPERADORES DE COMPARACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparando-dos-expresiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COMPARANDO DOS EXPRESIONES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-logicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        OPERADORES LÓGICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluacion-de-corto-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EVALUACIÓN DE CORTO CIRCUITO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-and-logico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO AND LÓGICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-or-logico-y-not-logico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO OR LÓGICO Y NOT LÓGICO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS IF
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-ifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS IF...ELSE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-sentencias-ifelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO SENTENCIAS IF...ELSE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentencias-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SENTENCIAS SWITCH
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-sentencias-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO SENTENCIAS SWITCH
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coercion-de-tipos-y-tipado-debil" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        COERCIÓN DE TIPOS Y TIPADO DÉBIL
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valores-truthy-y-falsy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES TRUTHY Y FALSY
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VALORES TRUTHY Y FALSY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valores-falsy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES FALSY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valores-truthy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES TRUTHY
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificando-igualdad-y-existencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VERIFICANDO IGUALDAD Y EXISTENCIA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valores-de-corto-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        VALORES DE CORTO CIRCUITO
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        BUCLES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BUCLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        WHILE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dowhile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DO...WHILE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contadores-de-bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONTADORES DE BUCLES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CONTADORES DE BUCLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        INICIALIZACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONDICIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actualizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACTUALIZACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iteracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ITERACIÓN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-clave-de-bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CONCEPTOS CLAVE DE BUCLES
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CONCEPTOS CLAVE DE BUCLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#palabras-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PALABRAS CLAVE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucles-y-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        BUCLES Y ARRAYS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problemas-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PROBLEMAS DE RENDIMIENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-bucles-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO BUCLES FOR
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usando-bucles-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        USANDO BUCLES WHILE
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-decisiones-y-bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EJEMPLO: DECISIONES Y BUCLES
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RESUMEN
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../capitulo-0/introduccion/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    JAVASCRIPT JS-JQ FRONTEND
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="decisiones-y-bucles">DECISIONES Y BUCLES<a class="headerlink" href="#decisiones-y-bucles" title="Permanent link">&para;</a></h1>
+<p>Al observar un diagrama de flujo (excepto en los scripts más básicos), el código puede tomar más de un camino, lo que significa que el navegador ejecuta código diferente en distintas situaciones. En este capítulo, aprenderás a crear y controlar el flujo de datos en tus scripts para manejar diferentes situaciones.</p>
+<blockquote>
+<p>Los scripts a menudo necesitan comportarse de manera diferente dependiendo de cómo el usuario interactúa con la página web y/o la ventana del navegador. Para determinar qué camino tomar, los programadores a menudo se basan en los siguientes tres conceptos:</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EVALUACIONES</strong></td>
+<td>Puedes analizar valores en tus scripts para determinar si coinciden o no con los resultados esperados.</td>
+</tr>
+<tr>
+<td><strong>DECISIONES</strong></td>
+<td>Usando los resultados de las evaluaciones, puedes decidir qué camino debe seguir tu script.</td>
+</tr>
+<tr>
+<td><strong>BUCLES</strong></td>
+<td>También hay muchas ocasiones en las que querrás realizar el mismo conjunto de pasos repetidamente.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="toma-de-decisiones">TOMA DE DECISIONES<a class="headerlink" href="#toma-de-decisiones" title="Permanent link">&para;</a></h2>
+<p>A menudo hay varios lugares en un script donde se toman decisiones que determinan qué líneas de código deben ejecutarse a continuación. Los diagramas de flujo pueden ayudarte a planificar estas ocasiones.</p>
+<p>En un diagrama de flujo, la forma de diamante representa un punto donde se debe tomar una decisión y el código puede tomar uno de dos caminos diferentes. Cada camino está compuesto por un conjunto diferente de tareas, lo que significa que debes escribir código diferente para cada situación.</p>
+<p>Para determinar qué camino tomar, estableces una condición. Por ejemplo, puedes verificar si un valor es igual a otro, mayor que otro o menor que otro. Si la condición devuelve <code>true</code>, tomas un camino; si es <code>false</code>, tomas el otro.</p>
+<p><img alt="" src="../diagramflow.png" /></p>
+<p>De la misma manera que hay operadores para hacer matemáticas básicas o para unir dos cadenas de texto, existen operadores de comparación que te permiten comparar valores y evaluar si una condición se cumple o no.</p>
+<p>Ejemplos de operadores de comparación incluyen los símbolos mayor que (<code>&gt;</code>) y menor que (<code>&lt;</code>), y el doble signo igual (<code>==</code>) que verifica si dos valores son iguales.</p>
+<h2 id="evaluacion-de-condiciones-y-sentencias-condicionales">EVALUACIÓN DE CONDICIONES Y SENTENCIAS CONDICIONALES<a class="headerlink" href="#evaluacion-de-condiciones-y-sentencias-condicionales" title="Permanent link">&para;</a></h2>
+<p>Hay dos componentes en una decisión:</p>
+<ol>
+<li><strong>Una expresión</strong> se evalúa y devuelve un valor.</li>
+<li><strong>Una sentencia condicional</strong> dice qué hacer en una situación determinada.</li>
+</ol>
+<h3 id="evaluacion-de-una-condicion">EVALUACIÓN DE UNA CONDICIÓN<a class="headerlink" href="#evaluacion-de-una-condicion" title="Permanent link">&para;</a></h3>
+<p>Para tomar una decisión, tu código verifica el estado actual del script. Esto se hace comúnmente comparando dos valores usando un operador de comparación que devuelve un valor de <code>true</code> o <code>false</code>.</p>
+<h3 id="sentencias-condicionales">SENTENCIAS CONDICIONALES<a class="headerlink" href="#sentencias-condicionales" title="Permanent link">&para;</a></h3>
+<p>Una sentencia condicional se basa en el concepto de si/entonces/si no (if/then/else); si una condición se cumple, entonces tu código ejecuta una o más sentencias, si no, tu código hace algo diferente (o simplemente omite el paso).</p>
+<h3 id="lo-que-esto-dice">LO QUE ESTO DICE:<a class="headerlink" href="#lo-que-esto-dice" title="Permanent link">&para;</a></h3>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;You passed!&#39;</span><span class="p">);</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;Try again...&#39;</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Si la condición devuelve <code>true</code>:
+  ejecuta las sentencias entre el primer par de llaves
+De lo contrario:
+  ejecuta las sentencias entre el segundo par de llaves</p>
+<p>(También verás valores truthy y falsy en la pág. 167. Se tratan como si fueran <code>true</code> o <code>false</code>).</p>
+<p>También puedes tener múltiples condiciones combinando dos o más operadores de comparación. Por ejemplo, puedes verificar si dos condiciones se cumplen ambas, o si solo una de varias condiciones se cumple.</p>
+<p>En las próximas páginas, conocerás varias variaciones de las sentencias <code>if...</code>, y también una sentencia llamada <code>switch</code>. En conjunto, se conocen como sentencias condicionales.</p>
+<h3 id="operadores-de-comparacion-evaluando-condiciones">OPERADORES DE COMPARACIÓN: EVALUANDO CONDICIONES<a class="headerlink" href="#operadores-de-comparacion-evaluando-condiciones" title="Permanent link">&para;</a></h3>
+<p>Puedes evaluar una situación comparando un valor en el script con lo que esperas que sea. El resultado será un valor booleano: <code>true</code> o <code>false</code>.</p>
+<p><code>==</code> ES IGUAL A</p>
+<p>Este operador compara dos valores (números, cadenas o booleanos) para ver si son iguales.
+<code>'Hello' == 'Goodbye'</code> devuelve <code>false</code> porque no son la misma cadena.
+<code>'Hello' == 'Hello'</code> devuelve <code>true</code> porque son la misma cadena.
+Generalmente es preferible usar el método estricto.</p>
+<p><code>!=</code> ES DIFERENTE DE</p>
+<p>Este operador compara dos valores (números, cadenas o booleanos) para ver si no son iguales.</p>
+<p><code>'Hello' != 'Goodbye'</code> devuelve <code>true</code> porque no son la misma cadena.</p>
+<p><code>'Hello' != 'Hello'</code> devuelve <code>false</code> porque son la misma cadena.
+Generalmente es preferible usar el método estricto.</p>
+<p><code>===</code> ESTRICTAMENTE IGUAL</p>
+<p>Este operador compara dos valores para verificar que tanto el tipo de dato como el valor sean iguales.</p>
+<p><code>'3' === 3</code> devuelve <code>false</code> porque no son el mismo tipo de dato ni valor.</p>
+<p><code>'3' === '3'</code> devuelve <code>true</code> porque son el mismo tipo de dato y valor.</p>
+<p><code>!==</code> ESTRICTAMENTE DIFERENTE</p>
+<p>Este operador compara dos valores para verificar que tanto el tipo de dato como el valor no sean iguales.</p>
+<p><code>'3' !== 3</code> devuelve <code>true</code> porque no son el mismo tipo de dato ni valor.</p>
+<p><code>'3' !== '3'</code> devuelve <code>false</code> porque son el mismo tipo de dato y valor.</p>
+<p>Los programadores se refieren a la prueba o verificación de una condición como evaluar la condición. Las condiciones pueden ser mucho más complejas que las mostradas aquí, pero generalmente resultan en un valor <code>true</code> o <code>false</code>.</p>
+<p>Hay un par de excepciones notables:</p>
+<ul>
+<li>Todo valor puede tratarse como <code>true</code> o <code>false</code> incluso si no es un valor booleano <code>true</code> o <code>false</code> (ver pág. 167).</li>
+<li>En la evaluación de cortocircuito, es posible que una condición no necesite ejecutarse (ver pág. 169).</li>
+</ul>
+<p><code>&gt;</code> <strong>MAYOR QUE</strong></p>
+<p>Este operador verifica si el número de la izquierda es mayor que el número de la derecha.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>4 &gt; 3</code> devuelve <code>true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>3 &gt; 4</code> devuelve <code>false</code></li>
+</ul>
+</div>
+<p><code>&lt;</code> <strong>MENOR QUE</strong></p>
+<p>Este operador verifica si el número de la izquierda es menor que el número de la derecha.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>4 &lt; 3</code> devuelve <code>false</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>3 &lt; 4</code> devuelve <code>true</code></li>
+</ul>
+</div>
+<p><code>&gt;=</code> <strong>MAYOR O IGUAL QUE</strong></p>
+<p>Este operador verifica si el número de la izquierda es mayor o igual que el número de la derecha.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>4 &gt;= 3</code> devuelve <code>true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>3 &gt;= 4</code> devuelve <code>false</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>3 &gt;= 3</code> devuelve <code>true</code></li>
+</ul>
+</div>
+<p><code>&lt;=</code> <strong>MENOR O IGUAL QUE</strong></p>
+<p>Este operador verifica si el número de la izquierda es menor o igual que el número de la derecha.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>4 &lt;= 3</code> devuelve <code>false</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>3 &lt;= 4</code> devuelve <code>true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>3 &lt;= 3</code> devuelve <code>true</code></li>
+</ul>
+</div>
+<h2 id="estructurando-operadores-de-comparacion">ESTRUCTURANDO OPERADORES DE COMPARACIÓN<a class="headerlink" href="#estructurando-operadores-de-comparacion" title="Permanent link">&para;</a></h2>
+<p>En cualquier condición, generalmente hay un operador y dos operandos. Los operandos se colocan a cada lado del operador. Pueden ser valores o variables. A menudo verás expresiones encerradas entre paréntesis.</p>
+<p><img alt="" src="../compare.png" /></p>
+<p>Si recuerdas del Capítulo 2, esto es un ejemplo de una expresión porque la condición se resuelve en un solo valor: en este caso será <code>true</code> o <code>false</code>.</p>
+<p>Los paréntesis son importantes cuando la expresión se usa como condición en un operador de comparación. Pero cuando asignas un valor a una variable, no son necesarios (ver página opuesta).</p>
+<h2 id="usando-operadores-de-comparacion">USANDO OPERADORES DE COMPARACIÓN<a class="headerlink" href="#usando-operadores-de-comparacion" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../passed.png" /></p>
+<p>En el nivel más básico, puedes evaluar dos variables usando un operador de comparación para devolver un valor <code>true</code> o <code>false</code>.</p>
+<p>En este ejemplo, un usuario está realizando una prueba y el script le indica si ha aprobado esta ronda de la prueba.</p>
+<p>El ejemplo comienza estableciendo dos variables:</p>
+<ol>
+<li><code>pass</code> para contener la nota de aprobación</li>
+<li><code>score</code> para contener la puntuación del usuario</li>
+</ol>
+<p>Para ver si el usuario ha aprobado, un operador de comparación verifica si <code>score</code> es mayor o igual que <code>pass</code>. El resultado será <code>true</code> o <code>false</code>, y se almacena en una variable llamada <code>hasPassed</code>. En la siguiente línea, el resultado se escribe en la pantalla.</p>
+<p>Las últimas dos líneas seleccionan el elemento cuyo atributo <code>id</code> tiene un valor de <code>answer</code>, y luego actualizan su contenido. Aprenderás más sobre esta técnica en el próximo capítulo.</p>
+<h2 id="usando-expresiones-con-operadores-de-comparacion">USANDO EXPRESIONES CON OPERADORES DE COMPARACIÓN<a class="headerlink" href="#usando-expresiones-con-operadores-de-comparacion" title="Permanent link">&para;</a></h2>
+<p>El operando no tiene que ser un solo valor o nombre de variable. Un operando puede ser una expresión (porque cada expresión se evalúa como un solo valor).</p>
+<p><img alt="" src="../enclosing.png" /></p>
+<h2 id="comparando-dos-expresiones">COMPARANDO DOS EXPRESIONES<a class="headerlink" href="#comparando-dos-expresiones" title="Permanent link">&para;</a></h2>
+<p>En este ejemplo, hay dos rondas en la prueba y el código verificará si el usuario ha alcanzado un nuevo puntaje más alto, superando el récord anterior.</p>
+<p>El script comienza almacenando las puntuaciones del usuario para cada ronda en variables. Luego, las puntuaciones más altas para cada ronda se almacenan en dos variables más.</p>
+<p>El operador de comparación verifica si la puntuación total del usuario es mayor que la puntuación más alta de la prueba y almacena el resultado en una variable llamada <code>comparison</code>.</p>
+<p><img alt="" src="../comparisonopcontinue.png" /></p>
+<p>En el operador de comparación, el operando de la izquierda calcula la puntuación total del usuario. El operando de la derecha suma las puntuaciones más altas de cada ronda. El resultado se agrega luego a la página.</p>
+<p>Cuando asignas el resultado de la comparación a una variable, no es estrictamente necesario usar los paréntesis contenedores (mostrados en blanco en la página izquierda). Algunos programadores los usan de todos modos para indicar que el código se evalúa como un solo valor. Otros solo usan paréntesis contenedores cuando forman parte de una condición.</p>
+<p><img alt="" src="../newscore.png" /></p>
+<h2 id="operadores-logicos">OPERADORES LÓGICOS<a class="headerlink" href="#operadores-logicos" title="Permanent link">&para;</a></h2>
+<p>Los operadores de comparación generalmente devuelven valores individuales de <code>true</code> o <code>false</code>. Los operadores lógicos te permiten comparar los resultados de más de un operador de comparación.</p>
+<p><img alt="" src="../expressiontree.png" /></p>
+<p>En esta línea de código hay tres expresiones, cada una de las cuales se resolverá en el valor <code>true</code> o <code>false</code>. Las expresiones de la izquierda y la derecha usan operadores de comparación, y ambas devuelven <code>false</code>.</p>
+<p>La tercera expresión usa un operador lógico (en lugar de un operador de comparación). El operador lógico AND verifica si ambas expresiones a cada lado devuelven <code>true</code> (en este caso no lo hacen, por lo que se evalúa como <code>false</code>).</p>
+<p><code>&amp;&amp;</code> <strong>AND LÓGICO</strong></p>
+<p>Este operador prueba más de una condición.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>((2 &lt; 5) &amp;&amp; (3 &gt;= 2))</code> devuelve <code>true</code></p>
+<p>Si ambas expresiones se evalúan como <code>true</code>, entonces la expresión devuelve <code>true</code>. Si solo una de ellas devuelve <code>false</code>, entonces la expresión devolverá <code>false</code>.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>true &amp;&amp; true</code> devuelve <code>true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>true &amp;&amp; false</code> devuelve <code>false</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>false &amp;&amp; true</code> devuelve <code>false</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>false &amp;&amp; false</code> devuelve <code>false</code></li>
+</ul>
+</div>
+<p><code>||</code> <strong>OR LÓGICO</strong></p>
+<p>Este operador prueba al menos una condición.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>((2 &lt; 5) || (2 &lt; 1))</code> devuelve <code>true</code></p>
+<p>Si cualquiera de las expresiones se evalúa como <code>true</code>, entonces la expresión devuelve <code>true</code>. Si ambas devuelven <code>false</code>, entonces la expresión devolverá <code>false</code>.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>true || true</code> devuelve <code>true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>true || false</code> devuelve <code>true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>false || true</code> devuelve <code>true</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>false || false</code> devuelve <code>false</code></li>
+</ul>
+</div>
+<p><code>!</code> <strong>NOT LÓGICO</strong></p>
+<p>Este operador toma un solo valor booleano y lo invierte.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>!(2 &lt; 1)</code> devuelve <code>true</code></p>
+<p>Esto invierte el estado de una expresión. Si era <code>false</code> (sin el <code>!</code> delante) devolvería <code>true</code>. Si la sentencia era <code>true</code>, devolvería <code>false</code>.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>!true</code> devuelve <code>false</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>!false</code> devuelve <code>true</code></li>
+</ul>
+</div>
+<h2 id="evaluacion-de-corto-circuito">EVALUACIÓN DE CORTO CIRCUITO<a class="headerlink" href="#evaluacion-de-corto-circuito" title="Permanent link">&para;</a></h2>
+<p>Las expresiones lógicas se evalúan de izquierda a derecha. Si la primera condición puede proporcionar suficiente información para obtener la respuesta, entonces no es necesario evaluar la segunda condición.</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kc">false</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">cualquier</span><span class="w"> </span><span class="nx">cosa</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="o">^</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nx">ha</span><span class="w"> </span><span class="nx">encontrado</span><span class="w"> </span><span class="nx">un</span><span class="w"> </span><span class="kc">false</span>
+</span></code></pre></div>
+No tiene sentido continuar para determinar el otro resultado. No pueden ser ambas <code>true</code>.</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kc">true</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">cualquier</span><span class="w"> </span><span class="nx">cosa</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="o">^</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">ha</span><span class="w"> </span><span class="nx">encontrado</span><span class="w"> </span><span class="nx">un</span><span class="w"> </span><span class="kc">true</span>
+</span></code></pre></div>
+No tiene sentido continuar porque al menos uno de los valores es <code>true</code>.</p>
+<h2 id="usando-and-logico">USANDO AND LÓGICO<a class="headerlink" href="#usando-and-logico" title="Permanent link">&para;</a></h2>
+<p>En este ejemplo, una prueba de matemáticas tiene dos rondas. Para cada ronda hay dos variables: una contiene la puntuación del usuario para esa ronda; la otra contiene la nota de aprobación para esa ronda.</p>
+<p>El AND lógico se usa para ver si la puntuación del usuario es mayor o igual que la nota de aprobación en ambas rondas de la prueba. El resultado se almacena en una variable llamada <code>passBoth</code>.</p>
+<p>El ejemplo finaliza informando al usuario si ha aprobado o no ambas rondas.</p>
+<p><img alt="" src="../localand.png" /></p>
+<p>Es raro que alguna vez escribas el resultado booleano directamente en la página (como estamos haciendo aquí). Como verás más adelante en el capítulo, es más probable que verifiques una condición y, si es <code>true</code>, ejecutes otras sentencias.</p>
+<p><img alt="" src="../otherman4.png" /></p>
+<h2 id="usando-or-logico-y-not-logico">USANDO OR LÓGICO Y NOT LÓGICO<a class="headerlink" href="#usando-or-logico-y-not-logico" title="Permanent link">&para;</a></h2>
+<p>Aquí está la misma prueba pero esta vez usando el operador OR lógico para saber si el usuario ha aprobado al menos una de las dos rondas. Si aprueba solo una ronda, no necesita volver a tomar la prueba.</p>
+<p>Observa los números almacenados en las cuatro variables al inicio del ejemplo. El usuario ha aprobado ambas rondas, por lo que la variable <code>minPass</code> contendrá el valor booleano <code>true</code>.</p>
+<p>A continuación, el mensaje se almacena en una variable llamada <code>msg</code>. Al final del mensaje, el NOT lógico invertirá el resultado de la variable booleana para que sea <code>false</code>. Luego se escribe en la página.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">// c04/js/logical-or-logical-not.js</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">score1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span><span class="w"> </span><span class="c1">// Puntuación ronda 1</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">score2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span><span class="w"> </span><span class="c1">// Puntuación ronda 2</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">pass1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nota de aprobación ronda 1</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="kd">var</span><span class="w"> </span><span class="nx">pass2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nota de aprobación ronda 2</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1">// Verifica si el usuario aprobó una de las dos rondas, almacena el resultado en una variable</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="kd">var</span><span class="w"> </span><span class="nx">minPass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="nx">score1</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">pass1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="nx">score2</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">pass2</span><span class="p">));</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">// Crea el mensaje</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Resit required: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nx">minPass</span><span class="p">);</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1">// Escribe el mensaje en la página</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">);</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="nx">el</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../otherman5.png" /></p>
+<h2 id="sentencias-if">SENTENCIAS IF<a class="headerlink" href="#sentencias-if" title="Permanent link">&para;</a></h2>
+<p>La sentencia <code>if</code> evalúa (o verifica) una condición. Si la condición se evalúa como <code>true</code>, se ejecutan las sentencias en el bloque de código subsiguiente.</p>
+<p><img alt="" src="../ifcondition.png" /></p>
+<p>Si la condición se evalúa como <code>true</code>, el siguiente bloque de código (el código en el siguiente par de llaves) se ejecuta.</p>
+<p>Si la condición se resuelve como <code>false</code>, las sentencias en ese bloque de código no se ejecutan. (El script continúa ejecutándose desde el final del siguiente bloque de código).</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// c04/js/if-statement.js</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">75</span><span class="p">;</span><span class="w"> </span><span class="c1">// Puntuación</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mensaje</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Si la puntuación es 50 o más</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">  </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Congratulations!&#39;</span><span class="p">;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">  </span><span class="nx">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39; Proceed to the next round.&#39;</span><span class="p">;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="p">}</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">);</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="nx">el</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>En este ejemplo, la sentencia <code>if</code> está verificando si el valor actualmente almacenado en una variable llamada <code>score</code> es 50 o más.</p>
+<p>En este caso, la sentencia se evalúa como <code>true</code> (porque la puntuación es 75, que es mayor que 50). Por lo tanto, el contenido de las sentencias dentro del bloque de código subsiguiente se ejecuta, creando un mensaje que felicita al usuario y le indica que continúe.</p>
+<p>Después del bloque de código, el mensaje se escribe en la página.</p>
+<p>Si el valor de la variable <code>score</code> hubiera sido menor que 50, las sentencias en el bloque de código no se habrían ejecutado, y el código habría continuado en la siguiente línea después del bloque de código.</p>
+<p>En la parte de abajo hay una versión alternativa del mismo ejemplo que demuestra cómo las líneas de código no siempre se ejecutan en el orden que esperas. Si la condición se cumple entonces:</p>
+<ol>
+<li>La primera sentencia en el bloque de código llama a la función <code>congratulate()</code>.</li>
+<li>El código dentro de la función <code>congratulate()</code> se ejecuta.</li>
+<li>La segunda línea dentro del bloque de código de la sentencia <code>if</code> se ejecuta.</li>
+</ol>
+<p><img alt="" src="../otherman6.png" /></p>
+<h2 id="sentencias-ifelse">SENTENCIAS IF...ELSE<a class="headerlink" href="#sentencias-ifelse" title="Permanent link">&para;</a></h2>
+<p>La sentencia <code>if...else</code> verifica una condición. Si se resuelve como <code>true</code>, se ejecuta el primer bloque de código. Si la condición se resuelve como <code>false</code>, se ejecuta el segundo bloque de código.</p>
+<p><img alt="" src="../ifstataments.png" /></p>
+<h2 id="usando-sentencias-ifelse">USANDO SENTENCIAS IF...ELSE<a class="headerlink" href="#usando-sentencias-ifelse" title="Permanent link">&para;</a></h2>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">// c04/js/if-else-statement.js</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nota de aprobación</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">75</span><span class="p">;</span><span class="w"> </span><span class="c1">// Puntuación actual</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mensaje</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1">// Selecciona el mensaje según la puntuación</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">pass</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">  </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Congratulations, you passed!&#39;</span><span class="p">;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">  </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Have another go!&#39;</span><span class="p">;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="p">}</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">);</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="nx">el</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<img alt="" src="../otherman7.png" /></p>
+<p>Aquí puedes ver que una sentencia <code>if...else</code> te permite proporcionar dos conjuntos de código:</p>
+<ol>
+<li>uno si la condición se evalúa como <code>true</code></li>
+<li>otro si la condición es <code>false</code></li>
+</ol>
+<p>En esta prueba, hay dos resultados posibles: un usuario puede obtener una puntuación igual o mayor que la nota de aprobación (lo que significa que aprueba), o puede obtener una puntuación menor que la nota de aprobación (lo que significa que falla). Se requiere una respuesta para cada eventualidad. La respuesta se escribe luego en la página.</p>
+<p>Ten en cuenta que las sentencias dentro de una sentencia <code>if</code> deben ir seguidas de un punto y coma, pero no es necesario colocar uno después de la llave de cierre de los bloques de código.</p>
+<p>Una sentencia <code>if</code> solo ejecuta un conjunto de sentencias si la condición es <code>true</code>:</p>
+<p>Una sentencia <code>if...else</code> ejecuta un conjunto de código si la condición es <code>true</code> o un conjunto diferente si es <code>false</code>:</p>
+<h2 id="sentencias-switch">SENTENCIAS SWITCH<a class="headerlink" href="#sentencias-switch" title="Permanent link">&para;</a></h2>
+<p>Una sentencia <code>switch</code> comienza con una variable llamada valor switch. Cada <code>case</code> indica un posible valor para esta variable y el código que debería ejecutarse si la variable coincide con ese valor.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;One&#39;</span><span class="o">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Level 1&#39;</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;Two&#39;</span><span class="o">:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Level 2&#39;</span><span class="p">;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;Three&#39;</span><span class="o">:</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">    </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Level 3&#39;</span><span class="p">;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">  </span><span class="k">default</span><span class="o">:</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">    </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Test&#39;</span><span class="p">;</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Aquí, la variable llamada <code>level</code> es el valor switch. Si el valor de la variable <code>level</code> es el string <code>One</code>, entonces se ejecuta el código del primer <code>case</code>. Si es <code>Two</code>, se ejecuta el segundo <code>case</code>. Si es <code>Three</code>, se ejecuta el tercer <code>case</code>. Si no es ninguno de estos, se ejecuta el código del <code>default</code>.</p>
+<p>Toda la sentencia vive en un solo bloque de código (un par de llaves), y dos puntos separan la opción de las sentencias que se ejecutarán si el <code>case</code> coincide con el valor switch.</p>
+<p>Al final de cada <code>case</code> está la palabra clave <code>break</code>. Le indica al intérprete de JavaScript que ha terminado con esta sentencia <code>switch</code> y que continúe ejecutando cualquier código subsiguiente que aparezca después.</p>
+<p><strong>IF…ELSE</strong></p>
+<ul>
+<li>No hay necesidad de proporcionar una opción <code>else</code>. (Puedes usar solo una sentencia <code>if</code>).</li>
+<li>Con una serie de sentencias <code>if</code>, todas se verifican incluso si ya se encontró una coincidencia (por lo que funciona más lento que <code>switch</code>).</li>
+</ul>
+<p><strong>SWITCH</strong></p>
+<ul>
+<li>Tienes una opción <code>default</code> que se ejecuta si ninguno de los <code>case</code> coincide.</li>
+<li>Si se encuentra una coincidencia, ese código se ejecuta; luego la sentencia <code>break</code> detiene la ejecución del resto de la sentencia <code>switch</code> (proporcionando mejor rendimiento que múltiples sentencias <code>if</code>).</li>
+</ul>
+<h2 id="usando-sentencias-switch">USANDO SENTENCIAS SWITCH<a class="headerlink" href="#usando-sentencias-switch" title="Permanent link">&para;</a></h2>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mensaje</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nivel</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c1">// Determina el mensaje según el nivel</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good luck on the first test&#39;</span><span class="p">;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mf">2</span><span class="o">:</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Second of three - keep going!&#39;</span><span class="p">;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mf">3</span><span class="o">:</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">    </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Final round, almost there!&#39;</span><span class="p">;</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">  </span><span class="k">default</span><span class="o">:</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">    </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Good luck!&#39;</span><span class="p">;</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="p">}</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">);</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="nx">el</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../otherma8.png" /></p>
+<p>En este ejemplo, el propósito de la sentencia <code>switch</code> es presentar al usuario un mensaje diferente dependiendo del nivel en el que se encuentre. El mensaje se almacena en una variable llamada <code>msg</code>.</p>
+<p>La variable llamada <code>level</code> contiene un número que indica en qué nivel se encuentra el usuario. Este se usa como valor switch. (El valor switch también podría ser una expresión).</p>
+<p>En el siguiente bloque de código (dentro de las llaves), hay tres opciones para lo que podría ser el valor de la variable <code>level</code>: los números 1, 2 o 3.</p>
+<p>Si el valor de la variable <code>level</code> es el número 1, el valor de la variable <code>msg</code> se establece en <code>'Good luck on the first test'</code>.</p>
+<p>Si el valor es 2, dirá: <code>'Second of three - keep going!'</code></p>
+<p>Si el valor es 3, el mensaje dirá: <code>'Final round, almost there!'</code></p>
+<p>Si no se encuentra ninguna coincidencia, entonces el valor de la variable <code>msg</code> se establece en <code>'Good luck!'</code></p>
+<p>Cada <code>case</code> termina con la palabra clave <code>break</code> que le indica al intérprete de JavaScript que omita el resto de este bloque de código y continúe con el siguiente.</p>
+<h2 id="coercion-de-tipos-y-tipado-debil">COERCIÓN DE TIPOS Y TIPADO DÉBIL<a class="headerlink" href="#coercion-de-tipos-y-tipado-debil" title="Permanent link">&para;</a></h2>
+<p>Si usas un tipo de dato que JavaScript no esperaba, intenta darle sentido a la operación en lugar de reportar un error.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de Dato</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Texto</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Número</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><code>true</code> o <code>false</code></td>
+</tr>
+<tr>
+<td>null</td>
+<td>Valor vacío</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>Variable declarada pero aún no se le ha asignado un valor</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>NaN</code> es un valor que se cuenta como número. Puedes verlo cuando se espera un número, pero no se devuelve, ej: <code>('ten'/2)</code> da como resultado <code>NaN</code>.</p>
+</blockquote>
+<p>JavaScript puede convertir tipos de datos detrás de escena para completar una operación. Esto se conoce como coerción de tipos. Por ejemplo, un string <code>'1'</code> podría convertirse al número <code>1</code> en la siguiente expresión: <code>('1' &gt; 0)</code>. Como resultado, la expresión anterior se evaluaría como <code>true</code>.</p>
+<p>Se dice que JavaScript usa tipado débil porque el tipo de dato de un valor puede cambiar. Algunos otros lenguajes requieren que especifiques qué tipo de dato tendrá cada variable. Se dice que usan tipado fuerte.</p>
+<p>La coerción de tipos puede llevar a valores inesperados en tu código (y también causar errores). Por lo tanto, al verificar si dos valores son iguales, se considera mejor usar los operadores de igualdad estricta <code>===</code> y <code>!==</code> en lugar de <code>==</code> y <code>!=</code>, ya que estos operadores estrictos verifican que el valor y el tipo de dato coincidan.</p>
+<h2 id="valores-truthy-y-falsy">VALORES TRUTHY Y FALSY<a class="headerlink" href="#valores-truthy-y-falsy" title="Permanent link">&para;</a></h2>
+<p>Debido a la coerción de tipos, cada valor en JavaScript puede tratarse como si fuera <code>true</code> o <code>false</code>; y esto tiene algunos efectos secundarios interesantes.</p>
+<h3 id="valores-falsy">VALORES FALSY<a class="headerlink" href="#valores-falsy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>var highScore = false;</code></td>
+<td>El booleano <code>false</code> tradicional</td>
+</tr>
+<tr>
+<td><code>var highScore = 0;</code></td>
+<td>El número cero</td>
+</tr>
+<tr>
+<td><code>var highScore = '';</code></td>
+<td>Valor vacío</td>
+</tr>
+<tr>
+<td><code>var highScore = 10/'score';</code></td>
+<td>NaN (Not a Number)</td>
+</tr>
+<tr>
+<td><code>var highScore;</code></td>
+<td>Una variable sin valor asignado</td>
+</tr>
+</tbody>
+</table>
+<p>Los valores falsy son tratados como si fueran <code>false</code>. La tabla de la izquierda muestra una variable <code>highScore</code> con una serie de valores, todos los cuales son falsy.</p>
+<p>Los valores falsy también pueden ser tratados como el número 0.</p>
+<blockquote>
+<p>Casi todo lo demás se evalúa como truthy…</p>
+</blockquote>
+<h3 id="valores-truthy">VALORES TRUTHY<a class="headerlink" href="#valores-truthy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>var highScore = true;</code></td>
+<td>El booleano <code>true</code> tradicional</td>
+</tr>
+<tr>
+<td><code>var highScore = 1;</code></td>
+<td>Números distintos de cero</td>
+</tr>
+<tr>
+<td><code>var highScore = 'carrot';</code></td>
+<td>Strings con contenido</td>
+</tr>
+<tr>
+<td><code>var highScore = 10/5;</code></td>
+<td>Cálculos numéricos</td>
+</tr>
+<tr>
+<td><code>var highScore = 'true';</code></td>
+<td><code>true</code> escrito como string</td>
+</tr>
+<tr>
+<td><code>var highScore = '0';</code></td>
+<td>Cero escrito como string</td>
+</tr>
+<tr>
+<td><code>var highScore = 'false';</code></td>
+<td><code>false</code> escrito como string</td>
+</tr>
+</tbody>
+</table>
+<p>Los valores truthy son tratados como si fueran <code>true</code>. Casi todo lo que no está en la tabla falsy puede tratarse como si fuera <code>true</code>.</p>
+<p>Los valores truthy también pueden ser tratados como el número 1.</p>
+<p>Además, la presencia de un objeto o un array generalmente también se considera truthy. Esto se usa comúnmente al verificar la presencia de un elemento en una página.</p>
+<p>La página siguiente explicará más sobre por qué estos conceptos son importantes.</p>
+<p>Casi todo lo demas se evalua como truthy...</p>
+<h2 id="verificando-igualdad-y-existencia">VERIFICANDO IGUALDAD Y EXISTENCIA<a class="headerlink" href="#verificando-igualdad-y-existencia" title="Permanent link">&para;</a></h2>
+<p>Debido a que la presencia de un objeto o array puede considerarse truthy, se usa a menudo para verificar la existencia de un elemento dentro de una página.</p>
+<p>Un <strong>operador unario</strong> devuelve un resultado con solo un operando. Aquí puedes ver una sentencia <code>if</code> verificando la presencia de un elemento. Si el elemento se encuentra, el resultado es truthy, por lo que se ejecuta el primer conjunto de código. Si no se encuentra, se ejecuta el segundo conjunto.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="c1">// Encontrado: hacer algo</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="c1">// No encontrado: hacer otra cosa</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Quienes son nuevos en JavaScript a menudo piensan que lo siguiente haría lo mismo:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Pero <code>document.getElementById('header')</code> devolvería un objeto que es un valor truthy pero no es igual a un valor booleano <code>true</code>.</p>
+<p>Debido a la coerción de tipos, los operadores de igualdad estricta <code>===</code> y <code>!==</code> resultan en menos valores inesperados que <code>==</code> y <code>!=</code>.</p>
+<p>Si usas <code>==</code>, los siguientes valores pueden considerarse iguales: <code>false</code>, <code>0</code> y <code>''</code> (string vacío). Sin embargo, no son equivalentes cuando se usan los operadores estrictos.</p>
+<table>
+<thead>
+<tr>
+<th>Expresión</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(false == 0)</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>(false === 0)</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>(false == '')</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>(false === '')</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>(0 == '')</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>(0 === '')</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Aunque <code>null</code> y <code>undefined</code> son ambos falsy, no son iguales a nada más que a sí mismos. Nuevamente, no son equivalentes cuando se usan operadores estrictos.</p>
+<table>
+<thead>
+<tr>
+<th>Expresión</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(undefined == null)</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>(null == false)</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>(undefined == false)</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>(null == 0)</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>(undefined == 0)</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>(undefined === null)</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Aunque <code>NaN</code> se considera falsy, no es equivalente a nada; ni siquiera es equivalente a sí mismo (ya que <code>NaN</code> es un número indefinible, dos no pueden ser iguales).</p>
+<table>
+<thead>
+<tr>
+<th>Expresión</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(NaN == null)</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>(NaN == NaN)</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="valores-de-corto-circuito">VALORES DE CORTO CIRCUITO<a class="headerlink" href="#valores-de-corto-circuito" title="Permanent link">&para;</a></h2>
+<p>Los operadores lógicos se procesan de izquierda a derecha. Hacen cortocircuito (se detienen) tan pronto como tienen un resultado, pero devuelven el valor que detuvo el procesamiento (no necesariamente <code>true</code> o <code>false</code>).</p>
+<p>En la línea 1, a la variable <code>artist</code> se le asigna el valor <code>Rembrandt</code>.</p>
+<p>En la línea 2, si la variable <code>artist</code> tiene un valor, entonces <code>artistA</code> recibirá el mismo valor que <code>artist</code> (porque un string no vacío es truthy).</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">artist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Rembrandt&#39;</span><span class="p">;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">artistA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">artist</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Si el string está vacío (ver abajo), <code>artistA</code> se convierte en el string <code>'Unknown'</code>.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">artist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">artistA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">artist</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Incluso podrías crear un objeto vacío si <code>artist</code> no tiene un valor:</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">artist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">artistA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">artist</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{});</span>
+</span></code></pre></div></td></tr></table></div>
+Los operadores lógicos no siempre devolverán <code>true</code> o <code>false</code>, porque:</p>
+<ul>
+<li>Devuelven el valor que detuvo el procesamiento.</li>
+<li>Ese valor podría haber sido tratado como truthy o falsy aunque no fuera un booleano.</li>
+</ul>
+<p>Los programadores usan esto de forma creativa (por ejemplo, para establecer valores de variables o incluso crear objetos).</p>
+<hr />
+<p>Aquí hay tres valores. Si alguno de ellos se considera truthy, el código dentro de la sentencia <code>if</code> se ejecutará. Cuando el script encuentre <code>valueB</code> en el operador lógico, hará cortocircuito porque el número 1 se considera truthy y se ejecutará el bloque de código subsiguiente.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nx">valueA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="nx">valueB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="nx">valueC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">valueA</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">valueB</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">valueC</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">  </span><span class="c1">// Hacer algo aquí</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Esta técnica también podría usarse para verificar la existencia de elementos dentro de una página, como se muestra en la pág. 168.</p>
+<p>Tan pronto como se encuentra un valor truthy, las opciones restantes no se verifican. Por lo tanto, los programadores experimentados a menudo:</p>
+<ul>
+<li>Ponen el código con más probabilidades de devolver <code>true</code> primero en operaciones OR, y las respuestas <code>false</code> primero en operaciones AND.</li>
+<li>Colocan las opciones que requieren más potencia de procesamiento al final, por si acaso otro valor devuelve <code>true</code> y no necesitan ejecutarse.</li>
+</ul>
+<h2 id="bucles">BUCLES<a class="headerlink" href="#bucles" title="Permanent link">&para;</a></h2>
+<p>Los bucles verifican una condición. Si devuelve <code>true</code>, se ejecutará un bloque de código. Luego la condición se verificará de nuevo y si aún devuelve <code>true</code>, el bloque de código se ejecutará nuevamente. Se repite hasta que la condición devuelva <code>false</code>.</p>
+<p>Hay tres tipos comunes de bucles:</p>
+<h3 id="for">FOR<a class="headerlink" href="#for" title="Permanent link">&para;</a></h3>
+<p>Si necesitas ejecutar código un número específico de veces, usa un bucle <code>for</code>. (Es el bucle más común). En un bucle <code>for</code>, la condición es usualmente un contador que se usa para indicar cuántas veces debe ejecutarse el bucle.</p>
+<h3 id="while">WHILE<a class="headerlink" href="#while" title="Permanent link">&para;</a></h3>
+<p>Si no sabes cuántas veces debe ejecutarse el código, puedes usar un bucle <code>while</code>. Aquí la condición puede ser algo diferente a un contador, y el código continuará repitiéndose mientras la condición sea <code>true</code>.</p>
+<h3 id="dowhile">DO...WHILE<a class="headerlink" href="#dowhile" title="Permanent link">&para;</a></h3>
+<p>El bucle <code>do...while</code> es muy similar al bucle <code>while</code>, pero tiene una diferencia clave: siempre ejecutará las sentencias dentro de las llaves al menos una vez, incluso si la condición se evalúa como <code>false</code>.</p>
+<p><img alt="" src="../forstrcuture.png" /></p>
+<p>Este es un bucle <code>for</code>. La condición es un contador que cuenta hasta diez. El resultado escribiría <code>"0123456789"</code> en la página.</p>
+<p>Si la variable <code>i</code> es menor que diez, el código dentro de las llaves se ejecuta. Luego el contador se incrementa.</p>
+<p>La condición se verifica de nuevo, si <code>i</code> es menor que diez se ejecuta otra vez. Las siguientes tres páginas muestran cómo funciona este bucle con mayor detalle.</p>
+<h2 id="contadores-de-bucles">CONTADORES DE BUCLES<a class="headerlink" href="#contadores-de-bucles" title="Permanent link">&para;</a></h2>
+<p>Un bucle <code>for</code> usa un contador como condición. Esto le indica al código que se ejecute un número específico de veces. Aquí puedes ver que la condición está compuesta por tres sentencias:</p>
+<h3 id="inicializacion">INICIALIZACIÓN<a class="headerlink" href="#inicializacion" title="Permanent link">&para;</a></h3>
+<p>Crea una variable y la establece en 0. Esta variable se llama comúnmente <code>i</code>, y actúa como el contador.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>La variable solo se crea la primera vez que se ejecuta el bucle. (También puedes ver la variable llamada <code>index</code>, en lugar de solo <code>i</code>).</p>
+<p>A veces verás esta variable declarada antes de la condición. Lo siguiente es lo mismo y es principalmente una preferencia del programador:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">  </span><span class="c1">// El código va aquí</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="condicion">CONDICIÓN<a class="headerlink" href="#condicion" title="Permanent link">&para;</a></h3>
+<p>El bucle debe continuar ejecutándose hasta que el contador alcance un número específico.</p>
+<p><code>i &lt; 10;</code></p>
+<p>El valor de <code>i</code> se estableció inicialmente en 0, por lo que en este caso el bucle se ejecutará 10 veces antes de detenerse.</p>
+<p>La condición también puede usar una variable que contenga un número. Si una variable llamada <code>rounds</code> contuviera el número de rondas en una prueba y el bucle se ejecutara una vez por cada ronda, la condición sería:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">rounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="nx">rounds</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="actualizacion">ACTUALIZACIÓN<a class="headerlink" href="#actualizacion" title="Permanent link">&para;</a></h3>
+<p>Cada vez que el bucle ha ejecutado las sentencias dentro de las llaves, suma uno al contador.</p>
+<p><code>i++</code></p>
+<p>Se suma uno al contador usando el operador de incremento (<code>++</code>). Otra forma de leer esto es: "Toma la variable <code>i</code> y súmale uno usando el operador <code>++</code>".</p>
+<p>También es posible que los bucles cuenten hacia abajo usando el operador de decremento (<code>--</code>).</p>
+<h2 id="iteracion">ITERACIÓN<a class="headerlink" href="#iteracion" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../looping.png" /></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> La primera vez que se ejecuta el bucle, a la variable <code>i</code> (el contador) se le asigna un valor de cero.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Cada vez que se ejecuta el bucle, se verifica la condición. ¿Es la variable <code>i</code> menor que 10?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Luego se ejecuta el código dentro del bucle (las sentencias entre las llaves).</li>
+</ul>
+<p><img alt="" src="../forlooping.png" /></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> La variable <code>i</code> puede usarse dentro del bucle. Aquí se usa para escribir un número en la página.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Cuando las sentencias han terminado, la variable <code>i</code> se incrementa en 1.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Cuando la condición ya no es <code>true</code>, el bucle termina. El script pasa a la siguiente línea de código.</li>
+</ul>
+<h2 id="conceptos-clave-de-bucles">CONCEPTOS CLAVE DE BUCLES<a class="headerlink" href="#conceptos-clave-de-bucles" title="Permanent link">&para;</a></h2>
+<p>Aquí hay tres puntos a considerar cuando trabajes con bucles. Cada uno se ilustra en ejemplos en las siguientes tres páginas.</p>
+<h3 id="palabras-clave">PALABRAS CLAVE<a class="headerlink" href="#palabras-clave" title="Permanent link">&para;</a></h3>
+<p>Comúnmente verás estas dos palabras clave usadas con bucles:</p>
+<p><strong>break</strong>
+Esta palabra clave causa la terminación del bucle y le indica al intérprete que pase a la siguiente sentencia de código fuera del bucle. (También puedes verla usada en funciones).</p>
+<p><strong>continue</strong>
+Esta palabra clave le indica al intérprete que detenga la iteración actual y luego verifique la condición nuevamente. (Si es <code>true</code>, el código se ejecuta otra vez).</p>
+<h3 id="bucles-y-arrays">BUCLES Y ARRAYS<a class="headerlink" href="#bucles-y-arrays" title="Permanent link">&para;</a></h3>
+<p>Los bucles son muy útiles cuando se trabaja con arrays si quieres ejecutar el mismo código para cada elemento del array. Por ejemplo, es posible que quieras escribir el valor de cada elemento almacenado en un array en la página.</p>
+<p>Puede que no sepas cuántos elementos tendrá un array al escribir un script, pero cuando el código se ejecute, puede verificar el número total de elementos en un bucle. Esa cifra puede usarse luego en el contador para controlar cuántas veces se ejecuta un conjunto de sentencias.</p>
+<p>Una vez que el bucle se ha ejecutado la cantidad correcta de veces, el bucle se detiene.</p>
+<h3 id="problemas-de-rendimiento">PROBLEMAS DE RENDIMIENTO<a class="headerlink" href="#problemas-de-rendimiento" title="Permanent link">&para;</a></h3>
+<p>Es importante recordar que cuando un navegador encuentra JavaScript, deja de hacer cualquier otra cosa hasta que ha procesado ese script.</p>
+<p>Si tu bucle solo maneja una pequeña cantidad de elementos, esto no será un problema. Sin embargo, si tu bucle contiene muchos elementos, puede hacer que la página tarde más en cargar.</p>
+<p>Si la condición nunca devuelve <code>false</code>, obtienes lo que comúnmente se conoce como un bucle infinito. El código no dejará de ejecutarse hasta que tu navegador se quede sin memoria (rompiendo tu script).</p>
+<p>Cualquier variable que puedas definir fuera del bucle y que no cambie dentro del bucle debe definirse fuera de él. Si se declarara dentro del bucle, se recalcularía cada vez que el bucle se ejecutara, usando recursos innecesariamente.</p>
+<h2 id="usando-bucles-for">USANDO BUCLES FOR<a class="headerlink" href="#usando-bucles-for" title="Permanent link">&para;</a></h2>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span>
+<span class="normal"><a href="#__codelineno-17-15">15</a></span>
+<span class="normal"><a href="#__codelineno-17-16">16</a></span>
+<span class="normal"><a href="#__codelineno-17-17">17</a></span>
+<span class="normal"><a href="#__codelineno-17-18">18</a></span>
+<span class="normal"><a href="#__codelineno-17-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c1">// c04/js/for-loop.js</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">scores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">24</span><span class="p">,</span><span class="w"> </span><span class="mf">32</span><span class="p">,</span><span class="w"> </span><span class="mf">17</span><span class="p">];</span><span class="w"> </span><span class="c1">// Array de puntuaciones</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">arrayLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">scores</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="c1">// Elementos en el array</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">roundNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Ronda actual</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mensaje</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span><span class="w"> </span><span class="c1">// Contador</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="c1">// Itera a través de los elementos del array</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">arrayLength</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="w">  </span><span class="c1">// Los arrays tienen base cero (por lo que 0 es la ronda 1)</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="w">  </span><span class="c1">// Suma 1 a la ronda actual</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="w">  </span><span class="nx">roundNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="w">  </span><span class="c1">// Escribe la ronda actual en el mensaje</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="w">  </span><span class="nx">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;Round &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">roundNumber</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="p">;</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="w">  </span><span class="c1">// Obtiene la puntuación del array scores</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="w">  </span><span class="nx">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">scores</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a><span class="p">}</span>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../round.png" /></p>
+<blockquote>
+<p>El contador y el array comienzan desde 0 (en lugar de 1). Por lo tanto, dentro del bucle, para seleccionar el elemento actual del array, usas la variable contador <code>i</code> para especificar el elemento del array, ej: <code>scores[i]</code>. Pero recuerda que es un número menor de lo que podrías esperar (ej: la primera iteración es 0, la segunda es 1).</p>
+</blockquote>
+<p>Un bucle <code>for</code> se usa a menudo para recorrer los elementos de un array. En este ejemplo, las puntuaciones de cada ronda de una prueba se almacenan en un array llamado <code>scores</code>.</p>
+<p>El número total de elementos en el array se almacena en una variable llamada <code>arrayLength</code>. Este número se obtiene usando la propiedad <code>length</code> del array.</p>
+<p>Hay tres variables más: <code>roundNumber</code> contiene la ronda de la prueba; <code>msg</code> contiene el mensaje a mostrar; <code>i</code> es el contador (declarado fuera del bucle).</p>
+<p>El bucle comienza con la palabra clave <code>for</code>, luego contiene la condición dentro de los paréntesis. Mientras el contador sea menor que el número total de elementos en el array, el contenido de las llaves continuará ejecutándose. Cada vez que el bucle se ejecuta, el número de ronda se incrementa en 1.</p>
+<p>Dentro de las llaves hay reglas que escriben el número de ronda y la puntuación en la variable <code>msg</code>. Las variables declaradas fuera del bucle se usan dentro del bucle.</p>
+<p>La variable <code>msg</code> se escribe luego en la página. Contiene HTML, por lo que se usa la propiedad <code>innerHTML</code>. Recuerda que la pág. 228 hablará sobre problemas de seguridad relacionados con esta propiedad.</p>
+<p>El contador y el array comienzan desde 0 (en lugar de 1). Por lo tanto, dentro del bucle, para seleccionar el elemento actual del array, usas la variable contador <code>i</code> para especificar el elemento del array, ej: <code>scores[i]</code>. Pero recuerda que es un número menor de lo que podrías esperar (ej: la primera iteración es 0, la segunda es 1).</p>
+<h2 id="usando-bucles-while">USANDO BUCLES WHILE<a class="headerlink" href="#usando-bucles-while" title="Permanent link">&para;</a></h2>
+<p>La diferencia clave entre un bucle <code>while</code> y un bucle <code>do...while</code> es que las sentencias en el bloque de código vienen antes de la condición. Esto significa que esas sentencias se ejecutan una vez, se cumpla o no la condición.</p>
+<p>Si observas la condición, está verificando que el valor de la variable llamada <code>i</code> sea menor que 1, pero esa variable ya se ha establecido en un valor de 1. Por lo tanto, en este ejemplo el resultado es que la tabla del 5 se escribe una vez, aunque el contador no sea menor que 1.</p>
+<p>A algunas personas les gusta escribir <code>while</code> en una línea separada de la llave de cierre que lo precede.</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="c1">// c04/js/do-while-loop.js</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Establece el contador a 1</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mensaje</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="c1">// Almacena la tabla del 5 en una variable</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="w">  </span><span class="nx">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; x 5 = &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="w">  </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="c1">// Observa que esto ya es 1 y aún así se ejecuta</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<img alt="" src="../multlipler.png" /></p>
+<p>Desglosando la primera sentencia en estos ejemplos:</p>
+<p><img alt="" src="../numbres.png" /></p>
+<ol>
+<li>Toma la variable llamada <code>msg</code></li>
+<li>Añade lo siguiente a su valor</li>
+<li>El número del contador</li>
+<li>Escribe el string <code>x 5 =</code></li>
+<li>El contador multiplicado por 5</li>
+<li>Añade un salto de línea</li>
+</ol>
+<h2 id="ejemplo-decisiones-y-bucles">EJEMPLO: DECISIONES Y BUCLES<a class="headerlink" href="#ejemplo-decisiones-y-bucles" title="Permanent link">&para;</a></h2>
+<p>En este ejemplo, al usuario se le puede mostrar suma o multiplicación de un número dado. El script demuestra el uso tanto de lógica condicional como de bucles.</p>
+<p>El ejemplo comienza con dos variables:</p>
+<ol>
+<li><code>number</code> contiene el número con el que se realizarán los cálculos (en este caso es el número 3)</li>
+<li><code>operator</code> indica si debe ser suma o multiplicación (en este caso está realizando suma)</li>
+</ol>
+<p>Se usa una sentencia <code>if...else</code> para decidir si realizar suma o multiplicación con el número. Si la variable llamada <code>operator</code> tiene el valor <code>addition</code>, los números se sumarán; de lo contrario, se multiplicarán.</p>
+<p>Dentro de la sentencia condicional, se usa un bucle <code>while</code> para calcular los resultados. Se ejecutará 10 veces porque la condición verifica si el valor del contador es menor que 11.</p>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span>
+<span class="normal"><a href="#__codelineno-19-13">13</a></span>
+<span class="normal"><a href="#__codelineno-19-14">14</a></span>
+<span class="normal"><a href="#__codelineno-19-15">15</a></span>
+<span class="normal"><a href="#__codelineno-19-16">16</a></span>
+<span class="normal"><a href="#__codelineno-19-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="cm">&lt;!--c04/example.html--&gt;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Bullseye! Tutoring<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/c04.css&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a>    <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;page2&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Bullseye<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a>      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;images/teacher.png&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;teacher2&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13"></a>      <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;blackboard&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14"></a>    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/example.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>El HTML de este ejemplo es ligeramente diferente al de los otros ejemplos de este capítulo porque hay una pizarra sobre la cual se escribe la tabla.</p>
+<p>Puedes ver que el script se añade a la página justo antes de la etiqueta de cierre <code>&lt;/body&gt;</code>.</p>
+</blockquote>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span>
+<span class="normal"><a href="#__codelineno-20-15">15</a></span>
+<span class="normal"><a href="#__codelineno-20-16">16</a></span>
+<span class="normal"><a href="#__codelineno-20-17">17</a></span>
+<span class="normal"><a href="#__codelineno-20-18">18</a></span>
+<span class="normal"><a href="#__codelineno-20-19">19</a></span>
+<span class="normal"><a href="#__codelineno-20-20">20</a></span>
+<span class="normal"><a href="#__codelineno-20-21">21</a></span>
+<span class="normal"><a href="#__codelineno-20-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="c1">// c04/js/example.js</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Unidad de la tabla</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;addition&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Tipo de cálculo (por defecto suma)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Establece el contador a 1</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mensaje</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">operator</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;addition&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Si la variable operator dice addition</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">11</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Mientras el contador sea menor que 11</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="w">    </span><span class="nx">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; + &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; = &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">table</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cálculo</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="w">    </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Añade 1 al contador</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// De lo contrario</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">11</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Mientras el contador sea menor que 11</span>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15"></a><span class="w">    </span><span class="nx">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; x &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; = &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">table</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cálculo</span>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16"></a><span class="w">    </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Añade 1 al contador</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18"></a><span class="p">}</span>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19"></a>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20"></a><span class="c1">// Escribe el mensaje en la página</span>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;blackboard&#39;</span><span class="p">);</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22"></a><span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>Si lees los comentarios en el código, puedes ver cómo funciona este ejemplo. El script comienza declarando cuatro variables y asignándoles valores.</p>
+<p>Luego, una sentencia <code>if</code> verifica si el valor de la variable llamada <code>operator</code> es <code>addition</code>. Si lo es, usa un bucle <code>while</code> para realizar los cálculos y almacenar los resultados en una variable llamada <code>msg</code>.</p>
+<p>Si cambias el valor de la variable <code>operator</code> a cualquier otro que no sea <code>addition</code>, la sentencia condicional seleccionará el segundo conjunto de sentencias. Estas también contienen un bucle <code>while</code>, pero esta vez realizará multiplicación (en lugar de suma).</p>
+<p>Cuando uno de los bucles ha terminado de ejecutarse, las últimas dos líneas del script seleccionan el elemento cuyo atributo <code>id</code> tiene un valor de <code>blackboard</code> y actualizan la página con el contenido de la variable <code>msg</code>.</p>
+</blockquote>
+<h2 id="resumen">RESUMEN<a class="headerlink" href="#resumen" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Las sentencias condicionales permiten que tu código tome decisiones sobre qué hacer a continuación.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Los operadores de comparación (<code>===</code>, <code>!==</code>, <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>) se usan para comparar dos operandos.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Los operadores lógicos te permiten combinar más de un conjunto de operadores de comparación.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Las sentencias <code>if...else</code> te permiten ejecutar un conjunto de código si una condición es <code>true</code>, y otro si es <code>false</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Las sentencias <code>switch</code> te permiten comparar un valor contra posibles resultados (y también proporcionan una opción <code>default</code> si ninguno coincide).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Los tipos de datos pueden ser coercionados de un tipo a otro.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Todos los valores se evalúan como truthy o falsy.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Hay tres tipos de bucles: <code>for</code>, <code>while</code> y <code>do...while</code>. Cada uno repite un conjunto de sentencias.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../capitulo-3/func-meth-obj/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FUNCTIONS METHODS &amp; OBJECTS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                FUNCTIONS METHODS & OBJECTS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../capitulo-5/document-object-model/" class="md-footer__link md-footer__link--next" aria-label="Next: DOCUMENT OBJECT MODEL">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                DOCUMENT OBJECT MODEL
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

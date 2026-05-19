@@ -1,0 +1,2078 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aprendizaje de Express.js">
+      
+      
+        <meta name="author" content="Alexander Guerrero">
+      
+      
+      
+        <link rel="prev" href="../../capitulo-4/decision-loops/">
+      
+      
+        <link rel="next" href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>DOCUMENT OBJECT MODEL - JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#document-object-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-header__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DOCUMENT OBJECT MODEL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JAVASCRIPT JS &amp; JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" class="md-nav__button md-logo" aria-label="JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    JAVASCRIPT JS & JQ INTERACTIVE FRONTEND WEB DEVELOPMENT
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-js-jq-interactive-front-webdev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-js-jq-interactive-front-webdev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JAVASCRIPT JS-JQ FRONTEND
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-0/introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INTRODUCCION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-1/the-abc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    THE ABC OF PROGRAMMING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-2/basic-js-instruccions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BASIC JS INSTRUCCIONS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-3/func-meth-obj/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FUNCTIONS METHODS & OBJECTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-4/decision-loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DECISIONS & LOOPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DOCUMENT OBJECT MODEL
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DOCUMENT OBJECT MODEL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-arbol-dom-es-un-modelo-de-una-pagina-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL ÁRBOL DOM ES UN MODELO DE UNA PÁGINA WEB
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EL ÁRBOL DOM ES UN MODELO DE UNA PÁGINA WEB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cuerpo-de-la-pagina-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CUERPO DE LA PÁGINA HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-nodo-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL NODO DOCUMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodos-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODOS ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbol-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ÁRBOL DOM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodos-atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODOS ATRIBUTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodos-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODOS TEXTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trabajando-con-el-arbol-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TRABAJANDO CON EL ÁRBOL DOM
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TRABAJANDO CON EL ÁRBOL DOM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-acceder-a-los-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PASO 1: ACCEDER A LOS ELEMENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PASO 1: ACCEDER A LOS ELEMENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-un-nodo-elemento-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR UN NODO ELEMENTO INDIVIDUAL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-multiples-elementos-nodelists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR MÚLTIPLES ELEMENTOS (NODELISTS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorrer-entre-nodos-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RECORRER ENTRE NODOS ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-trabajar-con-esos-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PASO 2: TRABAJAR CON ESOS ELEMENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PASO 2: TRABAJAR CON ESOS ELEMENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceder-actualizar-nodos-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDER / ACTUALIZAR NODOS TEXTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trabajar-con-contenido-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TRABAJAR CON CONTENIDO HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceder-o-actualizar-valores-de-atributos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDER O ACTUALIZAR VALORES DE ATRIBUTOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#almacenar-en-cache-consultas-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ALMACENAR EN CACHÉ CONSULTAS DOM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accediendo-a-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDIENDO A ELEMENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACCEDIENDO A ELEMENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grupos-de-nodos-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        GRUPOS DE NODOS ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruta-mas-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RUTA MÁS RÁPIDA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-que-devuelven-un-solo-nodo-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS QUE DEVUELVEN UN SOLO NODO ELEMENTO:
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-que-devuelven-uno-o-mas-elementos-como-una-nodelist" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS QUE DEVUELVEN UNO O MÁS ELEMENTOS (COMO UNA NODELIST):
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-que-seleccionan-elementos-individuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS QUE SELECCIONAN ELEMENTOS INDIVIDUALES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-usando-atributos-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS USANDO ATRIBUTOS ID
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodelists-consultas-dom-que-devuelven-mas-de-un-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODELISTS: CONSULTAS DOM QUE DEVUELVEN MÁS DE UN ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodelists-vivos-y-estaticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODELISTS VIVOS Y ESTÁTICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-un-elemento-de-una-nodelist" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR UN ELEMENTO DE UNA NODELIST
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SELECCIONAR UN ELEMENTO DE UNA NODELIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-metodo-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL MÉTODO <code>item()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sintaxis-de-arreglos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SINTAXIS DE ARREGLOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-usando-atributos-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS USANDO ATRIBUTOS CLASS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-por-nombre-de-etiqueta" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS POR NOMBRE DE ETIQUETA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-usando-selectores-css" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS USANDO SELECTORES CSS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-arbol-dom-es-un-modelo-de-una-pagina-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL ÁRBOL DOM ES UN MODELO DE UNA PÁGINA WEB
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EL ÁRBOL DOM ES UN MODELO DE UNA PÁGINA WEB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cuerpo-de-la-pagina-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CUERPO DE LA PÁGINA HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-nodo-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL NODO DOCUMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodos-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODOS ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arbol-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ÁRBOL DOM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodos-atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODOS ATRIBUTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodos-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODOS TEXTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trabajando-con-el-arbol-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TRABAJANDO CON EL ÁRBOL DOM
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TRABAJANDO CON EL ÁRBOL DOM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-acceder-a-los-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PASO 1: ACCEDER A LOS ELEMENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PASO 1: ACCEDER A LOS ELEMENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-un-nodo-elemento-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR UN NODO ELEMENTO INDIVIDUAL
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-multiples-elementos-nodelists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR MÚLTIPLES ELEMENTOS (NODELISTS)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorrer-entre-nodos-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RECORRER ENTRE NODOS ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-trabajar-con-esos-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PASO 2: TRABAJAR CON ESOS ELEMENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PASO 2: TRABAJAR CON ESOS ELEMENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceder-actualizar-nodos-texto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDER / ACTUALIZAR NODOS TEXTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trabajar-con-contenido-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TRABAJAR CON CONTENIDO HTML
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceder-o-actualizar-valores-de-atributos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDER O ACTUALIZAR VALORES DE ATRIBUTOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#almacenar-en-cache-consultas-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ALMACENAR EN CACHÉ CONSULTAS DOM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accediendo-a-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACCEDIENDO A ELEMENTOS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACCEDIENDO A ELEMENTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grupos-de-nodos-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        GRUPOS DE NODOS ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruta-mas-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RUTA MÁS RÁPIDA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-que-devuelven-un-solo-nodo-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS QUE DEVUELVEN UN SOLO NODO ELEMENTO:
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-que-devuelven-uno-o-mas-elementos-como-una-nodelist" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS QUE DEVUELVEN UNO O MÁS ELEMENTOS (COMO UNA NODELIST):
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-que-seleccionan-elementos-individuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MÉTODOS QUE SELECCIONAN ELEMENTOS INDIVIDUALES
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-usando-atributos-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS USANDO ATRIBUTOS ID
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodelists-consultas-dom-que-devuelven-mas-de-un-elemento" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODELISTS: CONSULTAS DOM QUE DEVUELVEN MÁS DE UN ELEMENTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodelists-vivos-y-estaticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NODELISTS VIVOS Y ESTÁTICOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-un-elemento-de-una-nodelist" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR UN ELEMENTO DE UNA NODELIST
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SELECCIONAR UN ELEMENTO DE UNA NODELIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-metodo-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        EL MÉTODO <code>item()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sintaxis-de-arreglos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SINTAXIS DE ARREGLOS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-usando-atributos-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS USANDO ATRIBUTOS CLASS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-por-nombre-de-etiqueta" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS POR NOMBRE DE ETIQUETA
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-elementos-usando-selectores-css" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SELECCIONAR ELEMENTOS USANDO SELECTORES CSS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../capitulo-0/introduccion/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    JAVASCRIPT JS-JQ FRONTEND
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="document-object-model">DOCUMENT OBJECT MODEL<a class="headerlink" href="#document-object-model" title="Permanent link">&para;</a></h1>
+<p>El Modelo de Objetos del Documento (DOM) especifica cómo los navegadores deben crear un modelo de una página HTML y cómo JavaScript puede acceder y actualizar el contenido de una página web mientras está en la ventana del navegador.</p>
+<p>El DOM no es parte de HTML, ni parte de JavaScript; es un conjunto separado de reglas. Es implementado por todos los principales fabricantes de navegadores y cubre dos áreas principales:</p>
+<p><strong>CREANDO UN MODELO DE LA PÁGINA HTML</strong></p>
+<p>Cuando el navegador carga una página web, crea un modelo de la página en memoria. El DOM especifica la forma en que el navegador debe estructurar este modelo usando un árbol DOM.</p>
+<p>El DOM se llama modelo de objetos porque el modelo (el árbol DOM) está hecho de objetos. Cada objeto representa una parte diferente de la página cargada en la ventana del navegador.</p>
+<p><strong>ACCEDIENDO Y CAMBIANDO LA PÁGINA HTML</strong></p>
+<p>El DOM también define métodos y propiedades para acceder y actualizar cada objeto en este modelo, lo que a su vez actualiza lo que el usuario ve en el navegador.</p>
+<p>Escucharás a personas llamar al DOM una Interfaz de Programación de Aplicaciones (API). Las interfaces de usuario permiten que los humanos interactúen con programas; las APIs permiten que los programas (y scripts) se comuniquen entre sí. El DOM establece lo que tu script puede preguntarle al navegador sobre la página actual y cómo decirle al navegador que actualice lo que se muestra al usuario.</p>
+<h2 id="el-arbol-dom-es-un-modelo-de-una-pagina-web">EL ÁRBOL DOM ES UN MODELO DE UNA PÁGINA WEB<a class="headerlink" href="#el-arbol-dom-es-un-modelo-de-una-pagina-web" title="Permanent link">&para;</a></h2>
+<p>A medida que un navegador carga una página web, crea un modelo de esa página. El modelo se llama árbol DOM y se almacena en la memoria del navegador. Consiste en cuatro tipos principales de nodos:</p>
+<h3 id="cuerpo-de-la-pagina-html">CUERPO DE LA PÁGINA HTML<a class="headerlink" href="#cuerpo-de-la-pagina-html" title="Permanent link">&para;</a></h3>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;page&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>      <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>List<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Buy groceries<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;one&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>fresh<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> figs<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;two&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>pine nuts<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;three&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>honey<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">&gt;</span>balsamic vinegar<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="el-nodo-documento">EL NODO DOCUMENTO<a class="headerlink" href="#el-nodo-documento" title="Permanent link">&para;</a></h3>
+<p>Arriba puedes ver el código HTML de una lista de compras, y en la página derecha está su árbol DOM. Cada elemento, atributo y fragmento de texto en el HTML está representado por su propio nodo DOM.</p>
+<p>En la parte superior del árbol se añade un nodo documento; representa la página completa (y también corresponde al objeto <code>document</code>, que conociste en la pág. 36).</p>
+<p>Cuando accedes a cualquier elemento, atributo o nodo de texto, navegas hacia él a través del nodo documento. Es el punto de partida para todas las visitas al árbol DOM.</p>
+<h3 id="nodos-elemento">NODOS ELEMENTO<a class="headerlink" href="#nodos-elemento" title="Permanent link">&para;</a></h3>
+<p>Los elementos HTML describen la estructura de una página HTML. (Los elementos <code>&lt;h1&gt;</code> – <code>&lt;h6&gt;</code> describen qué partes son encabezados; las etiquetas <code>&lt;p&gt;</code> indican dónde comienzan y terminan los párrafos de texto; y así sucesivamente).</p>
+<p>Para acceder al árbol DOM, comienzas buscando elementos. Una vez que encuentras el elemento que deseas, entonces puedes acceder a sus nodos de texto y atributos si quieres. Por eso comienzas aprendiendo métodos que te permiten acceder a nodos elemento, antes de aprender a acceder y alterar texto o atributos.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Continuaremos usando este ejemplo de lista a lo largo de este capítulo y los dos siguientes para que puedas ver cómo diferentes técnicas te permiten acceder y actualizar la página web (que está representada por este árbol DOM).</p>
+<p>Las relaciones entre el documento y todos los nodos elemento se describen usando los mismos términos que un árbol genealógico: padres, hijos, hermanos, ancestros y descendientes. (Cada nodo es un descendiente del nodo documento).</p>
+</div>
+<p>Cada nodo es un objeto con métodos y propiedades. Los scripts acceden y actualizan este árbol DOM (no el archivo HTML fuente). Cualquier cambio realizado en el árbol DOM se refleja en el navegador.</p>
+<h3 id="arbol-dom">ÁRBOL DOM<a class="headerlink" href="#arbol-dom" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../domtree.png" /></p>
+<h3 id="nodos-atributo">NODOS ATRIBUTO<a class="headerlink" href="#nodos-atributo" title="Permanent link">&para;</a></h3>
+<p>Las etiquetas de apertura de los elementos HTML pueden llevar atributos y estos están representados por nodos atributo en el árbol DOM.</p>
+<p>Los nodos atributo no son hijos del elemento que los contiene; son parte de ese elemento. Una vez que accedes a un elemento, existen métodos y propiedades específicos de JavaScript para leer o cambiar los atributos de ese elemento. Por ejemplo, es común cambiar los valores de los atributos class para activar nuevas reglas CSS que afecten su presentación.</p>
+<h3 id="nodos-texto">NODOS TEXTO<a class="headerlink" href="#nodos-texto" title="Permanent link">&para;</a></h3>
+<p>Una vez que has accedido a un nodo elemento, puedes llegar al texto dentro de ese elemento. Este se almacena en su propio nodo texto.</p>
+<p>Los nodos texto no pueden tener hijos. Si un elemento contiene texto y otro elemento hijo, el elemento hijo no es hijo del nodo texto sino más bien hijo del elemento contenedor. (Observa el elemento <code>&lt;em&gt;</code> en el primer elemento <code>&lt;li&gt;</code>). Esto ilustra cómo el nodo texto es siempre una nueva rama del árbol DOM, y no salen más ramas de él.</p>
+<h2 id="trabajando-con-el-arbol-dom">TRABAJANDO CON EL ÁRBOL DOM<a class="headerlink" href="#trabajando-con-el-arbol-dom" title="Permanent link">&para;</a></h2>
+<p>Acceder y actualizar el árbol DOM implica dos pasos:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Localiza el nodo que representa el elemento con el que deseas trabajar.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Utiliza su contenido de texto, elementos hijos y atributos.</li>
+</ul>
+<h3 id="paso-1-acceder-a-los-elementos">PASO 1: ACCEDER A LOS ELEMENTOS<a class="headerlink" href="#paso-1-acceder-a-los-elementos" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Aquí tienes una visión general de los métodos y propiedades que acceden a los elementos cubiertos en las págs. 192 – 211. Las dos primeras filas se conocen como consultas DOM. La última columna se conoce como recorrer el DOM.</p>
+</blockquote>
+<h4 id="seleccionar-un-nodo-elemento-individual">SELECCIONAR UN NODO ELEMENTO INDIVIDUAL<a class="headerlink" href="#seleccionar-un-nodo-elemento-individual" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../idividualelement.png" /></p>
+<p>Aquí hay tres formas comunes de seleccionar un elemento individual:</p>
+<dl>
+<dt><code>getElementById()</code></dt>
+<dd>
+<p>Utiliza el valor del atributo <code>id</code> de un elemento (que debería ser único dentro de la página).
+Ver pág. 195</p>
+</dd>
+<dt><code>querySelector()</code></dt>
+<dd>
+<p>Utiliza un selector CSS y devuelve el primer elemento que coincide.
+Ver pág. 202</p>
+</dd>
+</dl>
+<h4 id="seleccionar-multiples-elementos-nodelists">SELECCIONAR MÚLTIPLES ELEMENTOS (NODELISTS)<a class="headerlink" href="#seleccionar-multiples-elementos-nodelists" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../multipleslements.png" /></p>
+<p>Hay tres formas comunes de seleccionar múltiples elementos.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>getElementsByClassName()</code>: Selecciona todos los elementos que tienen un valor específico en su atributo <code>class</code>. Ver pág. 200</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>getElementsByTagName()</code>: Selecciona todos los elementos que tienen el nombre de etiqueta especificado. Ver pág. 201</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>querySelectorAll()</code> : Utiliza un selector CSS para seleccionar todos los elementos que coinciden. Ver pág. 202</li>
+</ul>
+<h4 id="recorrer-entre-nodos-elemento">RECORRER ENTRE NODOS ELEMENTO<a class="headerlink" href="#recorrer-entre-nodos-elemento" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../betenn.png" /></p>
+<p>Puedes moverte de un nodo elemento a otro nodo elemento relacionado.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>parentNode</code>: Selecciona el padre del nodo elemento actual (devolverá solo un elemento).
+Ver pág. 208</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>previousSibling</code> / <code>nextSibling</code> : Selecciona el hermano anterior o siguiente del árbol DOM.
+Ver pág. 210</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>firstChild</code> / <code>lastChild</code> : Selecciona el primer o último hijo del elemento actual.
+Ver pág. 211</li>
+</ul>
+<blockquote>
+<p>A lo largo del capítulo verás notas sobre métodos DOM que solo funcionan en ciertos navegadores o que tienen errores. El soporte inconsistente del DOM entre navegadores fue una razón clave por la que jQuery se volvió tan popular.</p>
+</blockquote>
+<p>Los términos <strong>elementos</strong> y <strong>nodos elemento</strong> se usan indistintamente, pero cuando la gente dice que el DOM está trabajando con un elemento, en realidad está trabajando con un nodo que representa ese elemento.</p>
+<h3 id="paso-2-trabajar-con-esos-elementos">PASO 2: TRABAJAR CON ESOS ELEMENTOS<a class="headerlink" href="#paso-2-trabajar-con-esos-elementos" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Aquí tienes una visión general de los métodos y propiedades que trabajan con los elementos presentados en la pág. 186.</p>
+</blockquote>
+<h4 id="acceder-actualizar-nodos-texto">ACCEDER / ACTUALIZAR NODOS TEXTO<a class="headerlink" href="#acceder-actualizar-nodos-texto" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../update.png" /></p>
+<p>El texto dentro de cualquier elemento se almacena dentro de un nodo texto. Para acceder al nodo texto anterior:</p>
+<ol>
+<li>Selecciona el elemento <code>&lt;li&gt;</code></li>
+<li>Usa la propiedad <code>firstChild</code> para obtener el nodo texto</li>
+<li>Usa la única propiedad del nodo texto (<code>nodeValue</code>) para obtener el texto del elemento</li>
+</ol>
+<p><code>nodeValue</code> : Esta propiedad te permite acceder o actualizar el contenido de un nodo texto.
+Ver pág. 214</p>
+<p>El nodo texto no incluye el texto dentro de ningún elemento hijo.</p>
+<h4 id="trabajar-con-contenido-html">TRABAJAR CON CONTENIDO HTML<a class="headerlink" href="#trabajar-con-contenido-html" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../withhtmlcontenct.png" /></p>
+<p>Una propiedad permite acceder a elementos hijos y contenido de texto:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>innerHTML</code>
+Ver pág. 220</li>
+</ul>
+<p>Otra solo al contenido de texto:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>textContent</code>
+Ver pág. 216</li>
+</ul>
+<p>Varios métodos te permiten crear nuevos nodos, agregar nodos a un árbol y eliminar nodos de un árbol:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>createElement()</code> </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>createTextNode()</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>appendChild()</code> </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>removeChild()</code></li>
+</ul>
+<p>Esto se llama manipulación del DOM.
+Ver pág. 222</p>
+<h4 id="acceder-o-actualizar-valores-de-atributos">ACCEDER O ACTUALIZAR VALORES DE ATRIBUTOS<a class="headerlink" href="#acceder-o-actualizar-valores-de-atributos" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../accesatribute.png" /></p>
+<p>Aquí hay algunas de las propiedades y métodos que puedes usar para trabajar con atributos:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>className</code> / <code>id</code></li>
+</ul>
+<p>Te permite obtener o actualizar el valor de los atributos <code>class</code> e <code>id</code>.
+Ver pág. 232</p>
+<p>Si tu script necesita usar el o los mismos elementos más de una vez, puedes almacenar la ubicación del o los elementos en una variable.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>hasAttribute()</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>getAttribute()</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>setAttribute()</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>removeAttribute()</code></li>
+</ul>
+<p>El primero verifica si un atributo existe. El segundo obtiene su valor. El tercero actualiza el valor. El cuarto elimina un atributo.
+Ver pág. 232</p>
+<h3 id="almacenar-en-cache-consultas-dom">ALMACENAR EN CACHÉ CONSULTAS DOM<a class="headerlink" href="#almacenar-en-cache-consultas-dom" title="Permanent link">&para;</a></h3>
+<p>Los métodos que encuentran elementos en el árbol DOM se llaman consultas DOM.Cuando necesites trabajar con un elemento más de una vez, debes usar una variable para almacenar el resultado de esta consulta.</p>
+<p>Cuando un script selecciona un elemento para accederlo o actualizarlo, el intérprete debe encontrar el o los elementos en el árbol DOM.</p>
+<p>Abajo, se le indica al intérprete que busque en el árbol DOM un elemento cuyo atributo <code>id</code> tenga el valor <code>one</code>.</p>
+<p>Una vez que ha encontrado el nodo que representa el o los elementos, puedes trabajar con ese nodo, su padre o cualquier hijo.</p>
+<p><img alt="" src="../getli.png" /></p>
+<p>Cuando las personas hablan de almacenar elementos en variables, en realidad están almacenando la ubicación del o los elementos dentro del árbol DOM en una variable. Las propiedades y métodos de ese nodo elemento funcionan sobre la variable.</p>
+<p>Si tu script necesita usar el o los mismos elementos más de una vez, puedes almacenar la ubicación del o los elementos en una variable.</p>
+<p>Esto evita que el navegador tenga que buscar en el árbol DOM para encontrar el o los mismos elementos nuevamente. Se conoce como almacenar en caché la selección.</p>
+<p>Los programadores dirían que la variable almacena una referencia al objeto en el árbol DOM. (Está almacenando la ubicación del nodo).</p>
+<p><img alt="" src="../itemOne.png" /></p>
+<p><code>itemOne</code> no almacena el elemento <code>&lt;li&gt;</code>, almacena una referencia a dónde está ese nodo en el árbol DOM. Para acceder al contenido de texto de este elemento, podrías usar el nombre de la variable: <code>itemOne.textContent</code></p>
+<h2 id="accediendo-a-elementos">ACCEDIENDO A ELEMENTOS<a class="headerlink" href="#accediendo-a-elementos" title="Permanent link">&para;</a></h2>
+<p>Las consultas DOM pueden devolver un elemento, o pueden devolver una NodeList, que es una colección de nodos.</p>
+<p>A veces solo querrás acceder a un elemento individual (o un fragmento de la página que está almacenado dentro de ese elemento). Otras veces puedes querer seleccionar un grupo de elementos, por ejemplo, cada elemento <code>&lt;h1&gt;</code> en la página o cada elemento <code>&lt;li&gt;</code> dentro de una lista en particular.</p>
+<p>Aquí, el árbol DOM muestra el cuerpo de la página del ejemplo de la lista. Nos enfocamos en acceder a los elementos primero, por lo que solo muestra nodos elemento. Los diagramas en las páginas siguientes resaltan qué elementos devolvería una consulta DOM. (Recuerda, los nodos elemento son la representación DOM de un elemento).</p>
+<p><img alt="" src="../bodystrucutreofelements.png" /></p>
+<h3 id="grupos-de-nodos-elemento">GRUPOS DE NODOS ELEMENTO<a class="headerlink" href="#grupos-de-nodos-elemento" title="Permanent link">&para;</a></h3>
+<p>Si un método puede devolver más de un nodo, siempre devolverá una NodeList, que es una colección de nodos (incluso si solo encuentra un elemento coincidente). Luego debes seleccionar el elemento que deseas de esta lista usando un número de índice (lo que significa que la numeración comienza en 0 como los elementos de un arreglo).</p>
+<p>Por ejemplo, varios elementos pueden tener el mismo nombre de etiqueta, por lo que <code>getElementsByTagName()</code> siempre devolverá una NodeList.</p>
+<h3 id="ruta-mas-rapida">RUTA MÁS RÁPIDA<a class="headerlink" href="#ruta-mas-rapida" title="Permanent link">&para;</a></h3>
+<p>Encontrar la forma más rápida de acceder a un elemento dentro de tu página web hará que la página parezca más rápida y/o más receptiva. Esto generalmente significa evaluar el número mínimo de nodos en el camino hacia el elemento con el que deseas trabajar.</p>
+<p>Por ejemplo, <code>getElementById()</code> devolverá rápidamente un elemento (porque no hay dos elementos en la misma página que deban tener el mismo valor para un atributo <code>id</code>), pero solo se puede usar cuando el elemento al que deseas acceder tiene un atributo <code>id</code>.</p>
+<h3 id="metodos-que-devuelven-un-solo-nodo-elemento">MÉTODOS QUE DEVUELVEN UN SOLO NODO ELEMENTO:<a class="headerlink" href="#metodos-que-devuelven-un-solo-nodo-elemento" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>getElementById('id')</code>
+Selecciona un elemento individual dado el valor de su atributo <code>id</code>. El HTML debe tener un atributo <code>id</code> para que pueda ser seleccionable.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>querySelector('css selector')</code>
+Utiliza la sintaxis de selectores CSS que seleccionaría uno o más elementos. Este método devuelve solo el primero de los elementos coincidentes.</p>
+</li>
+</ul>
+<h3 id="metodos-que-devuelven-uno-o-mas-elementos-como-una-nodelist">MÉTODOS QUE DEVUELVEN UNO O MÁS ELEMENTOS (COMO UNA NODELIST):<a class="headerlink" href="#metodos-que-devuelven-uno-o-mas-elementos-como-una-nodelist" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>getElementsByClassName('class')</code>
+Selecciona uno o más elementos dado el valor de su atributo <code>class</code>. El HTML debe tener un atributo <code>class</code> para que pueda ser seleccionable. Este método es más rápido que <code>querySelectorAll()</code>.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>getElementsByTagName('tagName')</code>
+Selecciona todos los elementos de la página con el nombre de etiqueta especificado. Este método es más rápido que <code>querySelectorAll()</code>.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>querySelectorAll('css selector')</code>
+Utiliza la sintaxis de selectores CSS para seleccionar uno o más elementos y devuelve todos los que coinciden.</p>
+</li>
+</ul>
+<h3 id="metodos-que-seleccionan-elementos-individuales">MÉTODOS QUE SELECCIONAN ELEMENTOS INDIVIDUALES<a class="headerlink" href="#metodos-que-seleccionan-elementos-individuales" title="Permanent link">&para;</a></h3>
+<p><code>getElementById()</code> y <code>querySelector()</code> pueden buscar en un documento completo y devolver elementos individuales. Ambos usan una sintaxis similar.</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>getElementById()</code> es la forma más rápida y eficiente de acceder a un elemento porque no hay dos elementos que puedan compartir el mismo valor para su atributo <code>id</code>. La sintaxis de este método se muestra a continuación, y un ejemplo de su uso está en la página de la derecha.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>querySelector()</code> es una adición más reciente al DOM, por lo que no es compatible con navegadores antiguos. Pero es muy flexible porque su parámetro es un selector CSS, lo que significa que se puede usar para apuntar con precisión a muchos más elementos.</p>
+</li>
+</ul>
+<blockquote>
+<p><code>document</code> se refiere al objeto documento. Siempre debes acceder a los elementos individuales a través del objeto documento.</p>
+<p>El método <code>getElementById()</code> indica que deseas encontrar un elemento basado en el valor de su atributo <code>id</code>.</p>
+<p><strong>MEMBER OPERATOR</strong> La notación de punto indica que el método (a la derecha) se está aplicando al nodo a la izquierda del punto.</p>
+<p><strong>PARAMETER</strong> El método necesita saber el valor del atributo <code>id</code> del elemento que deseas. Es el parámetro del método.</p>
+</blockquote>
+<p><img alt="" src="../selectors.png" /></p>
+<p>Este código devolverá el nodo elemento para el elemento cuyo atributo <code>id</code> tiene el valor <code>one</code>. A menudo verás nodos elemento almacenados en una variable para usarlos más adelante en el script (como viste en la pág. 190).</p>
+<p>Aquí el método se usa en el objeto documento, por lo que busca ese elemento en cualquier lugar dentro de la página. Los métodos DOM también se pueden usar en nodos elemento dentro de la página para encontrar descendientes de ese nodo.</p>
+<h3 id="seleccionar-elementos-usando-atributos-id">SELECCIONAR ELEMENTOS USANDO ATRIBUTOS ID<a class="headerlink" href="#seleccionar-elementos-usando-atributos-id" title="Permanent link">&para;</a></h3>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">&lt;!--c05/get-element-by-id.html--&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>List King<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Buy groceries<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;one&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>fresh<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> figs<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;two&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>pine nuts<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;three&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>honey<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">&gt;</span>balsamic vinegar<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// c05/js/get-element-by-id.js</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1">// Selecciona el elemento y guárdalo en una variable.</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1">// Cambia el valor del atributo class.</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="nx">el</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cool&#39;</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>getElementById()</code> te permite seleccionar un solo nodo elemento especificando el valor de su atributo <code>id</code>.</p>
+<p>Este método tiene un parámetro: el valor del atributo <code>id</code> del elemento que deseas seleccionar. Este valor se coloca entre comillas porque es una cadena. Las comillas pueden ser simples o dobles, pero deben coincidir.</p>
+<p>En el ejemplo de la izquierda, la primera línea de código JavaScript encuentra el elemento cuyo atributo <code>id</code> tiene el valor <code>one</code>, y almacena una referencia a ese nodo en una variable llamada <code>el</code>.</p>
+<p>El código luego usa una propiedad llamada <code>className</code> (que conocerás en la pág. 232) para actualizar el valor del atributo <code>class</code> del elemento almacenado en esta variable. Su valor es <code>cool</code>, y esto activa una nueva regla en el CSS que establece el color de fondo del elemento a aguamarina.</p>
+<p>Observa cómo la propiedad <code>className</code> se usa en la variable que almacena la referencia al elemento.</p>
+<p><img alt="" src="../resultcolors.png" /></p>
+<p>Esta ventana de resultados muestra el ejemplo después de que el script ha actualizado el primer elemento de la lista. El estado original, antes de que el script se ejecutara, se muestra en la pág. 185.</p>
+<h3 id="nodelists-consultas-dom-que-devuelven-mas-de-un-elemento">NODELISTS: CONSULTAS DOM QUE DEVUELVEN MÁS DE UN ELEMENTO<a class="headerlink" href="#nodelists-consultas-dom-que-devuelven-mas-de-un-elemento" title="Permanent link">&para;</a></h3>
+<p>Cuando un método DOM puede devolver más de un elemento, devuelve una NodeList (incluso si solo encuentra un elemento coincidente).</p>
+<p>Una NodeList es una colección de nodos elemento. Cada nodo recibe un número de índice (un número que comienza en cero, como un arreglo).</p>
+<p>El orden en que los nodos elemento se almacenan en una NodeList es el mismo orden en que aparecieron en la página HTML.</p>
+<p>Cuando una consulta DOM devuelve una NodeList, es posible que desees:</p>
+<ul>
+<li>Seleccionar un elemento de la NodeList.</li>
+<li>Recorrer cada elemento de la NodeList y ejecutar las mismas sentencias en cada uno de los nodos elemento.</li>
+</ul>
+<p>Las NodeLists se parecen a los arreglos y se numeran como los arreglos, pero en realidad no son arreglos; son un tipo de objeto llamado colección.</p>
+<p>Como cualquier otro objeto, una NodeList tiene propiedades y métodos, notablemente:</p>
+<ul>
+<li>La propiedad <code>length</code> te indica cuántos elementos hay en la NodeList.</li>
+<li>El método <code>item()</code> devuelve un nodo específico de la NodeList cuando le indicas el número de índice del elemento que deseas (entre paréntesis). Sin embargo, es más común usar la sintaxis de arreglos (con corchetes) para recuperar un elemento de una NodeList (como verás en la pág. 199).</li>
+</ul>
+<h3 id="nodelists-vivos-y-estaticos">NODELISTS VIVOS Y ESTÁTICOS<a class="headerlink" href="#nodelists-vivos-y-estaticos" title="Permanent link">&para;</a></h3>
+<p>Hay ocasiones en las que querrás trabajar con la misma selección de elementos varias veces, por lo que la NodeList se puede almacenar en una variable y reutilizarse (en lugar de recolectar los mismos elementos nuevamente).</p>
+<p>En una NodeList viva, cuando tu script actualiza la página, la NodeList se actualiza al mismo tiempo. Los métodos que comienzan con <code>getElementsBy...</code> devuelven NodeLists vivas. También suelen ser más rápidas de generar que las NodeLists estáticas.</p>
+<p>En una NodeList estática, cuando tu script actualiza la página, la NodeList no se actualiza para reflejar los cambios realizados por el script.</p>
+<p>Los nuevos métodos que comienzan con <code>querySelector...</code> (que usan sintaxis de selector CSS) devuelven NodeLists estáticas. Reflejan el documento en el momento en que se hizo la consulta. Si el script cambia el contenido de la página, la NodeList no se actualiza para reflejar esos cambios.</p>
+<p>Aquí puedes ver cuatro consultas DOM diferentes que todas devuelven una NodeList. Para cada consulta, puedes ver los elementos y sus números de índice en la NodeList que se devuelve.</p>
+<p><img alt="" src="../gettes.png" /></p>
+<p><code>getElementsByTagName('h1')</code>
+Aunque esta consulta solo devuelve un elemento, el método aún devuelve una NodeList debido a la posibilidad de devolver más de un elemento.</p>
+<p><code>getElementsByTagName('li')</code>
+Este método devuelve cuatro elementos, uno por cada elemento <code>&lt;li&gt;</code> en la página. Aparecen en el mismo orden que en la página HTML.</p>
+<p><code>getElementsByClassName('hot')</code>
+Esta NodeList contiene solo tres de los elementos <code>&lt;li&gt;</code> porque estamos buscando elementos por el valor de su atributo <code>class</code>, no por el nombre de etiqueta.</p>
+<p><code>querySelectorAll('li[id]')</code>
+Este método devuelve cuatro elementos, uno por cada elemento <code>&lt;li&gt;</code> en la página que tiene un atributo <code>id</code> (independientemente de los valores de los atributos <code>id</code>).</p>
+<h3 id="seleccionar-un-elemento-de-una-nodelist">SELECCIONAR UN ELEMENTO DE UNA NODELIST<a class="headerlink" href="#seleccionar-un-elemento-de-una-nodelist" title="Permanent link">&para;</a></h3>
+<p>Hay dos formas de seleccionar un elemento de una NodeList: el método <code>item()</code> y la sintaxis de arreglos. Ambos requieren el número de índice del elemento que deseas.</p>
+<h4 id="el-metodo-item">EL MÉTODO <code>item()</code><a class="headerlink" href="#el-metodo-item" title="Permanent link">&para;</a></h4>
+<p>Las NodeLists tienen un método llamado <code>item()</code> que devolverá un nodo individual de la NodeList. Especificas el número de índice del elemento que deseas como parámetro del método (dentro del paréntesis).</p>
+<p>Ejecutar código cuando no hay elementos con los que trabajar desperdicia recursos. Por lo tanto, los programadores a menudo verifican que haya al menos un elemento en la NodeList antes de ejecutar cualquier código. Para hacer esto, usa la propiedad <code>length</code> de la NodeList: te indica cuántos elementos contiene la NodeList.</p>
+<p>Aquí puedes ver que se usa una sentencia <code>if</code>. La condición para la sentencia <code>if</code> es si la propiedad <code>length</code> de la NodeList es mayor que cero. Si es así, entonces las sentencias dentro del <code>if</code> se ejecutan. Si no, el código continúa ejecutándose después de la segunda llave.</p>
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;hot&#39;</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">firstItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elements</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>
+<p>Selecciona los elementos que tienen un atributo <code>class</code> cuyo valor es <code>hot</code> y almacena la NodeList en una variable llamada <code>elements</code>.</p>
+</li>
+<li>
+<p>Usa la propiedad <code>length</code> para verificar cuántos elementos se encontraron. Si se encontraron 1 o más, ejecuta el código dentro de la sentencia <code>if</code>.</p>
+</li>
+<li>
+<p>Almacena el primer elemento de la NodeList en una variable llamada <code>firstItem</code>. (Dice 0 porque los números de índice comienzan en cero).</p>
+</li>
+</ol>
+<p>La sintaxis de arreglos se prefiere sobre el método <code>item()</code> porque es más rápida. Antes de seleccionar un nodo de una NodeList, verifica que contenga nodos. Si usas la NodeList repetidamente, guárdala en una variable.</p>
+<h4 id="sintaxis-de-arreglos">SINTAXIS DE ARREGLOS<a class="headerlink" href="#sintaxis-de-arreglos" title="Permanent link">&para;</a></h4>
+<p>Puedes acceder a nodos individuales usando una sintaxis de corchetes similar a la que se usa para acceder a elementos individuales de un arreglo. Especificas el número de índice del elemento que deseas dentro de corchetes que siguen a la NodeList.</p>
+<p>Como con todas las consultas DOM, si necesitas acceder a la misma NodeList varias veces, almacena el resultado de la consulta DOM en una variable. En los ejemplos de ambas páginas, la NodeList se almacena en una variable llamada <code>elements</code>.</p>
+<p>Si creas una variable para contener una NodeList pero no hay elementos coincidentes, la variable será una NodeList vacía. Cuando verificas la propiedad <code>length</code> de la variable, devolverá el número 0 porque no contiene ningún elemento.</p>
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;hot&#39;</span><span class="p">);</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">firstItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elements</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>
+<p>Crea una NodeList que contenga elementos que tienen un atributo <code>class</code> cuyo valor es <code>hot</code>, y guárdala en la variable <code>elements</code>.</p>
+</li>
+<li>
+<p>Si ese número es mayor o igual a uno, ejecuta el código dentro de la sentencia <code>if</code>.</p>
+</li>
+<li>
+<p>Obtén el primer elemento de la NodeList (dice 0 porque los números de índice comienzan en cero).</p>
+</li>
+</ol>
+<h3 id="seleccionar-elementos-usando-atributos-class">SELECCIONAR ELEMENTOS USANDO ATRIBUTOS CLASS<a class="headerlink" href="#seleccionar-elementos-usando-atributos-class" title="Permanent link">&para;</a></h3>
+<p>El método <code>getElementsByClassName()</code> te permite seleccionar elementos cuyo atributo <code>class</code> contiene un valor específico.</p>
+<p>El método tiene un parámetro: el nombre de la clase que se indica entre comillas dentro del paréntesis después del nombre del método.</p>
+<p>Debido a que varios elementos pueden tener el mismo valor para su atributo <code>class</code>, este método siempre devuelve una NodeList.</p>
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">// c05/js/get-elements-by-class-name.js</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;hot&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Encuentra elementos hot</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Si se encuentran 3 o más</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elements</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span><span class="w"> </span><span class="c1">// Selecciona el tercero de la NodeList</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">  </span><span class="nx">el</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cool&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cambia el valor de su atributo class</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Este ejemplo comienza buscando elementos cuyo atributo <code>class</code> contiene <code>hot</code>. (El valor de un atributo <code>class</code> puede contener varios nombres de clase, cada uno separado por un espacio). El resultado de esta consulta DOM se almacena en una variable llamada <code>elements</code> porque se usa más de una vez en el ejemplo.</p>
+<p>Una sentencia <code>if</code> verifica si la consulta encontró más de dos elementos. Si es así, el tercero se selecciona y se almacena en una variable llamada <code>el</code>. El atributo <code>class</code> de ese elemento se actualiza luego a <code>cool</code>. (A su vez, esto activa un nuevo estilo CSS, cambiando la presentación de ese elemento).</p>
+<p><img alt="" src="../elemtscolors.png" /></p>
+<h3 id="seleccionar-elementos-por-nombre-de-etiqueta">SELECCIONAR ELEMENTOS POR NOMBRE DE ETIQUETA<a class="headerlink" href="#seleccionar-elementos-por-nombre-de-etiqueta" title="Permanent link">&para;</a></h3>
+<p>El método <code>getElementsByTagName()</code> te permite seleccionar elementos usando su nombre de etiqueta.</p>
+<p>El nombre del elemento se especifica como parámetro, por lo que se coloca dentro del paréntesis y está contenido entre comillas.</p>
+<p>Ten en cuenta que no incluyes los corchetes angulares que rodean el nombre de la etiqueta en el HTML (solo las letras dentro de los corchetes).</p>
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">// c05/js/get-elements-by-tag-name.js</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Encuentra elementos &lt;li&gt;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Si se encuentra 1 o más</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elements</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span><span class="w"> </span><span class="c1">// Selecciona el primero usando sintaxis de arreglos</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">  </span><span class="nx">el</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cool&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cambia el valor del atributo class</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Este ejemplo busca cualquier elemento <code>&lt;li&gt;</code> en el documento. Almacena el resultado en una variable llamada <code>elements</code> porque el resultado se usa más de una vez en este ejemplo.</p>
+<p>Una sentencia <code>if</code> verifica si se encontró algún elemento <code>&lt;li&gt;</code>. Como con cualquier elemento que puede devolver una NodeList, verificas que haya un elemento adecuado antes de intentar trabajar con él.</p>
+<p>Si se encontraron elementos coincidentes, se selecciona el primero y se actualiza su atributo <code>class</code>. Esto cambia el color del elemento de la lista a aguamarina.</p>
+<p><img alt="" src="../tagname.png" /></p>
+<h3 id="seleccionar-elementos-usando-selectores-css">SELECCIONAR ELEMENTOS USANDO SELECTORES CSS<a class="headerlink" href="#seleccionar-elementos-usando-selectores-css" title="Permanent link">&para;</a></h3>
+<p><code>querySelector()</code> devuelve el primer nodo elemento que coincide con el selector de estilo CSS. <code>querySelectorAll()</code> devuelve una NodeList de todas las coincidencias.</p>
+<p>Ambos métodos toman un selector CSS como su único parámetro. La sintaxis de selectores CSS ofrece más flexibilidad y precisión al seleccionar un elemento que solo especificar un nombre de clase o un nombre de etiqueta, y también debería ser familiar para los desarrolladores web front-end que están acostumbrados a apuntar a elementos usando CSS.</p>
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span>
+<span class="normal"><a href="#__codelineno-7-8">8</a></span>
+<span class="normal"><a href="#__codelineno-7-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">// c05/js/query-selector.js</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="c1">// querySelector() solo devuelve la primera coincidencia</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;li.hot&#39;</span><span class="p">);</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="nx">el</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cool&#39;</span><span class="p">;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="c1">// querySelectorAll devuelve una NodeList</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="c1">// El segundo elemento coincidente (el tercer elemento de la lista) se selecciona y cambia</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="kd">var</span><span class="w"> </span><span class="nx">els</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;li.hot&#39;</span><span class="p">);</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="nx">els</span><span class="p">[</span><span class="mf">1</span><span class="p">].</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cool&#39;</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Estos dos métodos fueron introducidos por los fabricantes de navegadores porque muchos desarrolladores estaban incluyendo scripts como jQuery en sus páginas para poder seleccionar elementos usando selectores CSS. (Conocerás jQuery en el Capítulo 7).</p>
+<p>Si observas la última línea de código, se usa sintaxis de arreglos para seleccionar el segundo elemento de la NodeList, aunque esa NodeList está almacenada en una variable.</p>
+<p><img alt="" src="../csselector.png" /></p>
+<p>El código JavaScript se ejecuta línea por línea, y las sentencias afectan el contenido de una página a medida que el intérprete las procesa.</p>
+<p>Si una consulta DOM se ejecuta cuando se carga una página, la misma consulta podría devolver diferentes elementos si se usa nuevamente más adelante en la página.</p>
+<p>A continuación puedes ver cómo el ejemplo de la página izquierda (query-selector.js) cambia el árbol DOM a medida que se ejecuta.</p>
+<p><strong>1: CUANDO LA PÁGINA CARGA POR PRIMERA VEZ</strong></p>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span>
+<span class="normal"><a href="#__codelineno-8-7">7</a></span>
+<span class="normal"><a href="#__codelineno-8-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cm">&lt;!--c05/query-selector.html--&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;one&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>fresh<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> figs<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;two&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>pine nuts<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;three&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>honey<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">&gt;</span>balsamic vinegar<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Así es como comienza la página. Hay tres elementos <code>&lt;li&gt;</code> que tienen un atributo <code>class</code> cuyo valor es <code>hot</code>. El método <code>querySelector()</code> encuentra el primero y actualiza el valor de su atributo <code>class</code> de <code>hot</code> a <code>cool</code>. Esto también actualiza el árbol DOM almacenado en memoria, por lo que —después de que esta línea se haya ejecutado— solo el segundo y tercer elemento <code>&lt;li&gt;</code> tienen un atributo <code>class</code> con un valor de <code>hot</code>.</p>
+<p><strong>2: DESPUÉS DEL PRIMER CONJUNTO DE SENTENCIAS</strong></p>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">7</a></span>
+<span class="normal"><a href="#__codelineno-9-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cm">&lt;!--c05/query-selector.html--&gt;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;one&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;cool&quot;</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>fresh<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> figs<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;two&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>pine nuts<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;three&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>honey<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">&gt;</span>balsamic vinegar<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Cuando se ejecuta el segundo selector, ahora solo hay dos elementos <code>&lt;li&gt;</code> cuyos atributos <code>class</code> tienen un valor de <code>hot</code> (ver izquierda), por lo que solo selecciona estos dos. Esta vez, se usa sintaxis de arreglos para trabajar con el segundo de los elementos coincidentes (que es el tercer elemento de la lista). Nuevamente, el valor de su atributo <code>class</code> se cambia de <code>hot</code> a <code>cool</code>.</p>
+<p><strong>3: DESPUÉS DEL SEGUNDO CONJUNTO DE SENTENCIAS</strong></p>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cm">&lt;!--c05/query-selector.html--&gt;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;one&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;cool&quot;</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>fresh<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> figs<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;two&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>pine nuts<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;three&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;cool&quot;</span><span class="p">&gt;</span>honey<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">&gt;</span>balsamic vinegar<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Cuando el segundo selector ha hecho su trabajo, el árbol DOM ahora solo contiene un elemento <code>&lt;li&gt;</code> cuyo atributo <code>class</code> tiene un valor de <code>hot</code>. Cualquier código adicional que busque elementos <code>&lt;li&gt;</code> cuyo atributo <code>class</code> tenga un valor de <code>hot</code> encontraría solo este. Sin embargo, si estuvieran buscando elementos <code>&lt;li&gt;</code> cuyo atributo <code>class</code> tiene un valor de <code>cool</code>, encontrarían dos nodos elemento coincidentes.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../capitulo-4/decision-loops/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DECISIONS &amp; LOOPS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                DECISIONS & LOOPS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-footer__link md-footer__link--next" aria-label="Next: NODE FUNDAMENTALS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                NODE FUNDAMENTALS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>
