@@ -42,11 +42,11 @@ Ocurren cuando un usuario interactúa con el teclado (ver también el evento `in
 | `keyup`     | El usuario suelta una tecla                                      |
 | `keypress`  | Se está insertando un carácter (se repite mientras la tecla está presionada) |
 
-### EVENTOS DE RATÓN
+#### EVENTOS DE RATÓN
 
-Los eventos de ratón se disparan cuando el ratón se mueve y también cuando sus botones se hacen clic. Todos los elementos en una página soportan los eventos de ratón, y todos estos burbujean. Ten en cuenta que las acciones son diferentes en dispositivos de pantalla táctil.
+Ocurren cuando un usuario interactúa con un ratón, trackpad o pantalla táctil.
 
-| Evento       | Disparo y notas                                                                                                                                                                                                                                 |
+| Evento       | Descripcion                                                                                                                                                                                                                                 |
 |--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `click`      | Se dispara cuando el usuario hace clic en el botón primario del ratón (generalmente el botón izquierdo si hay más de uno). El evento `click` se disparará para el elemento sobre el que está el ratón. También se dispara si el usuario presiona la tecla Enter en el teclado cuando un elemento tiene foco. Un toque en la pantalla táctil se tratará como un solo clic izquierdo. |
 | `dblclick`   | Se dispara cuando el usuario hace clic en el botón primario del ratón dos veces en rápida sucesión. Un doble toque se tratará como un doble clic izquierdo.                                                                                                                                      |
@@ -57,21 +57,6 @@ Los eventos de ratón se disparan cuando el ratón se mueve y también cuando su
 | `mousemove`  | Se dispara cuando el cursor se mueve alrededor de un elemento. Este evento se dispara repetidamente. (No puede ser disparado por teclado.) Se dispara cuando el cursor se mueve.                                                                  |
 
 
-Todos los elementos en una página soportan los eventos de ratón, y todos estos burbujean. Ten en cuenta que las acciones son diferentes en dispositivos de pantalla táctil.
-
-Prevenir un comportamiento predeterminado puede tener resultados inesperados. Por ejemplo, un evento `click` solo se dispara cuando ambos eventos `mousedown` y `mouseup` se han disparado.
-
-Ocurren cuando un usuario interactúa con un ratón, trackpad o pantalla táctil.
-
-| Evento       | Descripción                                                       |
-|--------------|-------------------------------------------------------------------|
-| `click`      | El usuario presiona y suelta un botón sobre el mismo elemento     |
-| `dblclick`   | El usuario presiona y suelta un botón dos veces sobre el mismo elemento |
-| `mousedown`  | El usuario presiona un botón del ratón mientras está sobre un elemento |
-| `mouseup`    | El usuario suelta un botón del ratón mientras está sobre un elemento |
-| `mousemove`  | El usuario mueve el ratón (no en pantalla táctil)                 |
-| `mouseover`  | El usuario mueve el ratón sobre un elemento (no en pantalla táctil) |
-| `mouseout`   | El usuario mueve el ratón fuera de un elemento (no en pantalla táctil) |
 
 ## TERMINOLOGÍA
 
@@ -87,7 +72,14 @@ Se dice que los eventos disparan una función o script. Cuando el evento `click`
 
 Ocurren cuando un elemento (por ejemplo, un enlace o campo de formulario) gana o pierde el foco.
 
+| EVENT               | DESCRIPTION                 |
+| ------------------- | --------------------------- |
+| `focus` / `focusin` | El elemento obtiene el foco |
+| `blur` / `focusout` | El elemento pierde el foco  |
+
+
 #### EVENTOS DE FORMULARIO
+Ocurren cuando un usuario interactua con un elemento formulario
 
 | Evento    | Descripción                                                          |
 |-----------|----------------------------------------------------------------------|
@@ -102,9 +94,7 @@ Ocurren cuando un elemento (por ejemplo, un enlace o campo de formulario) gana o
 
 #### EVENTOS DE MUTACIÓN*
 
-Ocurren cuando la estructura del DOM ha sido cambiada por un script.
-
-*Serán reemplazados por mutation observers (ver p284)
+Ocurren cuando la estructura del DOM ha sido cambiada por un script. *Serán reemplazados por mutation observers (ver p284)
 
 | Evento                        | Descripción                                                         |
 |-------------------------------|---------------------------------------------------------------------|
@@ -118,17 +108,23 @@ Ocurren cuando la estructura del DOM ha sido cambiada por un script.
 
 Cuando el usuario interactúa con el HTML en una página web, hay tres pasos involucrados para lograr que esto ejecute código JavaScript. Juntos, estos pasos se conocen como manejo de eventos.
 
-### 1. SELECCIONAR EL ELEMENTO
+#### 1. SELECCIONAR EL ELEMENTO
 
-Selecciona el elemento o nodo del elemento al que quieres que el script responda. Por ejemplo, si quieres ejecutar una función cuando un usuario hace clic en un enlace específico, necesitas obtener el nodo DOM para ese elemento de enlace. Esto se hace usando una consulta DOM (ver Capítulo 5).
+> Selecciona el elemento o nodo del elemento al que quieres que el script responda. 
 
-### 2. INDICAR EL EVENTO
+Por ejemplo, si quieres ejecutar una función cuando un usuario hace clic en un enlace específico, necesitas obtener el nodo DOM para ese elemento de enlace. Esto se hace usando una consulta DOM (ver Capítulo 5).
 
-Indica qué evento en el nodo o nodos seleccionados ejecutará la respuesta. Los programadores llaman a esto vincular un evento a un nodo DOM. Las dos páginas anteriores mostraron una selección de los eventos populares que puedes monitorear.
+#### 2. INDICAR EL EVENTO
 
-### 3. ESPECIFICAR EL CÓDIGO
+> Indica qué evento en el nodo o nodos seleccionados ejecutará la respuesta. 
 
-Indica el código que quieres ejecutar cuando ocurra el evento. Cuando el evento ocurre en un elemento especificado, ejecutará una función. Esta puede ser una función nombrada o anónima.
+Los programadores llaman a esto vincular un evento a un nodo DOM. Las dos páginas anteriores mostraron una selección de los eventos populares que puedes monitorear.
+
+#### 3. ESPECIFICAR EL CÓDIGO
+
+> Indica el código que quieres ejecutar cuando ocurra el evento. 
+
+Cuando el evento ocurre en un elemento especificado, ejecutará una función. Esta puede ser una función nombrada o anónima.
 
 > Los eventos de UI que se relacionan con la ventana del navegador (en lugar de la página HTML cargada en ella) funcionan con el objeto `window` en lugar de un nodo elemento. Ejemplos incluyen los eventos que ocurren cuando una página solicitada ha terminado de cargarse, o cuando el usuario hace scroll. Aprenderás sobre su uso en la p272.
 
@@ -136,15 +132,15 @@ Indica el código que quieres ejecutar cuando ocurra el evento. Cuando el evento
 
 Aquí puedes ver cómo el manejo de eventos puede ser usado para proporcionar retroalimentación a los usuarios que completan un formulario de registro. Mostrará un mensaje de error si su nombre de usuario es demasiado corto.
 
-### 1. SELECCIONAR EL ELEMENTO
+#### 1. SELECCIONAR EL ELEMENTO
 
 El elemento con el que los usuarios están interactuando es la entrada de texto donde ingresan el nombre de usuario.
 
-### 2. ESPECIFICAR EL EVENTO
+#### 2. ESPECIFICAR EL EVENTO
 
 Cuando los usuarios salen de la entrada de texto, este pierde el foco y el evento `blur` se dispara en este elemento.
 
-### 3. EJECUTAR EL CÓDIGO
+#### 3. EJECUTAR EL CÓDIGO
 
 Cuando el evento `blur` se dispara en el input de nombre de usuario, ejecutará una función llamada `checkUsername()`. Esta función verifica si el nombre de usuario tiene menos de 5 caracteres.
 
@@ -158,7 +154,7 @@ Si hay suficientes caracteres, el elemento que contiene el mensaje de error debe
 
 Los manejadores de eventos te permiten indicar qué evento estás esperando en cualquier elemento en particular. Hay tres tipos de manejadores de eventos.
 
-### MANEJADORES DE EVENTOS HTML
+#### MANEJADORES DE EVENTOS HTML
 
 Ver p251
 
@@ -170,7 +166,7 @@ Esta es una mala práctica, pero debes conocerla porque puedes verla en código 
 ```
 Este método de manejo de eventos ya no se usa porque es mejor separar el JavaScript del HTML. Deberías usar uno de los otros enfoques mostrados en esta página en su lugar.
 
-### MANEJADORES DE EVENTOS DOM TRADICIONALES
+#### MANEJADORES DE EVENTOS DOM TRADICIONALES
 
 Ver p252
 
@@ -180,7 +176,7 @@ El principal inconveniente es que solo puedes adjuntar una sola función a cualq
 
 Como resultado de esta limitación, si se usa más de un script en la misma página, y ambos scripts responden al mismo evento, entonces uno o ambos scripts pueden no funcionar como se espera.
 
-### LISTENERS DE EVENTOS DOM LEVEL 2
+#### LISTENERS DE EVENTOS DOM LEVEL 2
 
 Ver p254
 
@@ -192,7 +188,7 @@ Este enfoque no funciona con IE8 (o versiones anteriores de IE) pero encontrará
 
 ## ATRIBUTOS DE MANEJADORES DE EVENTOS HTML (NO USAR)
 
-Por favor ten en cuenta: este enfoque ahora se considera una mala práctica; sin embargo, debes conocerlo porque puedes verlo si estás revisando código antiguo. (Ver página anterior.)
+**Por favor ten en cuent**a: este enfoque ahora se considera una mala práctica; sin embargo, debes conocerlo porque puedes verlo si estás revisando código antiguo. (Ver página anterior.)
 
 En el HTML, el primer elemento `<input>` tiene un atributo llamado `onblur` (se ejecuta cuando el usuario sale del elemento). El valor del atributo es el nombre de la función que debe ejecutar.
 
@@ -216,14 +212,14 @@ El valor de los atributos del manejador de eventos sería JavaScript. A menudo l
 ```javascript linenums="1"
 // c06/js/event-attributes.js
 
-function checkUsername() {
- var elMsg = document.getElementById('feedback');
- var elUsername = document.getElementById('username');
- if (elUsername.value.length < 5) {
- elMsg.textContent = 'Username must be 5 characters or more';
- } else {
- elMsg.textContent = '';
- }
+function checkUsername() { // Declarar función
+  var elMsg = document.getElementById('feedback'); // Obtener elemento 
+  var elUsername = document.getElementById('username'); // Obtener input del nombre 
+  if (elUsername.value.length < 5) { // Si el nombre de usuario es muy corto
+    elMsg.textContent = 'El nombre de usuario debe tener 5 caracteres o más'; // Establecer mensaje
+  } else { // Caso contrario
+    elMsg.textContent = ''; // Limpiar mensaje
+  }
 }
 ```
 
@@ -330,13 +326,13 @@ ii) El código que quieres que ejecute cuando el evento se dispare. En este ejem
 
 iii) Un booleano que indica cómo fluyen los eventos, ver p260. (Generalmente se establece en `false`).
 
-### SOPORTE DEL NAVEGADOR
+#### SOPORTE DEL NAVEGADOR
 
 Internet Explorer 8 y versiones anteriores de IE no soportan el método `addEventListener()`, pero sí soportan un método llamado `attachEvent()` y verás cómo usarlo en p258.
 
 Además, como en el ejemplo anterior, IE8 y versiones antiguas de IE no sabrían a qué se refería `this` en la sentencia condicional. Un enfoque alternativo para manejarlo se muestra en p270.
 
-### NOMBRES DE EVENTOS
+#### NOMBRES DE EVENTOS
 
 A diferencia de los manejadores de eventos HTML y DOM tradicionales, cuando especificas el nombre del evento al que quieres reaccionar, el nombre del evento no está precedido por la palabra "on".
 
@@ -369,18 +365,20 @@ El valor que se pasa a la función `checkUsername()` se usa en la sentencia cond
 ```javascript linenums="1"
 // c06/js/event-listener-with-parameters.js
 
-var elUsername = document.getElementById('username');
-var elMsg = document.getElementById('feedback');
-function checkUsername(minLength) {
- if (elUsername.value.length < minLength) {
- elMsg.textContent = 'Username must be ' + minLength + ' characters or more';
- } else {
- elMsg.innerHTML = '';
- }
+var elUsername = document.getElementById('username'); // Obtener input 
+var elMsg = document.getElementById('feedback'); // Obtener elemento 
+function checkUsername(minLength) { // Declarar función
+  if (elUsername.value.length < minLength) { // Si el nombre de usuario es muy corto
+    // Establecer el mensaje de error
+    elMsg.textContent = 'El nombre de usuario debe tener ' + minLength + ' caracteres o más';
+  } else { // Caso contrario
+    elMsg.innerHTML = ''; // Limpiar mensaje
+  }
 }
-elUsername.addEventListener('blur', function() {
- checkUsername(5);
-}, false);
+
+elUsername.addEventListener('blur', function() { // Cuando pierde el foco
+  checkUsername(5); // Pasar argumento
+});
 ```
 
 El listener de eventos en las últimas tres líneas es más largo que el ejemplo anterior porque la llamada a la función `checkUsername()` necesita incluir el valor para el parámetro `minLength`.
@@ -410,23 +408,25 @@ Si no es soportado, entonces el navegador usará el método `attachEvent()` que 
 ```javascript linenums="1"
 // c06/js/event-listener-with-ie-fallback.js
 
-var elUsername = document.getElementById('username');
-var elMsg = document.getElementById('feedback');
-function checkUsername(minLength) {
- if (elUsername.value.length < minLength) {
- elMsg.innerHTML = 'Username must be ' + minLength + ' characters or more';
- } else {
- elMsg.innerHTML = '';
- }
+var elUsername = document.getElementById('username'); // Obtener input del nombre de usuario
+var elMsg = document.getElementById('feedback'); // Obtener elemento de retroalimentación
+function checkUsername(minLength) { // Declarar función
+  if (elUsername.value.length < minLength) { // Si el nombre de usuario es muy corto
+    // Establecer mensaje
+    elMsg.innerHTML = 'El nombre de usuario debe tener ' + minLength + ' caracteres o más';
+  } else { // Caso contrario
+    elMsg.innerHTML = ''; // Limpiar mensaje
+  }
 }
-if (elUsername.addEventListener) {
- elUsername.addEventListener('blur', function() {
- checkUsername(5);
- }, false);
-} else {
- elUsername.attachEvent('onblur', function() {
- checkUsername(5);
- });
+if (elUsername.addEventListener) { // Si addEventListener es soportado
+  elUsername.addEventListener('blur', function() { // Cuando el input pierde el foco
+    checkUsername(5); // Llamar a checkUsername()
+  }, false); // Capturar durante la fase de burbuja
+} else { // Caso contrario
+  elUsername.attachEvent('onblur', function() { // Compatibilidad con IE: onblur
+    checkUsername(5); // Llamar a checkUsername()
+  
+  });
 }
 ```
 
@@ -445,7 +445,7 @@ Imagina que un elemento de lista contiene un enlace. Cuando pasas el ratón sobr
 ![](eventblubing.png)
 
 
-### BURBUJEO DE EVENTOS
+#### BURBUJEO DE EVENTOS
 
 El evento comienza en el nodo más específico y fluye hacia afuera hasta el menos específico. Este es el tipo de flujo de eventos predeterminado con un soporte de navegador muy amplio.
 
@@ -455,7 +455,7 @@ Los manejadores/listeners de eventos pueden vincularse a los elementos `<li>`, `
 
 ![](eventcapturing.png)
 
-### CAPTURA DE EVENTOS
+#### CAPTURA DE EVENTOS
 
 El evento comienza en el nodo menos específico y fluye hacia adentro hasta el más específico. Esto no es soportado en Internet Explorer 8 y anteriores.
 
@@ -589,28 +589,28 @@ Esta función es ahora mucho más flexible que el código anterior que has visto
 ```javascript linenums="1"
 // c06/js/event-listener-with-event-object.js
 
-function checkLength(e, minLength) {
- var el, elMsg;
- if (!e) {
- e = window.event;
- }
- el = e.target || e.srcElement;
- elMsg = el.nextSibling;
- if (el.value.length < minLength) {
- elMsg.innerHTML = 'Username must be ' + minLength + ' characters or more';
- } else {
- elMsg.innerHTML = '';
- }
+function checkLength(e, minLength) { // Declarar función
+  var el, elMsg; // Declarar variables
+  if (!e) { // Si el objeto evento no existe
+    e = window.event; // Usar compatibilidad con IE
+  }
+  el = e.target || e.srcElement; // Obtener el objetivo del evento
+  elMsg = el.nextSibling; // Obtener el siguiente elemento hermano
+  if (el.value.length < minLength) { // Si la longitud es muy corta, establecer mensaje
+    elMsg.innerHTML = 'El nombre de usuario debe tener ' + minLength + ' caracteres o más';
+  } else { // Caso contrario
+    elMsg.innerHTML = ''; // Limpiar mensaje
+  }
 }
-var elUsername = document.getElementById('username');
-if (elUsername.addEventListener) {
- elUsername.addEventListener('blur', function(e) {
- checkLength(e, 5);
- }, false);
-} else {
- elUsername.attachEvent('onblur', function(e){
- checkLength(e, 5);
- });
+var elUsername = document.getElementById('username'); // Obtener input del nombre de usuario
+if (elUsername.addEventListener) { // Si addEventListener es soportado
+  elUsername.addEventListener('blur', function(e) { // Evento blur
+    checkLength(e, 5); // Llamar a checkLength()
+  }, false); // Capturar en fase de burbuja
+} else { // Caso contrario
+  elUsername.attachEvent('onblur', function(e) { // Compatibilidad con IE: onblur
+    checkLength(e, 5); // Llamar a checkLength()
+  });
 }
 ```
 
@@ -632,17 +632,18 @@ Al adjuntar un listener de eventos a un elemento contenedor, solo estás respond
 
 ### BENEFICIOS ADICIONALES DE LA DELEGACIÓN DE EVENTOS
 
-**SIMPLIFICA TU CÓDIGO**
+**FUNCIONA CON NUEVOS ELEMENTOS**
 
-Requiere que se escriban menos funciones, y hay menos vínculos entre el DOM y tu código, lo que ayuda al mantenimiento.
+Si agregas nuevos elementos al árbol DOM, no tienes que agregar manejadores de eventos a los nuevos elementos porque el trabajo ha sido delegado a un ancestro.
 
 **SOLUCIONA LIMITACIONES CON LA PALABRA CLAVE this**
 
 Anteriormente en el capítulo, la palabra clave `this` se usaba para identificar el objetivo de un evento, pero esa técnica no funcionaba en IE8, o cuando una función necesitaba parámetros.
 
-**FUNCIONA CON NUEVOS ELEMENTOS**
+**SIMPLIFICA TU CÓDIGO**
 
-Si agregas nuevos elementos al árbol DOM, no tienes que agregar manejadores de eventos a los nuevos elementos porque el trabajo ha sido delegado a un ancestro.
+Requiere que se escriban menos funciones, y hay menos vínculos entre el DOM y tu código, lo que ayuda al mantenimiento.
+
 
 ## CAMBIANDO EL COMPORTAMIENTO PREDETERMINADO
 
@@ -731,9 +732,11 @@ Este ejemplo reunirá gran parte de lo que has aprendido en el capítulo hasta a
     
 13) Si no, usar la propiedad `returnValue` de IE anterior.
 
-En el HTML, los enlaces te llevarían a `itemDone.php` si el navegador no soportara JavaScript. (El archivo PHP no se suministra con la descarga del código porque los lenguajes del lado del servidor están más allá del alcance de este libro.)
+> En el HTML, los enlaces te llevarían a `itemDone.php` si el navegador no soportara JavaScript. (El archivo PHP no se suministra con la descarga del código porque los lenguajes del lado del servidor están más allá del alcance de este libro.)
 
 ```html linenums="1"
+<!--c06/event-delegation.html-->
+
 <ul id="shoppingList">
  <li class="complete"><a href="itemDone.php?id=1"><em>fresh</em> figs</a></li>
  <li class="complete"><a href="itemDone.php?id=2">pine nuts</a></li>
@@ -771,6 +774,7 @@ En ambos casos, el objeto evento es el enfoque preferido.
 En el resto del capítulo, aprenderás sobre los diferentes tipos de eventos a los que puedes responder.
 
 Los eventos están definidos en:
+
 - La especificación W3C del DOM
 - La especificación HTML5
 - En Modelos de Objetos del Navegador
@@ -813,7 +817,7 @@ El manejador / listener de eventos para eventos UI debe adjuntarse a la ventana 
 
 > En código HTML antiguo, puedes ver estos eventos usados como atributos en la etiqueta de apertura `<body>`. (Por ejemplo, código antiguo usaba el atributo `onload` para ejecutar código cuando la página se había cargado.)
 
-| Evento    | Soporte del navegador y detalles                                                                                     |
+| Evento    | Soporte del navegador                                                                                    |
 |-----------|----------------------------------------------------------------------------------------------------------------------|
 | `load`    | Se dispara cuando la página web ha terminado de cargarse. También puede dispararse en nodos de otros elementos que cargan, como imágenes, scripts u objetos. DOM Level 2 (Nov 2000) indica que se dispara en el objeto `document`, pero antes de esto se disparaba en el objeto `window`. Los navegadores soportan ambos para compatibilidad hacia atrás, y los desarrolladores a menudo todavía adjuntan manejadores de eventos `load` al objeto `window` (no `document`). |
 | `unload`  | Se dispara cuando la página web se está cerrando (generalmente porque se ha solicitado una nueva página). Ver también el evento `beforeunload` (en p286) que se dispara antes de que el usuario salga de una página. DOM Level 2 indica que se dispara en el nodo del elemento `<body>`, pero en navegadores antiguos se disparaba en el objeto `window` (esto se usa a menudo para compatibilidad hacia atrás). |
@@ -821,7 +825,7 @@ El manejador / listener de eventos para eventos UI debe adjuntarse a la ventana 
 | `resize`  | Se dispara cuando la ventana del navegador ha sido redimensionada. Los navegadores disparan repetidamente el evento `resize` mientras la ventana se está redimensionando, así que evita usar este evento para ejecutar código complicado porque podría hacer que la página parezca menos responsive. |
 | `scroll`  | Se dispara cuando el usuario ha desplazado la página hacia arriba o abajo. Puede relacionarse con toda la página o con un elemento específico en la página (como un `<textarea>` que tiene barras de desplazamiento). |
 
-### LOAD
+#### LOAD
 
 El evento `load` se usa comúnmente para ejecutar scripts que acceden al contenido de la página. En este ejemplo, una función llamada `setup()` le da foco al input de texto cuando la página se ha cargado. El evento es elevado automáticamente por el objeto `window` cuando una página ha terminado de cargar el HTML y todos sus recursos: imágenes, CSS, scripts (incluso contenido de terceros como anuncios publicitarios).
 
@@ -830,19 +834,19 @@ La función `setup()` no funcionaría antes de que la página se cargue porque d
 ```javascript linenums="1"
 // c06/js/load.js
 
-function setup() {
- var textInput;
- textInput = document.getElementById('username');
- textInput.focus();
+function setup() { // Declarar función
+  var textInput; // Crear variable
+  textInput = document.getElementById('username'); // Obtener input del nombre de usuario
+  textInput.focus(); // Dar foco al input del nombre de usuario
 }
-window.addEventListener('load', setup, false);
+window.addEventListener('load', setup, false); // Cuando la página cargue, llamar a setup()
 ```
 
 ![](newcount.png)
 
 Ten en cuenta que el listener de eventos se adjunta al objeto `window` (no al objeto `document` – ya que esto puede causar problemas de compatibilidad entre navegadores).
 
-> Si el elemento `<script>` está al final de la página HTML, entonces el DOM habría cargado los elementos del formulario antes de que el script se ejecute, y no habría necesidad de esperar al evento `load`. (Ver también: el evento `DOMContentLoaded` en p286 y el método `document.ready()` de jQuery en p312.)
+Si el elemento `<script>` está al final de la página HTML, entonces el DOM habría cargado los elementos del formulario antes de que el script se ejecute, y no habría necesidad de esperar al evento `load`. (Ver también: el evento `DOMContentLoaded` en p286 y el método `document.ready()` de jQuery en p312.)
 
 > Debido a que el evento `load` solo se dispara cuando todo lo demás en la página se ha cargado (imágenes, scripts, incluso anuncios), el usuario ya podría haber comenzado a usar la página antes de que el script haya comenzado a ejecutarse. Los usuarios notan particularmente cuando un script cambia la apariencia de la página, cambia el foco o selecciona elementos del formulario después de que han comenzado a usarlo. (Puede hacer que un sitio parezca más lento al cargar.)
 
@@ -879,23 +883,24 @@ La retroalimentación se da usando dos funciones. `tipUsername()` se ejecuta cua
 ```javascript linenums="1"
 // c06/js/focus-blur.js
 
-function checkUsername() {
- var username = el.value;
- if (username.length < 5) {
- elMsg.className = 'warning';
- elMsg.textContent = 'Not long enough, yet...';
- } else {
- elMsg.textContent = '';
- }
+function checkUsername() { // Declarar función
+  var username = el.value; // Guardar nombre de usuario en variable
+  if (username.length < 5) { // Si el nombre de usuario tiene menos de 5 caracteres
+    elMsg.className = 'warning'; // Cambiar clase del mensaje
+    elMsg.textContent = 'Aún no es lo suficientemente largo...'; // Actualizar mensaje
+  } else { // Caso contrario
+    elMsg.textContent = ''; // Limpiar mensaje
+  }
 }
-function tipUsername() {
- elMsg.className = 'tip';
- elMsg.innerHTML = 'Username must be at least 5 characters';
+function tipUsername() { // Declarar función
+  elMsg.className = 'tip'; // Cambiar clase del mensaje
+  elMsg.innerHTML = 'El nombre de usuario debe tener al menos 5 caracteres'; // Agregar mensaje
 }
-var el = document.getElementById('username');
-var elMsg = document.getElementById('feedback');
-el.addEventListener('focus', tipUsername, false);
-el.addEventListener('blur', checkUsername, false);
+var el = document.getElementById('username'); // Input del nombre de usuario
+var elMsg = document.getElementById('feedback'); // Elemento que contendrá el mensaje
+// Cuando el input del nombre de usuario gana / pierde foco llamar funciones anteriores:
+el.addEventListener('focus', tipUsername, false); // focus llama a tipUsername()
+el.addEventListener('blur', checkUsername, false); // blur llama a checkUsername()
 ```
 ![](max.png)
 
@@ -917,11 +922,11 @@ Prevenir un comportamiento predeterminado puede tener resultados inesperados. Po
 | `mouseout`   | Se dispara cuando el cursor está sobre un elemento, y luego se mueve a otro elemento – fuera del elemento actual o un hijo de él. (No puede ser disparado por teclado.) Se dispara cuando el cursor se mueve fuera de un elemento.               |
 | `mousemove`  | Se dispara cuando el cursor se mueve alrededor de un elemento. Este evento se dispara repetidamente. (No puede ser disparado por teclado.) Se dispara cuando el cursor se mueve.                                                                  |
 
-### CUÁNDO USAR CSS
+#### CUÁNDO USAR CSS
 
 Los eventos `mouseover` y `mouseout` se usaban a menudo para cambiar la apariencia de cajas o para cambiar imágenes cuando el usuario pasaba el ratón sobre ellos. Para cambiar la apariencia del elemento, una técnica preferible sería usar la pseudoclase CSS `:hover`.
 
-### POR QUÉ SEPARAR MOUSEDOWN Y MOUSEUP
+#### POR QUÉ SEPARAR MOUSEDOWN Y MOUSEUP
 
 Los eventos `mousedown` y `mouseup` separan la presión y liberación de un botón del ratón. Se usan comúnmente para agregar funcionalidad de arrastrar y soltar, o para agregar controles en el desarrollo de juegos.
 
@@ -1023,7 +1028,17 @@ Los tres eventos que comienzan con key... se disparan en este orden:
 2. `keypress` – el usuario ha presionado o está manteniendo una tecla que añade un carácter en la página
 3. `keyup` – el usuario suelta la tecla
 
-### ¿QUÉ TECLA SE PRESIONÓ?
+#### ¿QUÉ TECLA SE PRESIONÓ?
+
+Cuando utilizas los eventos `keydown` o `keypress`, el objeto del evento tiene una propiedad llamada `keyCode`, la cual puede usarse para saber qué tecla fue presionada. Sin embargo, no devuelve la letra de esa tecla (como podrías esperar); devuelve un código ASCII que representa el carácter en minúscula de esa tecla. Puedes ver una tabla de caracteres y sus códigos ASCII en un recurso adicional en línea del sitio web que acompaña este libro.
+
+Si quieres obtener la letra o número tal como aparecería en el teclado (en lugar de un equivalente ASCII), el objeto `String` tiene un método incorporado llamado `fromCharCode()` que hará la conversión por ti:
+
+```js
+String.fromCharCode(event.keyCode);
+```
+
+## ¿QUÉ TECLA SE PRESIONÓ?
 
 En este ejemplo, el elemento `<textarea>` solo debe tener 180 caracteres. Cuando el usuario ingresa texto, el script mostrará cuántos caracteres le quedan disponibles para usar.
 
@@ -1071,7 +1086,7 @@ Verificar los valores de los formularios se conoce como **validación**. Si los 
 
 ![](membership.png)
 
-### USANDO EVENTOS DE FORMULARIO
+###s USANDO EVENTOS DE FORMULARIO
 
 Cuando un usuario interactúa con el cuadro de selección desplegable, el evento `change` activará la función `packageHint()`. Esta muestra mensajes debajo del cuadro de selección que reflejan la elección.
 
@@ -1123,7 +1138,202 @@ A continuación se muestran algunos eventos que se desencadenan cuando el DOM ca
 | `DOMNodeInsertedIntoDocument` | Se dispara cuando un nodo se inserta en el árbol DOM como descendiente de otro nodo que ya está en el documento. |
 | `DOMNodeRemovedFromDocument` | Se dispara cuando un nodo se elimina del árbol DOM como descendiente de otro nodo que ya está en el documento. |
 
-### PROBLEMAS CON LOS EVENTOS DE MUTACIÓN
+#### PROBLEMAS CON LOS EVENTOS DE MUTACIÓN
 
 Si tu script hace muchos cambios en una página, terminas con muchos eventos de mutación disparándose. Esto puede hacer que una página se sienta lenta o no responda. También pueden desencadenar otros listeners de eventos a medida que se propagan a través del DOM, que modifican otras partes del DOM, provocando más eventos de mutación. Por lo tanto, están siendo reemplazados por observadores de mutación.
 
+#### NUEVOS OBSERVADORES DE MUTACIÓN
+
+Los observadores de mutación están diseñados para esperar hasta que un script haya terminado su tarea antes de reaccionar, y luego reportar los cambios como un lote (en lugar de uno a la vez).
+
+También puedes especificar el tipo de cambios en el DOM a los que quieres que reaccionen. Pero al momento de escribirse esto, el soporte de los navegadores no estaba lo suficientemente extendido como para utilizarlos en sitios web públicos.
+
+
+## USO DE EVENTOS DE MUTACIÓN
+
+En este ejemplo, dos *event listeners* activan cada uno su propia función. El primero está en la penúltima línea y escucha cuando el usuario hace clic en el enlace para agregar un nuevo elemento a la lista. Luego utiliza eventos de manipulación del DOM para agregar un nuevo elemento (cambiando la estructura del DOM y activando eventos de mutación).
+
+El segundo *event listener* espera a que el árbol DOM dentro del elemento `<ul>` cambie. Cuando se dispara el evento `DOMNodeInserted`, llama a una función llamada `updateCount()`. Esta función cuenta cuántos elementos hay en la lista y luego actualiza el contador de la lista en la parte superior de la página en consecuencia.
+
+```js linenums="1"
+// c06/js/mutation.js
+
+var elList, addLink, newEl, newText, counter, listItems; // Declarar variables
+elList = document.getElementById('list'); // Obtener lista
+addLink = document.querySelector('a'); // Obtener botón para agregar elemento
+counter = document.getElementById('counter'); // Obtener contador de elementos
+function addItem(e) { // Declarar función
+  e.preventDefault(); // Evitar acción del enlace
+  newEl = document.createElement('li'); // Nuevo elemento <li>
+  newText = document.createTextNode('Nuevo elemento de lista'); // Nuevo nodo de texto
+  newEl.appendChild(newText); // Agregar texto al <li>
+  elList.appendChild(newEl); // Agregar <li> a la lista
+}
+function updateCount() { // Declarar función
+  listitems = list.getElementsByTagName('li').length; // Obtener total de <li>
+  counter.innerHTML = listitems; // Actualizar contador
+}
+addLink.addEventListener('click', addItem, false); // Clic en el botón
+elList.addEventListener('DOMNodeInserted', updateCount, false); // DOM actualizado
+```
+
+![](addlistitem.png)
+
+## EVENTOS HTML5
+
+Aquí hay tres eventos a nivel de página que han sido incluidos en versiones de la especificación HTML5 y que se volvieron populares muy rápidamente.
+
+| EVENTO             | DISPARADOR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | SOPORTE DE NAVEGADORES                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `DOMContentLoaded` | El evento se dispara cuando el árbol DOM ha sido formado (las imágenes, CSS y JavaScript podrían seguir cargándose). Los scripts comienzan a ejecutarse antes que usando el evento `load`, el cual espera a que otros recursos como imágenes y anuncios se carguen. Esto hace que la página parezca cargar más rápido. Sin embargo, como no espera a que los scripts carguen, el árbol DOM no contendrá ningún HTML que haya sido generado por esos scripts. Puede adjuntarse a los objetos `window` o `document`.                                                                                | Chrome 0.2, Firefox 1, IE9, Safari 3.1, Opera 9     |
+| `hashchange`       | El evento se dispara cuando cambia el hash de la URL (sin que toda la ventana se recargue). Los hashes se utilizan en enlaces a partes específicas (a veces conocidas como anclas) dentro de una página y también en páginas que usan AJAX para cargar contenido. El manejador del evento `hashchange` funciona sobre el objeto `window`, y después de dispararse, el objeto del evento tendrá las propiedades `oldURL` y `newURL` que contienen la URL antes y después del cambio de hash.                                                                                                       | IE8, Firefox 20, Safari 5.1, Chrome 26 y Opera 12.1 |
+| `beforeunload`     | El evento se dispara en el objeto `window` antes de que la página sea descargada. Solo debería utilizarse para ayudar al usuario (no para convencerlo de quedarse en un sitio web si intenta irse). Por ejemplo, puede ser útil informar al usuario que los cambios realizados en un formulario no han sido guardados. Puedes agregar un mensaje al cuadro de diálogo mostrado por el navegador, pero no tienes control sobre el texto mostrado antes de este ni sobre los botones que el usuario puede presionar (los cuales pueden variar ligeramente entre navegadores y sistemas operativos). | Chrome 1, Firefox 1, IE4, Safari 3, Opera 12        |
+
+
+> También se están introduciendo otros eventos para dar soporte a dispositivos más recientes (como teléfonos y tabletas). Estos responden a eventos como gestos y movimientos basados ​​en un acelerómetro (que detecta el ángulo en el que se sostiene el dispositivo).
+
+## USO DE EVENTOS HTML5
+
+En este ejemplo, tan pronto como el árbol DOM ha sido formado, se le da foco al campo de texto con el id `username`.
+
+El evento `DOMContentLoaded` se dispara antes que el evento `load` (porque este último espera a que todos los recursos de la página terminen de cargarse).
+
+Si los usuarios intentan abandonar la página antes de presionar el botón de envío, el evento `beforeunload` verifica que realmente quieran salir.
+
+```js linenums="1"
+unction setup() {
+ var textInput;
+ textInput = document.getElementById('message');
+ textInput.focus();
+}
+window.addEventListener('DOMContentLoaded', setup, false);
+window.addEventListener('beforeunload', function(event){
+ var message = 'You have changes that have not been saved...';
+ (event || window.event).returnValue = message;
+ return message;
+});
+```
+
+![](jsprofile.png)
+
+Arriba , puede ver el cuadro de diálogo que aparece cuando intenta salir de la página.
+El texto que precede a su mensaje y el de los botones pueden variar según el navegador (usted no tiene control sobre esto).
+
+## EJEMPLO
+
+Este ejemplo muestra una interfaz para que un usuario grabe notas de voz. El usuario puede ingresar un nombre que se muestra en el encabezado, y puede presionar grabar (lo que cambia la imagen que se muestra).
+
+Cuando el usuario comienza a escribir un nombre en el cuadro de texto, el evento `keyup` activará una función llamada `writeLabel()` que copia el texto del campo del formulario y lo escribe en el encabezado principal debajo del logotipo de List King, reemplazando las palabras `'AUDIO NOTE'`.
+
+El botón de grabar / pausar es un poco más interesante. El botón tiene un atributo llamado `data-state`. Cuando la página carga, su valor es `record`.
+
+Cuando el usuario presiona el botón, el valor de este atributo cambia a `pause` (esto activa una nueva regla CSS para indicar que ahora está grabando).
+
+Si no has utilizado los atributos `data-` de HTML5, estos permiten almacenar datos personalizados en cualquier elemento HTML. (El nombre del atributo puede ser cualquier cosa que comience con `data-`, siempre que el nombre esté en minúsculas).
+
+Esto demuestra una nueva técnica basada en delegación de eventos.
+
+El *event listener* se coloca sobre el elemento contenedor cuyo id es `buttons`. El objeto del evento se utiliza para determinar el valor del atributo `id` en el elemento que fue usado. El valor de ese atributo `id` luego se utiliza en una sentencia `switch` para decidir qué función llamar (dependiendo de si el botón está en estado `record` o `pause`).
+
+Esta es una buena manera de manejar muchos botones porque reduce la cantidad de *event listeners* en tu código.
+
+Los *event listeners* están escritos al final de la página y tienen compatibilidad alternativa para usuarios que utilizan IE8 o versiones anteriores (que poseen un modelo de eventos diferente).
+
+---
+
+El script comienza definiendo las variables que necesitará usar y luego obteniendo los nodos de elementos necesarios.
+
+Las funciones del reproductor (mostradas en la página de la derecha) aparecerían después, y al final de esta página puedes ver los *event listeners*.
+
+Los *event listeners* viven dentro de una sentencia condicional para que el método `attachEvent()` pueda ser utilizado por visitantes que tengan IE8 o versiones anteriores.
+
+```js linenums="1"
+// c06/js/example.js
+
+var noteInput, noteName, textEntered, target; // Declarar variables
+noteName = document.getElementById('noteName'); // Elemento que contiene la nota
+noteInput = document.getElementById('noteInput'); // Input para escribir la nota
+
+function writeLabel(e) { // Declarar función
+  if (!e) { // Si el objeto evento no está presente
+    e = window.event; // Usar alternativa para IE5-8
+  }
+  target = e.target || e.srcElement; // Obtener el objetivo del evento
+  textEntered = e.target.value; // Valor de ese elemento
+  noteName.textContent = textEntered; // Actualizar el texto de la nota
+}
+
+// Aquí van los controles y funciones de grabación / pausa...
+// Ver página derecha
+
+if (document.addEventListener) { // Si addEventListener es compatible
+  document.addEventListener('click', function(e) { // Para cualquier clic en el documento
+    recorderControls(e); // Llamar a recorderControls()
+  }, false); // Capturar durante la fase de burbuja
+
+  // Si el evento input se dispara en el input de usuario, llamar a writeLabel()
+  username.addEventListener('input', writeLabel, false);
+
+} else { // De lo contrario
+  document.attachEvent('onclick', function(e) { // Alternativa IE: cualquier clic
+    recorderControls(e); // Llama a recorderControls()
+  });
+
+  // Si el evento keyup se dispara en el input de usuario, llamar a writeLabel()
+  username.attachEvent('onkeyup', writeLabel, false);
+}
+```
+
+---
+
+La función `recorderControls()` recibe automáticamente el objeto del evento. Esto no solo ofrece código de compatibilidad para versiones antiguas de IE, sino que también evita que el enlace realice su comportamiento predeterminado (llevar al usuario a una nueva página).
+
+La sentencia `switch` se utiliza para indicar qué función ejecutar dependiendo de si el usuario intenta grabar o detener la nota de audio.
+
+Esta técnica de delegación es una buena manera de manejar múltiples botones en la interfaz de usuario.
+
+```js linenums="1"
+// c06/js/example.js
+
+function recorderControls(e) { // Declarar recorderControls()
+  if (!e) { // Si el objeto evento no está presente
+    e = window.event; // Usar alternativa para IE5-8
+  }
+  target = e.target || e.srcElement; // Obtener el elemento objetivo
+
+  if (e.preventDefault) { // Si preventDefault() es compatible
+    e.preventDefault(); // Detener la acción predeterminada
+  } else { // De lo contrario
+    e.returnValue = false; // Alternativa IE: detener la acción predeterminada
+  }
+
+  switch (target.getAttribute('data-state')) { // Obtener el atributo data-state
+    case 'record': // Si su valor es record
+      record(target); // Llamar a la función record()
+      break; // Salir al punto donde fue llamada
+    case 'stop': // Si su valor es stop
+      stop(target); // Llamar a la función stop()
+      break; // Salir al punto donde fue llamada
+    // Aquí podrían añadirse más botones...
+  }
+}
+
+function record(target) { // Declarar función
+  target.setAttribute('data-state', 'stop'); // Establecer atributo data-state en stop
+  target.textContent = 'stop'; // Establecer texto en 'stop'
+}
+
+function stop(target) {
+  target.setAttribute('data-state', 'record'); // Establecer atributo data-state en record
+  target.textContent = 'record'; // Establecer texto en 'record'
+}
+
+```
+
+## RESUMEN
+
+- [x] Los eventos son la manera en que el navegador indica cuándo algo ha ocurrido (como cuando una página termina de cargar o se hace clic en un botón).
+- [x]  El *binding* es el proceso de indicar qué evento estás esperando que ocurra y sobre qué elemento esperas que ocurra ese evento.
+- [x]  Cuando un evento ocurre sobre un elemento, puede activar una función de JavaScript. Cuando esta función cambia la página web de alguna manera, se siente interactiva porque ha respondido al usuario.
+- [x]  Puedes usar delegación de eventos para monitorear eventos que ocurren en todos los hijos de un elemento.
+- [x]  Los eventos más comúnmente utilizados son los eventos W3C DOM, aunque también existen otros en la especificación HTML5 y eventos específicos de algunos navegadores.
