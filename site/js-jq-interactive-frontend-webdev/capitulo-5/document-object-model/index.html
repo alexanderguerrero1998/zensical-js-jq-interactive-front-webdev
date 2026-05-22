@@ -16,7 +16,7 @@
         <link rel="prev" href="../../capitulo-4/decision-loops/">
       
       
-        <link rel="next" href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md">
+        <link rel="next" href="../../capitulo-6/eventos/">
       
       
         
@@ -241,6 +241,8 @@
   
     
     
+      
+        
       
         
       
@@ -1732,6 +1734,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-6/eventos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EVENTOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3664,12 +3694,14 @@ Este método devuelve cuatro elementos, uno por cada elemento <code>&lt;li&gt;</
 <span class="normal"><a href="#__codelineno-12-3">3</a></span>
 <span class="normal"><a href="#__codelineno-12-4">4</a></span>
 <span class="normal"><a href="#__codelineno-12-5">5</a></span>
-<span class="normal"><a href="#__codelineno-12-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">hotItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;li.hot&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Almacena la NodeList en una variable</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hotItems</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Si contiene elementos</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">hotItems</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Recorre cada elemento</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="nx">hotItems</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cool&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cambia el valor del atributo class</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span>
+<span class="normal"><a href="#__codelineno-12-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1">// c05/js/node-list.js</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">hotItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;li.hot&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Almacena la NodeList en una variable</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hotItems</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Si contiene elementos</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">hotItems</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Recorre cada elemento</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="nx">hotItems</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cool&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cambia el valor del atributo class</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p><img alt="" src="../recorriendoonlist.png" /></p>
 <p>En este ejemplo, la NodeList se genera usando <code>querySelectorAll()</code>, y busca cualquier elemento <code>&lt;li&gt;</code> que tenga un atributo <code>class</code> cuyo valor sea <code>hot</code>. La NodeList se almacena en una variable llamada <code>hotItems</code>, y el número de elementos en la lista se obtiene usando la propiedad <code>length</code>. Para cada uno de los elementos en la NodeList, el valor del atributo <code>class</code> se cambia a <code>cool</code>.</p>
@@ -3721,9 +3753,19 @@ Este método devuelve cuatro elementos, uno por cada elemento <code>&lt;li&gt;</
 <p>Desde este nodo elemento, la propiedad <code>previousSibling</code> devolverá el primer elemento <code>&lt;li&gt;</code>, y la propiedad <code>nextSibling</code> devolverá el tercer elemento <code>&lt;li&gt;</code>.</p>
 <div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
 <span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="cm">&lt;!--c05/sibling.html--&gt;</span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span>
+<span class="normal"><a href="#__codelineno-14-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="cm">&lt;!--c05/sibling.html--&gt;</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;one&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>fresh<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> figs<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;two&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>pine nuts<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;three&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>honey<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">&gt;</span>balsamic vinegar<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a> <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;one&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>fresh<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> figs<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a> <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;two&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>pine nuts<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a> <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;three&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hot&quot;</span><span class="p">&gt;</span>honey<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a> <span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">&gt;</span>balsamic vinegar<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
 <span class="normal"><a href="#__codelineno-15-2">2</a></span>
@@ -4604,13 +4646,13 @@ Este método devuelve cuatro elementos, uno por cada elemento <code>&lt;li&gt;</
         
         
           
-          <a href="../../../Efficient_NodeJS/cap1/nodeFunfamentals.md" class="md-footer__link md-footer__link--next" aria-label="Next: NODE FUNDAMENTALS">
+          <a href="../../capitulo-6/eventos/" class="md-footer__link md-footer__link--next" aria-label="Next: EVENTOS">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                NODE FUNDAMENTALS
+                EVENTOS
               </div>
             </div>
             <div class="md-footer__button md-icon">

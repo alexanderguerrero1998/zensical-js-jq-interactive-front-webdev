@@ -23,7 +23,7 @@ nav = [
             { "FUNCTIONS METHODS & OBJECTS" = "js-jq-interactive-frontend-webdev/capitulo-3/func-meth-obj.md"},
             { "DECISIONS & LOOPS" = "js-jq-interactive-frontend-webdev/capitulo-4/decision-loops.md"},
             { "DOCUMENT OBJECT MODEL" = "js-jq-interactive-frontend-webdev/capitulo-5/document-object-model.md"},
-          
+            { "EVENTOS" = "js-jq-interactive-frontend-webdev/capitulo-6/eventos.md"},
           ]
         },{ "OTRO LIBRO" = [ { "NODE FUNDAMENTALS" = "Efficient_NodeJS/cap1/nodeFunfamentals.md" },]}
   

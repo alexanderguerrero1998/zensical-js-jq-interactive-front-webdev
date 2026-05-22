@@ -570,6 +570,7 @@ Si quieres aplicar el mismo código a numerosos elementos, recorrer una NodeList
 Cada vez que el bucle se ejecuta, el script verifica que el contador sea menor que el número total de elementos en la NodeList.
 
 ```javascript linenums="1"
+// c05/js/node-list.js
 var hotItems = document.querySelectorAll('li.hot'); // Almacena la NodeList en una variable
 if (hotItems.length > 0) { // Si contiene elementos
   for (var i = 0; i < hotItems.length; i++) { // Recorre cada elemento
@@ -664,7 +665,12 @@ Desde este nodo elemento, la propiedad `previousSibling` devolverá el primer el
 ```html linenums="1"
 <!--c05/sibling.html-->
 
-<ul><li id="one" class="hot"><em>fresh</em> figs</li><li id="two" class="hot">pine nuts</li><li id="three" class="hot">honey</li><li id="four">balsamic vinegar</li></ul>
+<ul>
+ <li id="one" class="hot"><em>fresh</em> figs</li>
+ <li id="two" class="hot">pine nuts</li>
+ <li id="three" class="hot">honey</li>
+ <li id="four">balsamic vinegar</li>
+</ul>
 ```
 
 ```javascript linenums="1"
